@@ -1,13 +1,14 @@
 # Dockerfile for ChromaDB service (for Render.com)
+# This is a minimal wrapper - ChromaDB base image handles everything
 FROM chromadb/chroma:latest
 
 # ChromaDB runs on port 8000 by default
 EXPOSE 8000
 
-# Set environment variables
+# Set environment variables for ChromaDB
 ENV IS_PERSISTENT=TRUE
 ENV ANONYMIZED_TELEMETRY=FALSE
 
-# ChromaDB starts automatically - no CMD needed
-# The base image already has the correct entrypoint
+# Don't copy any application code - ChromaDB image is self-contained
+# The base image has its own entrypoint that starts ChromaDB server
 

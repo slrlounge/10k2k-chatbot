@@ -1,0 +1,55 @@
+# Ignore everything except what ChromaDB needs
+# This prevents copying FastAPI code when building ChromaDB
+
+# Python application files (for ChromaDB, we don't need these)
+serve.py
+main.py
+*.py
+!Dockerfile.chroma
+
+# Application directories
+web/
+auth/
+ingestion/
+data/
+transcripts/
+chroma/
+storage/
+logs/
+checkpoints/
+
+# Dependencies
+requirements.txt
+requirements.ingest.txt
+.venv/
+venv/
+__pycache__/
+
+# Documentation
+*.md
+!README.md
+
+# Config files
+.env
+.env.*
+docker-compose*.yml
+netlify.toml
+vercel.json
+railway.json
+render.yaml
+.gitignore
+
+# Source files
+10K2K v2/
+
+# Build files
+build-frontend.sh
+*.sh
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+
