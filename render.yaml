@@ -1,0 +1,55 @@
+# Render.com Blueprint Configuration
+# Deploy both ChromaDB and FastAPI services
+
+services:
+  # ChromaDB Vector Database Service
+  - type: web
+    name: chromadb
+    env: docker
+    dockerfilePath: ./Dockerfile.chroma
+    dockerContext: .
+    plan: starter  # $7/month
+    envVars:
+      - key: IS_PERSISTENT
+        value: TRUE
+      - key: ANONYMIZED_TELEMETRY
+        value: FALSE
+    healthCheckPath: /api/v1/heartbeat
+    autoDeploy: false
+
+  # FastAPI Backend Service
+  - type: web
+    name: chatbot-api
+    env: docker
+    dockerfilePath: ./Dockerfile
+    dockerContext: .
+    plan: starter  # $7/month
+    envVars:
+      - key: ENVIRONMENT
+        value: production
+      - key: CHROMA_HOST
+        fromService:
+          name: chromadb
+          type: web
+          property: host
+      - key: CHROMA_PORT
+        value: 8000
+      - key: COLLECTION_NAME
+        value: 10k2k_transcripts
+      - key: OPENAI_API_KEY
+        sync: false  # Set manually in Render dashboard
+      - key: AUTH_SECRET_KEY
+        sync: false  # Set manually in Render dashboard
+      - key: ADMIN_SECRET_KEY
+        sync: false  # Set manually in Render dashboard
+      - key: KJ_LOGIN_URL
+        value: https://www.slrloungeworkshops.com/login
+      - key: ENABLE_AUTH
+        value: "true"
+      - key: ALLOWED_ORIGINS
+        value: https://your-frontend.netlify.app,https://www.slrloungeworkshops.com
+      - key: LOG_LEVEL
+        value: INFO
+    healthCheckPath: /health
+    autoDeploy: false
+

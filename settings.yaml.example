@@ -1,0 +1,18 @@
+# PyDrive2 Settings Template
+# Copy this file to settings.yaml and fill in your credentials
+
+client_config_backend: settings
+client_config:
+  client_id: YOUR_CLIENT_ID.apps.googleusercontent.com
+  client_secret: YOUR_CLIENT_SECRET
+save_credentials: True
+save_credentials_backend: file
+save_credentials_file: credentials.json
+get_refresh_token: True
+
+# Optional: Use service account instead of OAuth
+# Uncomment and configure if you prefer service account authentication
+# service_config:
+#   client_user_email: YOUR_SERVICE_ACCOUNT_EMAIL
+# service_account_file: service_account.json
+

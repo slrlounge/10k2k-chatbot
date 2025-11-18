@@ -1,0 +1,18 @@
+# Minimal requirements for ingestion pipeline only
+# Lightweight - no heavy dependencies
+
+# Core RAG and LLM
+langchain>=0.1.0
+langchain-openai>=0.0.5
+langchain-community>=0.0.20
+langchain-chroma>=0.1.0
+openai>=1.12.0
+
+# Vector Database
+chromadb>=0.4.22
+
+# Utilities
+python-dotenv>=1.0.0
+tiktoken>=0.5.2
+requests>=2.31.0
+

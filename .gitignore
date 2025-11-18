@@ -1,0 +1,73 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+.venv/
+venv/
+ENV/
+env/
+*.egg-info/
+dist/
+build/
+
+# Environment variables
+.env
+.env.local
+.env.production
+.env.*.local
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Logs
+*.log
+logs/
+*.log.*
+
+# Data and storage
+data/
+storage/
+chroma/
+checkpoints/
+*.db
+*.sqlite
+*.sqlite3
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+
+# Sensitive files
+credentials.json
+service_account.json
+settings.yaml
+
+# Large media files (if not needed in repo)
+*.mp4
+*.mp3
+*.mov
+*.avi
+
+# Node modules (if any)
+node_modules/
+
+# Build outputs
+dist/
+build/
+

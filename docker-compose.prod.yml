@@ -1,0 +1,51 @@
+# Production Docker Compose Configuration
+# For deploying to cloud platforms (Render, Railway, DigitalOcean)
+version: '3.8'
+
+services:
+  chroma:
+    image: chromadb/chroma:latest
+    container_name: chroma_prod
+    ports:
+      - "8000:8000"
+    volumes:
+      - chroma_data:/chroma/chroma
+    environment:
+      - IS_PERSISTENT=TRUE
+      - ANONYMIZED_TELEMETRY=FALSE
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/api/v1/heartbeat"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: api_prod
+    ports:
+      - "8001:8000"
+    environment:
+      - ENVIRONMENT=production
+      - CHROMA_HOST=chroma
+      - CHROMA_PORT=8000
+      - COLLECTION_NAME=${COLLECTION_NAME:-10k2k_transcripts}
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+      - AUTH_SECRET_KEY=${AUTH_SECRET_KEY}
+      - ADMIN_SECRET_KEY=${ADMIN_SECRET_KEY}
+      - KJ_LOGIN_URL=${KJ_LOGIN_URL:-https://www.slrloungeworkshops.com/login}
+      - ENABLE_AUTH=${ENABLE_AUTH:-true}
+      - ALLOWED_ORIGINS=${ALLOWED_ORIGINS}
+      - LOG_LEVEL=${LOG_LEVEL:-INFO}
+    depends_on:
+      chroma:
+        condition: service_healthy
+    restart: unless-stopped
+
+volumes:
+  chroma_data:
+    driver: local
+

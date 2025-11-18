@@ -1,0 +1,27 @@
+# Netlify Configuration for Frontend Deployment
+# Frontend will be deployed here, backend API runs on Render/Railway
+
+[build]
+  # Netlify will serve static files from web/ directory
+  publish = "web"
+  command = "echo 'Frontend build complete'"
+
+[build.environment]
+  # Set these in Netlify dashboard: Site settings > Build & deploy > Environment variables
+  # API_URL = "https://your-api.onrender.com"
+  # KJ_LOGIN_URL = "https://www.slrloungeworkshops.com/login"
+
+[[redirects]]
+  # Redirect all routes to index.html for SPA routing
+  from = "/*"
+  to = "/chat.html"
+  status = 200
+
+[[headers]]
+  # Security headers
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "SAMEORIGIN"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+

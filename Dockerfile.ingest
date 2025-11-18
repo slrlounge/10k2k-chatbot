@@ -1,0 +1,44 @@
+FROM python:3.11-slim
+
+# Set working directory
+WORKDIR /app
+
+# Install system dependencies
+RUN apt-get update && apt-get install -y \
+    gcc \
+    && rm -rf /var/lib/apt/lists/*
+
+# Copy requirements and install Python dependencies (lightweight ingestion-only)
+COPY requirements.ingest.txt .
+RUN pip install --no-cache-dir -r requirements.ingest.txt
+
+# Copy ingestion code
+COPY ingestion/ ./ingestion/
+
+# Set environment variables (can be overridden in docker-compose)
+ENV TRANSCRIPTS_DIR=/app/transcripts
+ENV CHROMA_DIR=/app/chroma
+ENV CHROMA_HOST=chroma
+ENV CHROMA_PORT=8000
+ENV CHECKPOINT_FILE=/app/checkpoints/ingest_transcripts.json
+ENV COLLECTION_NAME=10k2k_transcripts
+ENV LOG_DIR=/app/logs
+ENV INGEST_SCRIPT=/app/ingestion/ingest_single_transcript.py
+ENV INGEST_SCRIPT_ADAPTIVE=/app/ingestion/ingest_single_transcript_adaptive.py
+ENV INGEST_SCRIPT_DIRECT=/app/ingestion/ingest_single_transcript_direct.py
+ENV INGEST_SCRIPT_MINIMAL=/app/ingestion/ingest_single_transcript_minimal.py
+ENV INGEST_SCRIPT_ULTRA_MINIMAL=/app/ingestion/ingest_single_transcript_ultra_minimal.py
+ENV USE_ADAPTIVE=true
+ENV USE_DIRECT_API=false
+ENV USE_MINIMAL=true
+ENV USE_ULTRA_MINIMAL=true
+ENV MAX_RETRIES_PER_FILE=3
+ENV PYTHON_CMD=python3
+ENV CHUNK_SIZE=1000
+ENV CHUNK_OVERLAP=100
+# Ultra-minimal uses even smaller chunks (500 tokens) - set in script
+ENV MAX_FILE_SIZE_MB=10.0
+
+# Default command runs the ingestion orchestrator
+CMD ["python3", "ingestion/ingest_all_transcripts.py"]
+

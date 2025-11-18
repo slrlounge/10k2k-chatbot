@@ -1,0 +1,57 @@
+version: '3.8'
+
+services:
+  # ChromaDB Server
+  chroma:
+    image: chromadb/chroma:latest
+    container_name: chroma
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./chroma:/chroma/chroma
+    environment:
+      - IS_PERSISTENT=TRUE
+      - PERSIST_DIRECTORY=/chroma/chroma
+    restart: unless-stopped
+
+  # Ingestion Service
+  ingest:
+    build:
+      context: .
+      dockerfile: Dockerfile.ingest
+    container_name: ingest
+    depends_on:
+      - chroma
+    volumes:
+      - ./10K2K v2:/app/transcripts:ro  # Mount transcripts directory (read-only)
+      - ./chroma:/app/chroma            # Share ChromaDB data
+      - ./logs:/app/logs                # Logs directory
+      - ./checkpoints:/app/checkpoints  # Checkpoints directory
+    environment:
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+      - TRANSCRIPTS_DIR=/app/transcripts
+      - CHROMA_DIR=/app/chroma
+      - CHROMA_HOST=chroma
+      - CHROMA_PORT=8000
+      - CHECKPOINT_FILE=/app/checkpoints/ingest_transcripts.json
+      - COLLECTION_NAME=10k2k_transcripts
+      - LOG_DIR=/app/logs
+      - INGEST_SCRIPT=/app/ingestion/ingest_single_transcript.py
+      - INGEST_SCRIPT_ADAPTIVE=/app/ingestion/ingest_single_transcript_adaptive.py
+      - INGEST_SCRIPT_DIRECT=/app/ingestion/ingest_single_transcript_direct.py
+      - INGEST_SCRIPT_MINIMAL=/app/ingestion/ingest_single_transcript_minimal.py
+      - INGEST_SCRIPT_ULTRA_MINIMAL=/app/ingestion/ingest_single_transcript_ultra_minimal.py
+      - USE_ADAPTIVE=true
+      - USE_DIRECT_API=false
+      - USE_MINIMAL=true
+      - USE_ULTRA_MINIMAL=true
+      - MAX_RETRIES_PER_FILE=3
+      - PYTHON_CMD=python3
+      - CHUNK_SIZE=1000
+      - CHUNK_OVERLAP=100
+      - MAX_FILE_SIZE_MB=10.0
+    env_file:
+      - .env
+    restart: "no"  # Don't auto-restart - run once and exit
+    command: ["python3", "ingestion/ingest_all_transcripts.py"]
+
