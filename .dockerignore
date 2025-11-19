@@ -1,15 +1,18 @@
-# Ignore everything except what ChromaDB needs
-# This prevents copying FastAPI code when building ChromaDB
+# Docker ignore file - used by both ChromaDB and FastAPI services
+# ChromaDB service uses Dockerfile.chroma (doesn't copy app code)
+# FastAPI service uses Dockerfile (needs serve.py and auth/)
 
-# Python application files (for ChromaDB, we don't need these)
-serve.py
+# Python application files
+# NOTE: serve.py is NEEDED for FastAPI service - explicitly NOT excluded
+# Only exclude main.py and other unused files
 main.py
-*.py
-!Dockerfile.chroma
+sync_drive.py
+transcribe_videos.py
+# Do NOT exclude serve.py - it's required!
 
 # Application directories
-web/
-auth/
+# NOTE: auth/ is NEEDED for FastAPI authentication - explicitly NOT excluded
+# Do NOT exclude auth/ - it's required!
 ingestion/
 data/
 transcripts/
@@ -17,6 +20,8 @@ chroma/
 storage/
 logs/
 checkpoints/
+# web/ can be excluded - frontend deployed separately in production
+web/
 
 # Dependencies (keep requirements.txt - FastAPI needs it)
 requirements.ingest.txt
