@@ -13,6 +13,8 @@ transcribe_videos.py
 # Application directories
 # NOTE: auth/ is NEEDED for FastAPI authentication - explicitly NOT excluded
 # Do NOT exclude auth/ - it's required!
+# NOTE: web/ is NEEDED for serving chat.html in production - explicitly NOT excluded
+# Do NOT exclude web/ - it's required!
 ingestion/
 data/
 transcripts/
@@ -20,8 +22,6 @@ chroma/
 storage/
 logs/
 checkpoints/
-# web/ can be excluded - frontend deployed separately in production
-web/
 
 # Dependencies (keep requirements.txt - FastAPI needs it)
 requirements.ingest.txt

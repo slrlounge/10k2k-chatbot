@@ -72,9 +72,9 @@ app = FastAPI(
     redoc_url="/redoc" if not IS_PRODUCTION else None  # Disable redoc in production
 )
 
-# Serve web UI (only in development, frontend deployed separately in production)
+# Serve web UI - serve in production for Kajabi embedding
 WEB_DIR = Path(__file__).parent / "web"
-if WEB_DIR.exists() and not IS_PRODUCTION:
+if WEB_DIR.exists():
     app.mount("/web", StaticFiles(directory=str(WEB_DIR)), name="web")
 
 # Enable CORS for web frontend - Production: restrict to allowed origins
