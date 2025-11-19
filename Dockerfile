@@ -16,26 +16,23 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Install gunicorn for production
 RUN pip install --no-cache-dir gunicorn
 
-# Copy application code (but .dockerignore excludes 10K2K v2/)
+# Copy application code (now includes 10K2K v2/ since removed from .dockerignore)
 COPY . .
 
 # Copy ingestion directory explicitly (needed for Shell)
-# This works because ingestion/ is NOT in .dockerignore
 COPY ingestion/ /app/ingestion/
 
-# Temporarily remove 10K2K v2/ from .dockerignore context by copying before user switch
-# We need to copy it before switching users, and COPY respects .dockerignore
-# So we'll use a build arg or copy it explicitly
-# Actually, we need to copy it in a way that bypasses .dockerignore
-# The solution: Copy everything first, then selectively copy transcripts
-RUN --mount=type=bind,source=.,target=/buildcontext \
-    if [ -d "/buildcontext/10K2K v2" ]; then \
-        find "/buildcontext/10K2K v2" -name "*.txt" -type f | while read file; do \
-            rel_path="${file#/buildcontext/}"; \
-            dir="/app/$(dirname "$rel_path")"; \
+# Copy only transcript .txt files, exclude videos to keep image small (~3MB vs 81GB)
+# Remove video files after copying to save space
+RUN if [ -d "10K2K v2" ]; then \
+        find "10K2K v2" -name "*.txt" -type f | while read file; do \
+            dir="/app/$(dirname "$file")"; \
             mkdir -p "$dir"; \
-            cp "$file" "/app/$rel_path"; \
-        done; \
+            cp "$file" "/app/$file"; \
+        done && \
+        # Remove video files to save space
+        find "10K2K v2" -type f ! -name "*.txt" -delete && \
+        find "10K2K v2" -type d -empty -delete 2>/dev/null || true; \
     fi
 
 # Create non-root user for security
