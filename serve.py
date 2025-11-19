@@ -411,7 +411,7 @@ async def generate_token_for_user(
         )
     
     try:
-        from auth.token_utils import generate_token
+        from auth.token_utils import generate_token, TOKEN_EXPIRATION_MINUTES
         token = generate_token(user_id)
         return {
             "token": token,
