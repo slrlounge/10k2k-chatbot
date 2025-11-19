@@ -45,8 +45,8 @@ render.yaml
 .gitignore
 
 # Source files
-# NOTE: 10K2K v2/ is needed for ingestion via Shell
-# Keep it excluded to keep image size small - use Render Disks instead
+# NOTE: 10K2K v2/ included for ingestion via Shell
+# Uncomment to exclude if image size becomes an issue
 # 10K2K v2/
 
 # Build files
