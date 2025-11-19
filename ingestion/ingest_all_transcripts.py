@@ -35,10 +35,11 @@ INGEST_SCRIPT_DIRECT = Path(os.getenv('INGEST_SCRIPT_DIRECT', '/app/ingestion/in
 INGEST_SCRIPT_MINIMAL = Path(os.getenv('INGEST_SCRIPT_MINIMAL', '/app/ingestion/ingest_single_transcript_minimal.py'))
 INGEST_SCRIPT_ULTRA_MINIMAL = Path(os.getenv('INGEST_SCRIPT_ULTRA_MINIMAL', '/app/ingestion/ingest_single_transcript_ultra_minimal.py'))
 PYTHON_CMD = os.getenv('PYTHON_CMD', 'python3')
-USE_ADAPTIVE = os.getenv('USE_ADAPTIVE', 'true').lower() == 'true'
+USE_ADAPTIVE = os.getenv('USE_ADAPTIVE', 'false').lower() == 'true'
 USE_DIRECT_API = os.getenv('USE_DIRECT_API', 'false').lower() == 'true'
-USE_MINIMAL = os.getenv('USE_MINIMAL', 'true').lower() == 'true'
-USE_ULTRA_MINIMAL = os.getenv('USE_ULTRA_MINIMAL', 'true').lower() == 'true'  # Auto-fallback to ultra-minimal
+USE_MINIMAL = os.getenv('USE_MINIMAL', 'false').lower() == 'true'
+# Default to ultra-minimal if no preference set (safest option)
+USE_ULTRA_MINIMAL = os.getenv('USE_ULTRA_MINIMAL', 'true').lower() == 'true'  # Default to ultra-minimal for safety
 MAX_RETRIES_PER_FILE = int(os.getenv('MAX_RETRIES_PER_FILE', '3'))  # Try up to 3 different approaches
 
 # Initialize logger
@@ -81,8 +82,10 @@ def process_file_in_subprocess(file_path: Path, attempt: int = 1) -> bool:
     scripts_to_try = []
     
     if attempt == 1:
-        # First attempt: try minimal (balanced)
-        if USE_MINIMAL and INGEST_SCRIPT_MINIMAL.exists():
+        # First attempt: try ultra-minimal first (safest, most memory-efficient)
+        if USE_ULTRA_MINIMAL and INGEST_SCRIPT_ULTRA_MINIMAL.exists():
+            scripts_to_try.append(INGEST_SCRIPT_ULTRA_MINIMAL)
+        elif USE_MINIMAL and INGEST_SCRIPT_MINIMAL.exists():
             scripts_to_try.append(INGEST_SCRIPT_MINIMAL)
         elif USE_ADAPTIVE and INGEST_SCRIPT_ADAPTIVE.exists():
             scripts_to_try.append(INGEST_SCRIPT_ADAPTIVE)
