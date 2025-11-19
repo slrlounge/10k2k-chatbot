@@ -18,8 +18,7 @@ storage/
 logs/
 checkpoints/
 
-# Dependencies
-requirements.txt
+# Dependencies (keep requirements.txt - FastAPI needs it)
 requirements.ingest.txt
 .venv/
 venv/
