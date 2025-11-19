@@ -111,18 +111,30 @@ def process_file_in_subprocess(file_path: Path, attempt: int = 1) -> bool:
     
     script_to_use = scripts_to_try[0]
     
+    # Force flush logs before subprocess
+    import sys
+    sys.stdout.flush()
+    sys.stderr.flush()
+    
     try:
-        # Log subprocess start
+        # Log subprocess start - CRITICAL: Log before subprocess.run()
         logger.info(f"Starting subprocess: {PYTHON_CMD} {script_to_use} {file_path}")
         logger.info(f"Subprocess timeout: 1800 seconds (30 minutes)")
+        logger.info(f"About to call subprocess.run()...")
+        
+        # Force flush again
+        sys.stdout.flush()
+        sys.stderr.flush()
         
         # Run ingest script in a fresh Python process
+        logger.info(f"Calling subprocess.run() NOW...")
         result = subprocess.run(
             [PYTHON_CMD, str(script_to_use), str(file_path)],
             capture_output=True,
             text=True,
             timeout=1800  # 30 minute timeout (ultra-minimal takes longer)
         )
+        logger.info(f"subprocess.run() RETURNED!")
         
         # Log subprocess completion immediately
         logger.info(f"Subprocess completed with returncode: {result.returncode}")
@@ -298,11 +310,22 @@ def main():
     
     for i, file_path in enumerate(files_to_process, 1):
         logger.info(f"\n[{i}/{remaining}] Processing: {file_path.name}")
+        logger.info(f"About to call process_file_in_subprocess for: {file_path}")
         
-        # Process with automatic retry logic
-        if process_file_in_subprocess(file_path, attempt=1):
-            successful += 1
-        else:
+        try:
+            # Process with automatic retry logic
+            result = process_file_in_subprocess(file_path, attempt=1)
+            logger.info(f"process_file_in_subprocess returned: {result}")
+            if result:
+                successful += 1
+                logger.info(f"✓ File {i} processed successfully")
+            else:
+                failed += 1
+                logger.warning(f"✗ File {i} failed to process")
+        except Exception as e:
+            logger.error(f"✗ Exception in main loop processing {file_path.name}: {e}")
+            import traceback
+            logger.error(traceback.format_exc())
             failed += 1
         
         # Progress update
