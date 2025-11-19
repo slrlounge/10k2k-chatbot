@@ -19,6 +19,14 @@ RUN pip install --no-cache-dir gunicorn
 # Copy application code
 COPY . .
 
+# Copy only transcript .txt files (exclude videos to keep image small ~3MB)
+# Use a script to copy only .txt files preserving directory structure
+RUN mkdir -p /tmp/transcripts && \
+    find "10K2K v2" -name "*.txt" -type f | while read file; do \
+        mkdir -p "/app/$(dirname "$file")" && \
+        cp "$file" "/app/$file"; \
+    done || true
+
 # Create non-root user for security
 RUN useradd -m -u 1000 appuser && chown -R appuser:appuser /app
 USER appuser

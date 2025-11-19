@@ -45,9 +45,9 @@ render.yaml
 .gitignore
 
 # Source files
-# NOTE: 10K2K v2/ included for ingestion via Shell
-# Uncomment to exclude if image size becomes an issue
-# 10K2K v2/
+# NOTE: Exclude 10K2K v2/ from COPY . . to avoid copying videos (81GB)
+# Dockerfile will copy only .txt files separately (~3MB)
+10K2K v2/
 
 # Build files
 build-frontend.sh
