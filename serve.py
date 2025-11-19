@@ -330,8 +330,30 @@ async def serve_chat_html(token: Optional[str] = Depends(verify_token)):
     Token can be provided as query parameter: /web/chat.html?token=...
     """
     chat_file = WEB_DIR / "chat.html"
+    
+    # Log for debugging
+    logger.info(f"Attempting to serve chat.html from: {chat_file}")
+    logger.info(f"WEB_DIR exists: {WEB_DIR.exists()}")
+    logger.info(f"chat_file exists: {chat_file.exists()}")
+    
     if not chat_file.exists():
-        raise HTTPException(status_code=404, detail="Chat page not found")
+        # Try alternative paths
+        alt_paths = [
+            Path("/app/web/chat.html"),  # Docker container path
+            Path(__file__).parent.parent / "web" / "chat.html",
+            Path("web/chat.html"),
+        ]
+        
+        for alt_path in alt_paths:
+            logger.info(f"Trying alternative path: {alt_path}")
+            if alt_path.exists():
+                logger.info(f"Found chat.html at: {alt_path}")
+                return FileResponse(str(alt_path))
+        
+        logger.error(f"chat.html not found. WEB_DIR: {WEB_DIR}, chat_file: {chat_file}")
+        logger.error(f"Current working directory: {os.getcwd()}")
+        logger.error(f"__file__ location: {__file__}")
+        raise HTTPException(status_code=404, detail=f"Chat page not found. Looked in: {chat_file}")
     
     return FileResponse(str(chat_file))
 
