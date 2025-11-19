@@ -240,20 +240,65 @@ async def verify_token(
 @app.on_event("startup")
 async def startup_event():
     """Initialize services on startup."""
+    import time
+    
     logger.info("=" * 60)
     logger.info("Initializing RAG Chatbot API...")
     logger.info(f"Environment: {ENVIRONMENT}")
     logger.info(f"Auth enabled: {ENABLE_AUTH}")
     logger.info(f"CORS origins: {ALLOWED_ORIGINS}")
+    logger.info(f"ChromaDB: {CHROMA_HOST}:{CHROMA_PORT}")
     logger.info("=" * 60)
     
-    try:
-        initialize_vectorstore()
-        initialize_llm()
-        logger.info("✓ API ready!")
-    except Exception as e:
-        logger.error(f"✗ Startup failed: {e}")
-        raise
+    # Retry logic for ChromaDB connection (common in cloud deployments)
+    max_retries = 5
+    retry_delay = 5
+    
+    for attempt in range(max_retries):
+        try:
+            logger.info(f"Attempting to initialize services (attempt {attempt + 1}/{max_retries})...")
+            initialize_vectorstore()
+            initialize_llm()
+            logger.info("✓ API ready!")
+            return
+        except Exception as e:
+            logger.error(f"✗ Startup attempt {attempt + 1} failed: {e}")
+            logger.error(f"Error type: {type(e).__name__}")
+            import traceback
+            logger.error(f"Traceback: {traceback.format_exc()}")
+            
+            if attempt < max_retries - 1:
+                logger.info(f"Retrying in {retry_delay} seconds...")
+                time.sleep(retry_delay)
+            else:
+                logger.error("✗ All startup attempts failed. Service will not start.")
+                logger.error("=" * 60)
+                logger.error("CRITICAL: Cannot start without vector store and LLM.")
+                logger.error("Check the error messages above for details.")
+                logger.error("Common issues:")
+                logger.error("  - OPENAI_API_KEY not set or invalid")
+                logger.error(f"  - ChromaDB not accessible at {CHROMA_HOST}:{CHROMA_PORT}")
+                logger.error("  - Network connectivity issues")
+                logger.error("=" * 60)
+                # Raise to prevent service from starting in broken state
+                raise RuntimeError(f"Startup failed after {max_retries} attempts: {e}")
+
+
+@app.get("/health")
+async def health_check():
+    """Health check endpoint for Render and monitoring."""
+    status = {
+        "status": "healthy",
+        "vectorstore_initialized": vectorstore is not None,
+        "llm_initialized": llm is not None,
+        "environment": ENVIRONMENT
+    }
+    
+    if vectorstore is None or llm is None:
+        status["status"] = "degraded"
+        status["message"] = "Services not fully initialized"
+    
+    return JSONResponse(content=status, status_code=200 if status["status"] == "healthy" else 503)
 
 
 @app.get("/")
