@@ -8,6 +8,8 @@ import os
 import sys
 import gc
 import time
+import traceback
+import socket
 from pathlib import Path
 from dotenv import load_dotenv
 import tiktoken
@@ -33,6 +35,9 @@ COLLECTION_NAME = os.getenv('COLLECTION_NAME', '10k2k_transcripts')
 CHUNK_SIZE = int(os.getenv('CHUNK_SIZE', '500'))  # Ultra-small chunks
 CHUNK_OVERLAP = int(os.getenv('CHUNK_OVERLAP', '50'))
 MAX_FILE_SIZE_MB = float(os.getenv('MAX_FILE_SIZE_MB', '10.0'))
+
+# Set socket timeout to prevent hanging connections
+socket.setdefaulttimeout(30)  # 30 second timeout
 
 logger = setup_logger('ingest_ultra_minimal')
 
@@ -82,28 +87,58 @@ def process_transcript_file(transcript_file: Path) -> int:
     openai_client = None
     
     try:
-        # Connect to ChromaDB server
-        client = chromadb.HttpClient(host=CHROMA_HOST, port=CHROMA_PORT)
+        # Connect to ChromaDB server with error handling
+        logger.info(f"Connecting to ChromaDB at {CHROMA_HOST}:{CHROMA_PORT}...")
+        try:
+            client = chromadb.HttpClient(host=CHROMA_HOST, port=CHROMA_PORT)
+            logger.info("ChromaDB client created successfully")
+        except Exception as e:
+            logger.error(f"Failed to create ChromaDB client: {e}")
+            logger.error(traceback.format_exc())
+            raise
         
-        # Get or create collection
+        # Get or create collection with error handling
+        logger.info(f"Getting/creating collection: {COLLECTION_NAME}")
         try:
             collection = client.get_collection(name=COLLECTION_NAME)
-        except:
-            collection = client.create_collection(name=COLLECTION_NAME)
+            logger.info(f"Collection '{COLLECTION_NAME}' found")
+        except Exception as e:
+            logger.warning(f"Collection not found, creating: {e}")
+            try:
+                collection = client.create_collection(name=COLLECTION_NAME)
+                logger.info(f"Collection '{COLLECTION_NAME}' created successfully")
+            except Exception as create_error:
+                logger.error(f"Failed to create collection: {create_error}")
+                logger.error(traceback.format_exc())
+                raise
         
-        # Initialize OpenAI client
-        api_key = get_openai_api_key()
-        openai_client = OpenAI(api_key=api_key)
+        # Initialize OpenAI client with error handling
+        logger.info("Initializing OpenAI client...")
+        try:
+            api_key = get_openai_api_key()
+            openai_client = OpenAI(api_key=api_key)
+            logger.info("OpenAI client initialized successfully")
+        except Exception as e:
+            logger.error(f"Failed to initialize OpenAI client: {e}")
+            logger.error(traceback.format_exc())
+            raise
         
         # Aggressive GC after initialization
         for _ in range(3):
             gc.collect()
         time.sleep(0.5)  # Longer delay to stabilize
         
-        # Load file content
-        content = ""
-        with open(transcript_file, 'r', encoding='utf-8') as f:
-            content = f.read()
+        # Load file content with error handling
+        logger.info(f"Reading file: {transcript_file}")
+        try:
+            content = ""
+            with open(transcript_file, 'r', encoding='utf-8') as f:
+                content = f.read()
+            logger.info(f"File read successfully: {len(content)} characters")
+        except Exception as e:
+            logger.error(f"Failed to read file: {e}")
+            logger.error(traceback.format_exc())
+            raise
         
         del f
         for _ in range(2):
@@ -188,12 +223,15 @@ def process_transcript_file(transcript_file: Path) -> int:
         mark_processed(file_str, success=True)
         return 0
         
-    except MemoryError:
-        logger.error(f"Memory error processing {transcript_file.name}")
+    except MemoryError as e:
+        logger.error(f"Memory error processing {transcript_file.name}: {e}")
+        logger.error(traceback.format_exc())
         mark_processed(file_str, success=False)
         return 1
     except Exception as e:
         logger.error(f"Error processing {transcript_file.name}: {e}")
+        logger.error(f"Error type: {type(e).__name__}")
+        logger.error(traceback.format_exc())
         mark_processed(file_str, success=False)
         return 1
     finally:
@@ -210,14 +248,26 @@ def process_transcript_file(transcript_file: Path) -> int:
 
 
 def main():
+    # Log startup immediately
+    logger.info("=" * 60)
+    logger.info("ULTRA-MINIMAL INGESTION STARTING")
+    logger.info("=" * 60)
+    
     if len(sys.argv) < 2:
         logger.error("Usage: python ingest_single_transcript_ultra_minimal.py <transcript_file_path>")
         sys.exit(1)
     
     transcript_path = Path(sys.argv[1])
+    logger.info(f"File argument: {transcript_path}")
+    logger.info(f"ChromaDB Host: {CHROMA_HOST}")
+    logger.info(f"ChromaDB Port: {CHROMA_PORT}")
+    logger.info(f"Collection Name: {COLLECTION_NAME}")
+    logger.info(f"Chunk Size: {CHUNK_SIZE} tokens")
     
     if not transcript_path.exists():
         logger.error(f"File not found: {transcript_path}")
+        logger.error(f"Current working directory: {os.getcwd()}")
+        logger.error(f"Absolute path: {transcript_path.absolute()}")
         sys.exit(1)
     
     if not transcript_path.is_file():
@@ -229,8 +279,18 @@ def main():
         logger.info(f"Already processed: {transcript_path.name}")
         return 0
     
-    result = process_transcript_file(transcript_path)
-    return result
+    logger.info("=" * 60)
+    logger.info("Starting file processing...")
+    logger.info("=" * 60)
+    
+    try:
+        result = process_transcript_file(transcript_path)
+        logger.info(f"File processing completed with exit code: {result}")
+        return result
+    except Exception as e:
+        logger.error(f"Fatal error in main(): {e}")
+        logger.error(traceback.format_exc())
+        return 1
 
 
 if __name__ == '__main__':
