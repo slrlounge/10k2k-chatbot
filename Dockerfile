@@ -20,19 +20,22 @@ RUN pip install --no-cache-dir gunicorn
 COPY . .
 
 # Copy ingestion directory explicitly (needed for Shell)
+# This works because ingestion/ is NOT in .dockerignore
 COPY ingestion/ /app/ingestion/
 
-# Copy only transcript .txt files (exclude videos to keep image small ~3MB)
-# First copy the directory structure, then copy only .txt files
-COPY "10K2K v2/" /tmp/10K2K\ v2/ || true
-RUN if [ -d "/tmp/10K2K v2" ]; then \
-        find "/tmp/10K2K v2" -name "*.txt" -type f | while read file; do \
-            rel_path="${file#/tmp/}"; \
+# Temporarily remove 10K2K v2/ from .dockerignore context by copying before user switch
+# We need to copy it before switching users, and COPY respects .dockerignore
+# So we'll use a build arg or copy it explicitly
+# Actually, we need to copy it in a way that bypasses .dockerignore
+# The solution: Copy everything first, then selectively copy transcripts
+RUN --mount=type=bind,source=.,target=/buildcontext \
+    if [ -d "/buildcontext/10K2K v2" ]; then \
+        find "/buildcontext/10K2K v2" -name "*.txt" -type f | while read file; do \
+            rel_path="${file#/buildcontext/}"; \
             dir="/app/$(dirname "$rel_path")"; \
             mkdir -p "$dir"; \
             cp "$file" "/app/$rel_path"; \
-        done && \
-        rm -rf /tmp/10K2K\ v2; \
+        done; \
     fi
 
 # Create non-root user for security
