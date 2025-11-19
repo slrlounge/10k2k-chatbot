@@ -15,7 +15,8 @@ transcribe_videos.py
 # Do NOT exclude auth/ - it's required!
 # NOTE: web/ is NEEDED for serving chat.html in production - explicitly NOT excluded
 # Do NOT exclude web/ - it's required!
-ingestion/
+# NOTE: ingestion/ is NEEDED for running ingestion via Render Shell - explicitly NOT excluded
+# Do NOT exclude ingestion/ - it's required!
 data/
 transcripts/
 chroma/
@@ -44,7 +45,9 @@ render.yaml
 .gitignore
 
 # Source files
-10K2K v2/
+# NOTE: 10K2K v2/ is needed for ingestion via Shell
+# Keep it excluded to keep image size small - use Render Disks instead
+# 10K2K v2/
 
 # Build files
 build-frontend.sh
