@@ -49,17 +49,58 @@ logger = setup_logger('ingest_all')
 def find_transcript_files() -> list:
     """
     Recursively find all .txt transcript files in TRANSCRIPTS_DIR.
+    Returns files sorted by size (smallest first) and skips files larger than MAX_FILE_SIZE_MB.
     
     Returns:
-        List of Path objects for transcript files
+        List of Path objects for transcript files, sorted by size (smallest first)
     """
+    MAX_FILE_SIZE_MB = float(os.getenv('MAX_FILE_SIZE_MB', '10.0'))
+    
     if not TRANSCRIPTS_DIR.exists():
         logger.error(f"Transcripts directory does not exist: {TRANSCRIPTS_DIR}")
         return []
     
-    # Recursively find all .txt files
-    transcript_files = sorted([f for f in TRANSCRIPTS_DIR.rglob('*.txt') if f.is_file()])
+    transcript_files = []
+    skipped_large = []
+    
+    # Recursively find all .txt files and check sizes
+    for txt_file in TRANSCRIPTS_DIR.rglob('*.txt'):
+        if txt_file.is_file():
+            try:
+                file_size_mb = txt_file.stat().st_size / (1024 * 1024)
+                
+                if file_size_mb > MAX_FILE_SIZE_MB:
+                    logger.warning(f"Skipping large file: {txt_file.name} ({file_size_mb:.2f}MB > {MAX_FILE_SIZE_MB}MB)")
+                    skipped_large.append((txt_file, file_size_mb))
+                else:
+                    transcript_files.append(txt_file)
+            except Exception as e:
+                logger.warning(f"Error checking size for {txt_file.name}: {e}, skipping")
+                continue
+    
+    # Sort by file size (smallest first) for easier debugging
+    transcript_files.sort(key=lambda f: f.stat().st_size)
+    
     logger.info(f"Found {len(transcript_files)} transcript files in {TRANSCRIPTS_DIR}")
+    
+    if skipped_large:
+        logger.info(f"Skipped {len(skipped_large)} files larger than {MAX_FILE_SIZE_MB}MB:")
+        for file_path, size_mb in skipped_large[:5]:  # Show first 5
+            logger.info(f"  - {file_path.name}: {size_mb:.2f}MB")
+        if len(skipped_large) > 5:
+            logger.info(f"  ... and {len(skipped_large) - 5} more")
+    
+    # Log file sizes for first few files (processing order)
+    if transcript_files:
+        logger.info("Processing order (smallest first):")
+        for i, file_path in enumerate(transcript_files[:10], 1):
+            try:
+                size_mb = file_path.stat().st_size / (1024 * 1024)
+                logger.info(f"  {i}. {file_path.name}: {size_mb:.2f}MB")
+            except Exception:
+                logger.info(f"  {i}. {file_path.name}: (size unknown)")
+        if len(transcript_files) > 10:
+            logger.info(f"  ... and {len(transcript_files) - 10} more files")
     
     return transcript_files
 
