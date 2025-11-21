@@ -240,11 +240,39 @@ def get_failed_files() -> set:
     try:
         # Try to import checkpoint utilities
         import sys
-        sys.path.insert(0, str(Path(__file__).parent.parent))
-        from ingestion.utils_checkpoints import get_processed
+        import json
+        import os
         
-        # Get all processed files
-        processed = get_processed()
+        # Try multiple checkpoint paths
+        checkpoint_paths = [
+            Path('/app/checkpoints/ingest_transcripts.json'),
+            Path('checkpoints/ingest_transcripts.json'),
+            Path(os.getenv('CHECKPOINT_FILE', '/app/checkpoints/ingest_transcripts.json'))
+        ]
+        
+        processed = set()
+        checkpoint_file = None
+        
+        # Try to find and load checkpoint
+        for cp_path in checkpoint_paths:
+            if cp_path.exists():
+                try:
+                    with open(cp_path, 'r', encoding='utf-8') as f:
+                        data = json.load(f)
+                        processed = set(data.get('processed', []))
+                        checkpoint_file = cp_path
+                        print(f"✓ Loaded checkpoint from: {cp_path}")
+                        print(f"  Found {len(processed)} processed files")
+                        break
+                except Exception as e:
+                    print(f"⚠️  Error reading checkpoint {cp_path}: {e}")
+                    continue
+        
+        if not checkpoint_file:
+            print("⚠️  No checkpoint file found. Will check all files.")
+            print("  Checkpoint paths tried:")
+            for cp_path in checkpoint_paths:
+                print(f"    - {cp_path} (exists: {cp_path.exists()})")
         
         # Find all transcript files
         all_files = set()
@@ -253,11 +281,17 @@ def get_failed_files() -> set:
                 if txt_file.is_file():
                     all_files.add(str(txt_file))
         
+        print(f"  Found {len(all_files)} total transcript files")
+        
         # Failed files = all files - processed files
         failed_files = all_files - processed
+        print(f"  Calculated {len(failed_files)} failed/unprocessed files")
+        
         return failed_files
     except Exception as e:
         print(f"⚠️  Could not load checkpoint: {e}")
+        import traceback
+        print(traceback.format_exc())
         print("  Will process all files >0.25MB")
         return set()
 
@@ -331,7 +365,7 @@ def main():
     
     # Process each failed large file recursively
     for i, file_path in enumerate(large_failed_files, 1):
-        print(f"\n[{i}/{len(large_files)}] Processing: {file_path.name}")
+        print(f"\n[{i}/{len(large_failed_files)}] Processing: {file_path.name}")
         print("-" * 70)
         
         process_file_recursive(file_path)
