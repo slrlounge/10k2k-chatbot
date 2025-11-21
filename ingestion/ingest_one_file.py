@@ -32,9 +32,9 @@ COLLECTION_NAME = os.getenv('COLLECTION_NAME', '10k2k_transcripts')
 QUEUE_FILE = Path(os.getenv('QUEUE_FILE', '/app/checkpoints/file_queue.json'))
 CHECKPOINT_FILE = Path(os.getenv('CHECKPOINT_FILE', '/app/checkpoints/ingest_checkpoint.json'))
 LOG_DIR = Path(os.getenv('LOG_DIR', '/app/logs'))
-CHUNK_SIZE = 500  # Small chunks for memory efficiency
-CHUNK_OVERLAP = 50
-MAX_CHUNK_TOKENS = 500  # Conservative limit
+CHUNK_SIZE = 1000  # Optimal chunk size for context preservation
+CHUNK_OVERLAP = 200  # 20% overlap to prevent context loss at boundaries
+MAX_CHUNK_TOKENS = 1000  # Increased for better context preservation
 EMBEDDING_MODEL = 'text-embedding-3-small'
 
 # Ensure directories exist
@@ -149,13 +149,17 @@ def count_tokens(text: str) -> int:
     return len(tokenizer.encode(text))
 
 
-def split_text_semantic(text: str, max_tokens: int) -> List[str]:
-    """Split text at semantic boundaries (paragraphs, sentences)."""
+def split_text_semantic(text: str, max_tokens: int, overlap_tokens: int = CHUNK_OVERLAP) -> List[str]:
+    """
+    Split text at semantic boundaries with overlap to preserve context.
+    Overlap prevents information loss at chunk boundaries, reducing hallucination.
+    """
     # Try paragraphs first
     paragraphs = text.split('\n\n')
     chunks = []
     current_chunk = []
     current_tokens = 0
+    overlap_buffer = []  # Store last N tokens for overlap
     
     for para in paragraphs:
         para_tokens = count_tokens(para)
@@ -165,18 +169,50 @@ def split_text_semantic(text: str, max_tokens: int) -> List[str]:
             sentences = para.split('. ')
             for sent in sentences:
                 sent_tokens = count_tokens(sent)
+                
                 if current_tokens + sent_tokens > max_tokens and current_chunk:
-                    chunks.append('\n\n'.join(current_chunk))
-                    current_chunk = [sent]
-                    current_tokens = sent_tokens
+                    # Save current chunk
+                    chunk_text = '\n\n'.join(current_chunk)
+                    chunks.append(chunk_text)
+                    
+                    # Build overlap buffer from end of current chunk
+                    # Take last sentences that fit in overlap_tokens
+                    overlap_buffer = []
+                    overlap_token_count = 0
+                    for item in reversed(current_chunk):
+                        item_tokens = count_tokens(item)
+                        if overlap_token_count + item_tokens <= overlap_tokens:
+                            overlap_buffer.insert(0, item)
+                            overlap_token_count += item_tokens
+                        else:
+                            break
+                    
+                    # Start new chunk with overlap
+                    current_chunk = overlap_buffer + [sent]
+                    current_tokens = overlap_token_count + sent_tokens
                 else:
                     current_chunk.append(sent)
                     current_tokens += sent_tokens
         else:
             if current_tokens + para_tokens > max_tokens and current_chunk:
-                chunks.append('\n\n'.join(current_chunk))
-                current_chunk = [para]
-                current_tokens = para_tokens
+                # Save current chunk
+                chunk_text = '\n\n'.join(current_chunk)
+                chunks.append(chunk_text)
+                
+                # Build overlap buffer
+                overlap_buffer = []
+                overlap_token_count = 0
+                for item in reversed(current_chunk):
+                    item_tokens = count_tokens(item)
+                    if overlap_token_count + item_tokens <= overlap_tokens:
+                        overlap_buffer.insert(0, item)
+                        overlap_token_count += item_tokens
+                    else:
+                        break
+                
+                # Start new chunk with overlap
+                current_chunk = overlap_buffer + [para]
+                current_tokens = overlap_token_count + para_tokens
             else:
                 current_chunk.append(para)
                 current_tokens += para_tokens
@@ -314,9 +350,9 @@ def ingest_single_file(file_path: Path) -> bool:
         
         # Split into chunks if needed
         if total_tokens > MAX_CHUNK_TOKENS:
-            print(f"Splitting into chunks (max {MAX_CHUNK_TOKENS} tokens each)...")
-            chunks = split_text_semantic(content, MAX_CHUNK_TOKENS)
-            print(f"Created {len(chunks)} chunks")
+            print(f"Splitting into chunks (max {MAX_CHUNK_TOKENS} tokens each, {CHUNK_OVERLAP} token overlap)...")
+            chunks = split_text_semantic(content, MAX_CHUNK_TOKENS, CHUNK_OVERLAP)
+            print(f"Created {len(chunks)} chunks with {CHUNK_OVERLAP}-token overlap")
         else:
             chunks = [content]
         
