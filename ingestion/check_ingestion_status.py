@@ -34,9 +34,13 @@ def get_chromadb_count():
     """Get document count from ChromaDB."""
     try:
         client = chromadb.HttpClient(host=CHROMA_HOST, port=CHROMA_PORT)
-        collection = client.get_collection(COLLECTION_NAME)
-        count = collection.count()
-        return count
+        try:
+            collection = client.get_collection(COLLECTION_NAME)
+            count = collection.count()
+            return count
+        except Exception:
+            # Collection doesn't exist yet
+            return 0
     except Exception as e:
         return f"Error: {e}"
 
