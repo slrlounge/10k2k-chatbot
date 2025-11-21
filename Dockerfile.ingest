@@ -15,17 +15,9 @@ RUN pip install --no-cache-dir -r requirements.ingest.txt
 # Copy ingestion code
 COPY ingestion/ ./ingestion/
 
-# Copy ONLY .txt files from 10K2K v2/ (exclude PDFs and other files)
-# Create directory structure first
-RUN mkdir -p "/app/10K2K v2"
-# Copy only .txt files preserving directory structure
-COPY "10K2K v2/" "/tmp/10K2K v2/"
-RUN find "/tmp/10K2K v2" -name "*.txt" -type f -exec sh -c ' \
-    rel_path="${1#/tmp/10K2K v2/}"; \
-    dir="/app/10K2K v2/$(dirname "$rel_path")"; \
-    mkdir -p "$dir"; \
-    cp "$1" "/app/10K2K v2/$rel_path" \
-' _ {} \; && rm -rf "/tmp/10K2K v2"
+# Copy ONLY .txt files from 10K2K v2/ (PDFs excluded via .dockerignore)
+# Docker COPY will preserve directory structure automatically
+COPY "10K2K v2/" "/app/10K2K v2/"
 
 # Set environment variables (can be overridden in docker-compose)
 ENV TRANSCRIPTS_DIR=/app/10K2K v2
