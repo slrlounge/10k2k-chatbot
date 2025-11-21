@@ -74,15 +74,21 @@ def get_collection():
 
 def load_queue() -> Dict:
     """Load file queue from JSON."""
+    default_queue = {"pending": [], "processing": [], "completed": [], "failed": []}
+    
     if not QUEUE_FILE.exists():
-        return {"pending": [], "processing": [], "completed": [], "failed": []}
+        return default_queue
     
     try:
-        with open(QUEUE_FILE, 'r') as f:
-            return json.load(f)
+        queue = json.load(open(QUEUE_FILE, 'r'))
+        # Ensure all required keys exist
+        for key in default_queue.keys():
+            if key not in queue:
+                queue[key] = []
+        return queue
     except Exception as e:
         print(f"Error loading queue: {e}")
-        return {"pending": [], "processing": [], "completed": [], "failed": []}
+        return default_queue
 
 
 def save_queue(queue: Dict):
