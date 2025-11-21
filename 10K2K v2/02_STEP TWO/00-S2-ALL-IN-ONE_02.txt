@@ -1,0 +1,55 @@
+step and then at the end of this we have the part two of the prompt trainer where we're going to turn it into an actual like project that we're going to use on an ongoing basis okay so to start this off what I'd love for you to do is if you'd like to follow along I'm going to do this in chat GBT again if you want to use your own a different AI program that's totally
+
+fine but we're going to create a new project a different you know AI app like if you're using grok or something else they might call it something else but in chat gpt this is a project and what this does it allows you to keep uh your files your chat your instructions in one place so it kind of keeps it all tidy and we can kind of reference it whenever we'd like okay so let me go ahead
+
+and do that now just to kind of give you guys an idea and by the way if you don't have let me refresh this so this is kind of how the the view might look and you'll have your your if you have custom gpts it'll be on the left your history will be right here generally that new project is going to be just right below your custom gpt so we're going to click new project and you can call this
+
+whatever you'd like, but I'm just gonna call this my avatar, what did I call it over here? My client avatar, okay. What we're really gonna do is turn this into a brand and strategist, right, a brand strategist. So if you wanna call it like my brand strategist, you totally can, but I'm just gonna keep it simple. We're gonna call it that and then create project.
+
+all right and then what we'll be doing is throughout this entire module we're gonna be adding to this conversation as we go okay so we're gonna essentially build in this one place if you don't have access because like creating a custom GPT or oftentimes using projects these are premium features
+
+Look, I highly recommend having a premium chat GPT account. It's 20 bucks a month. The benefits that you get from it far exceed the cost. But if you don't have one, that's okay. I want you to follow along. You can just do this in a new chat and just watch the process of how to do this. And then when you get to a place where you have a premium account, you can create custom.
+
+GPT's or projects, then by all means, jump back into this. Okay, but you can learn a ton just by the process itself. Let's jump back right here. So once we have that, we're going to go ahead and start with this prompt. So I'm going to say in a moment, we're going to work through a series of prompts. When I finish the entire process, I'd like for you to
+
+me a set of instructions that I can add back to this project to tailor the way that you, and usually I'll say the name of the AI, respond to this product. You don't have to say the name of the AI. But can you do that for me? I'll let you know when I'm done with the entire prompt chain. After that, you can go ahead and create the instructions. Okay, so I'm going to go ahead and copy this and I will paste it.
+
+it right back into this, right? Okay. And I'm going to press go. Now it's going to say, absolutely. I'm ready whenever you are. Just let me know when you've completed the full prompt chain. I'll create a tailored set of instructions of how I should respond. So basically what we're doing is we're queuing up the.
+
+I had to say, what I'm about to give you is an entire set of instructions. And what we're going to use this for is creating our, our, our avatar, understanding our market, um, all of that. So we can know exactly who we're speaking to. So we can understand the avatar. We'll have a clarified message. We'll have all these things that tie into our business and it'll have a good idea of our business. And then it knows.
+
+we're going to turn everything here into basically a set of instructions. So that's what we're going to do, and we'll work through it lesson by lesson. But right now, we're done with this. So as long as you have your project set up, and again, if you're unable to use projects or anything, just use a regular chat. You can follow the exact same process in a regular chat. And if you have an account,
+
+I'm not sure how far it saves history with like free accounts, but I believe you still have a history The you can always go back to a previous conversation and kind of use it the same way It's just when we have projects we can kind of go to those at any time. They're permanently saved essentially, okay? Perfect. If you have any questions on this go ahead and
+
+Jump into the group. Looks like we don't have any live questions, so I'm gonna wrap this up right here. Now let's jump into identifying your dream client avatar. So the first question along these lines that I often get is like, why do I need to identify my target audience?
+
+truth this goes back to the thing that we kind of spoke about in step one which is well Seth Godin said it best when he said when you speak to everyone you speak to no one okay going back to some of those examples right I want to make those examples more concrete but let's get a little refresher so we gave this example previously are the clients on the left the same as the clients on the right we go okay
+
+of course they are not. In the case of this guy on the right, the fitness dude, he is not looking for anything that the wedding couple is looking for. This one is plain and simple, right? Wedding couple, they want something totally different than what this guy wants. We know that. But the one that was a little bit more difficult to understand was that, well, and I'm giving wedding analogies, but you could
+
+insert boudoir you could insert anything else into this right when we look at such different stylistic like versions of an image like we have one that's bright and airy and one that is dark dramatic and adventurous we have to recognize that the clients on the left are not the same as the clients on the right so even though we're both in the same genre we might both be
+
+wedding photographers, we might both be boudoir photographers, we might both be family photographers, it doesn't matter. The styles are so distinctly different that they're gonna draw in a different type of clientele on both sides okay and I get that that sounds theoretical. You're like Pi this sounds like theory how do we make
+
+this real? How do I apply this specifically to my business? So I want to keep it within that wedding example and I'm going to show you some other examples in just a moment, but let me give you context for this. So I have here, this is Tom, so MOT Photography. This is his website that he just finished, one of our alumni, and it's a...
+
+Fantastic website beautiful design. I'm like we got to make this one of our examples. Okay, so I'm looking at his and this is a wedding Photographer right and let's look at another version of alumni and a wedding photographer. This is Tim. No, they both start with T's and There are three letter names. So Tim Irick, this is his page, right and they're both
+
+Wedding photographers, but we have to look at this and go, they are targeting two very different types of clients. Visually arresting, cinematic wedding photographer couples who value passionate and artistic storytelling. Look at the colors on the page. We have full black with bold lettering. Here we have like kind of that classic white with images that just pop.
+
+and sort of a timeless lettering over here. These have two very different appeals to them, don't they? And it kind of goes back to putting this example into actual practice. Seeing that just because we're both wedding photographers does not necessarily mean that we're direct competitors. It doesn't mean at all that we're serving the same client.
+
+So we have to start looking at our business in a way where we understand the person that we're speaking to. So and this isn't like you know to say that these would be fitting right but I would say that the image on the left would fit much better into Tom's type of website than this image on the right and I would say that this
+
+This image on the right would probably fit much better into Tim's type of design and website than the one on the left, that light and airy look. It wouldn't fit quite right. I'm not saying that those are perfect fits. I think their style is absolutely brilliant and beautiful, what they have. But I want you to see how this plays out, okay? Because it's in this process by no means.
+
+Knowing who your dream client avatar is, that's what makes it easy to create your logo and your branding, because we create it to fit what it is that resonates with them, what it is that would appeal to them. It makes it that much easier to design out your website, to craft the perfect portfolio, to know what images in that portfolio are gonna speak to them.
+
+It makes it that much easier to write website content and copy to advertise and to do marketing, whether it's organic, whether it's paid, it makes it so much easier to know what good organic content would be because we actually know who we're speaking to. And also it helps with pricing services and the kind of the list goes on, but without knowing these things, we could say this it's.
+
+It's far worse than just being blindfolded is attempting to build a business without knowing your audience. It's not just like being blindfolded. It's like trying to hit a moving target while being blindfolded and while sitting on the back of a donkey. It's, it is the most difficult task we can imagine. And so that's why we're spending time to define.
+
+the avatar. That's why we're trying to understand who we're speaking to and that's why in the last step I had you do the market research. That step by itself helps us to understand, well, who are the direct competitors in this space? What are they doing well? How are they communicating with their audience and who does that audience look like? What do their designs look like? Hopefully,
+
+Hopefully throughout that process you've got ideas and now we're going to start translating it into a road map of what we're going to do moving forward. So to give you ideas of how this looks in different contexts, this was, and again we'll pull these up quite a bit throughout this to kind of give different examples, but this was Stephanie's website that we did like a little bit of a...
