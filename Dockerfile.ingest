@@ -19,29 +19,17 @@ COPY ingestion/ ./ingestion/
 # Docker COPY will preserve directory structure automatically
 COPY 10K2Kv2/ /app/10K2Kv2/
 
-# Set environment variables (can be overridden in docker-compose)
+# Set environment variables for single-file ingestion pipeline
 ENV TRANSCRIPTS_DIR=/app/10K2Kv2
-ENV CHROMA_DIR=/app/chroma
 ENV CHROMA_HOST=chromadb-w5jr
 ENV CHROMA_PORT=8000
-ENV CHECKPOINT_FILE=/app/checkpoints/ingest_transcripts.json
 ENV COLLECTION_NAME=10k2k_transcripts
+ENV QUEUE_FILE=/app/checkpoints/file_queue.json
+ENV CHECKPOINT_FILE=/app/checkpoints/ingest_checkpoint.json
 ENV LOG_DIR=/app/logs
-ENV INGEST_SCRIPT=/app/ingestion/ingest_single_transcript.py
-ENV INGEST_SCRIPT_ADAPTIVE=/app/ingestion/ingest_single_transcript_adaptive.py
-ENV INGEST_SCRIPT_DIRECT=/app/ingestion/ingest_single_transcript_direct.py
-ENV INGEST_SCRIPT_MINIMAL=/app/ingestion/ingest_single_transcript_minimal.py
-ENV INGEST_SCRIPT_ULTRA_MINIMAL=/app/ingestion/ingest_single_transcript_ultra_minimal.py
-ENV USE_ADAPTIVE=true
-ENV USE_DIRECT_API=false
-ENV USE_MINIMAL=true
-ENV USE_ULTRA_MINIMAL=true
-ENV MAX_RETRIES_PER_FILE=3
 ENV PYTHON_CMD=python3
-ENV CHUNK_SIZE=1000
-ENV CHUNK_OVERLAP=100
-# Ultra-minimal uses even smaller chunks (500 tokens) - set in script
-ENV MAX_FILE_SIZE_MB=10.0
+ENV PYTHONUNBUFFERED=1
+ENV PYTHONDONTWRITEBYTECODE=1
 
 # Default command: Keep container running but don't auto-start ingestion
 # Ingestion should be triggered manually via Render Shell to avoid OOM
