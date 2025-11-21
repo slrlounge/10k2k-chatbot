@@ -26,7 +26,7 @@ except ImportError:
 load_dotenv()
 
 # Configuration
-TRANSCRIPTS_DIR = Path(os.getenv('TRANSCRIPTS_DIR', '/app/10K2K v2'))
+TRANSCRIPTS_DIR = Path(os.getenv('TRANSCRIPTS_DIR', '/app/10K2Kv2'))
 CHROMA_HOST = os.getenv('CHROMA_HOST', 'chromadb-w5jr')
 CHROMA_PORT = int(os.getenv('CHROMA_PORT', '8000'))
 COLLECTION_NAME = os.getenv('COLLECTION_NAME', '10k2k_transcripts')

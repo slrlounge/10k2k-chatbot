@@ -12,7 +12,7 @@ from pathlib import Path
 from typing import List, Tuple
 
 # Configuration
-TRANSCRIPTS_DIR = Path('10K2K v2')
+TRANSCRIPTS_DIR = Path('10K2Kv2')
 MAX_SEGMENT_SIZE_BYTES = 10 * 1024  # 0.01MB = 10KB
 BACKUP_ORIGINALS = True  # Keep original files in a backup directory
 

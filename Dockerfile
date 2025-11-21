@@ -16,7 +16,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Install gunicorn for production
 RUN pip install --no-cache-dir gunicorn
 
-# Copy application code (now includes 10K2K v2/ since removed from .dockerignore)
+# Copy application code (now includes 10K2Kv2/ since removed from .dockerignore)
 COPY . .
 
 # Copy ingestion directory explicitly (needed for Shell)
@@ -24,15 +24,15 @@ COPY ingestion/ /app/ingestion/
 
 # Copy only transcript .txt files, exclude videos to keep image small (~3MB vs 81GB)
 # Remove video files after copying to save space
-RUN if [ -d "10K2K v2" ]; then \
-        find "10K2K v2" -name "*.txt" -type f | while read file; do \
+RUN if [ -d "10K2Kv2" ]; then \
+        find "10K2Kv2" -name "*.txt" -type f | while read file; do \
             dir="/app/$(dirname "$file")"; \
             mkdir -p "$dir"; \
             cp "$file" "/app/$file"; \
         done && \
         # Remove video files to save space
-        find "10K2K v2" -type f ! -name "*.txt" -delete && \
-        find "10K2K v2" -type d -empty -delete 2>/dev/null || true; \
+        find "10K2Kv2" -type f ! -name "*.txt" -delete && \
+        find "10K2Kv2" -type d -empty -delete 2>/dev/null || true; \
     fi
 
 # Create non-root user for security
