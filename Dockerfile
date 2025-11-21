@@ -22,17 +22,11 @@ COPY . .
 # Copy ingestion directory explicitly (needed for Shell)
 COPY ingestion/ /app/ingestion/
 
-# Copy only transcript .txt files, exclude videos to keep image small (~3MB vs 81GB)
-# Remove video files after copying to save space
-RUN if [ -d "10K2Kv2" ]; then \
-        find "10K2Kv2" -name "*.txt" -type f | while read file; do \
-            dir="/app/$(dirname "$file")"; \
-            mkdir -p "$dir"; \
-            cp "$file" "/app/$file"; \
-        done && \
-        # Remove video files to save space
-        find "10K2Kv2" -type f ! -name "*.txt" -delete && \
-        find "10K2Kv2" -type d -empty -delete 2>/dev/null || true; \
+# Remove video files to keep image small (~3MB vs 81GB)
+# Videos should already be excluded by .dockerignore, but clean up just in case
+RUN if [ -d "/app/10K2Kv2" ]; then \
+        find /app/10K2Kv2 -type f ! -name "*.txt" -delete 2>/dev/null || true && \
+        find /app/10K2Kv2 -type d -empty -delete 2>/dev/null || true; \
     fi
 
 # Create non-root user for security
