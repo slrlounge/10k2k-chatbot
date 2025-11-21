@@ -28,7 +28,7 @@ except ImportError:
 load_dotenv()
 
 # Configuration from environment
-TRANSCRIPTS_DIR = Path(os.getenv('TRANSCRIPTS_DIR', '/app/transcripts'))
+TRANSCRIPTS_DIR = Path(os.getenv('TRANSCRIPTS_DIR', '/app/10K2Kv2'))
 INGEST_SCRIPT = Path(os.getenv('INGEST_SCRIPT', '/app/ingestion/ingest_single_transcript.py'))
 INGEST_SCRIPT_ADAPTIVE = Path(os.getenv('INGEST_SCRIPT_ADAPTIVE', '/app/ingestion/ingest_single_transcript_adaptive.py'))
 INGEST_SCRIPT_DIRECT = Path(os.getenv('INGEST_SCRIPT_DIRECT', '/app/ingestion/ingest_single_transcript_direct.py'))
