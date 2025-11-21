@@ -23,7 +23,7 @@ services:
     depends_on:
       - chroma
     volumes:
-      - ./10K2K v2:/app/transcripts:ro  # Mount transcripts directory (read-only)
+      - ./10K2Kv2:/app/transcripts:ro  # Mount transcripts directory (read-only)
       - ./chroma:/app/chroma            # Share ChromaDB data
       - ./logs:/app/logs                # Logs directory
       - ./checkpoints:/app/checkpoints  # Checkpoints directory

@@ -46,7 +46,7 @@ CHROMA_PORT=8000
 COLLECTION_NAME=10k2k_transcripts
 
 # File Paths
-TRANSCRIPTS_DIR=/app/10K2K v2
+TRANSCRIPTS_DIR=/app/10K2Kv2
 
 # Ingestion Script
 INGEST_SCRIPT_ULTRA_MINIMAL=/app/ingestion/ingest_single_transcript_ultra_minimal.py

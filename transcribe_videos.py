@@ -20,7 +20,7 @@ load_dotenv()
 # Directories - can be overridden via environment variables
 SOURCE_DATA_DIR = Path(os.getenv('SOURCE_DATA_DIR', 'data'))
 # Default to the 10K2K v2 folder if VIDEO_DIR is not set
-VIDEO_DIR = Path(os.getenv('VIDEO_DIR', '/Users/justinlin/Documents/10K2KChatBot/10K2K v2'))
+VIDEO_DIR = Path(os.getenv('VIDEO_DIR', '/Users/justinlin/Documents/10K2KChatBot/10K2Kv2'))
 TRANSCRIPT_DIR = Path(os.getenv('TRANSCRIPT_DIR', str(SOURCE_DATA_DIR / 'transcripts')))
 
 # Supported video/audio file extensions
