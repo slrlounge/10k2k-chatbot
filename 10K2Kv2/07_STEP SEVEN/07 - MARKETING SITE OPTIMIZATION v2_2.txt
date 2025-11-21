@@ -1,0 +1,85 @@
+YOUR WEBSITESTRUCTURE Ⓒ SLR Lounge www.slrloungeworkshops.com Tertiary Blog entries Case studies Etc... Menu Pages Portfolio Pricing About Blog Etc... Home Page
+
+KEYWORDSTRUCTURE Ⓒ SLR Lounge www.slrloungeworkshops.com Tertiary Menu Pages Home Page Primary Keyword Not trying to rank Niche keywords
+
+OPTIMIZINGYOUR LANDINGPAGE FOR SEO 7STEP Ⓒ SLR Lounge www.slrloungeworkshops.com
+
+REMEMBER When it comes to the landing page of your website, you’re aiming for your Primary Keyword. Ⓒ SLR Lounge www.slrloungeworkshops.com
+
+“BLACK HAT” Do not “keyword stuff” or use any other no-no techniques. The simple rule: You’re ALWAYS writing content for people, not for search engines. Ⓒ SLR Lounge www.slrloungeworkshops.com
+
+BAD EXAMPLE “Welcome to our Los Angeles Wedding Photography website. We started our Los Angeles Wedding Photography studio in 2008, and we specializing in capturing emotional, beautiful wedding photos primarily for Los Angeles couples. But we also service Orange County wedding photography clients, so if you need wedding photography in Orange County reach out!” Ⓒ SLR Lounge www.slrloungeworkshops.com 
+
+GOOD EXAMPLE “Welcome to Lin and Jirsa, Los Angeles Wedding Photographers! We started our wedding photography studio in 2008. While our studio is based in Orange County, we work with wedding clients throughout Southern California (and all over the world actually!)“ Ⓒ SLR Lounge www.slrloungeworkshops.com
+
+GREAT EXAMPLE “Welcome to Lin and Jirsa, award-winning Los Angeles Wedding Photographers! Since 2008, our team has captured timeless weddings with a blend of artistry and storytelling. While we’re based out of Orange County, we proudly serve clients around the world.” Ⓒ SLR Lounge www.slrloungeworkshops.com
+
+OPTIMIZEYOUR LANDINGPAGE 7STEP Ⓒ SLR Lounge www.slrloungeworkshops.com
+
+Ⓒ SLR Lounge www.slrloungeworkshops.com How do I modify the [SECTION] on my [YOUR WEBSITE PLATFORM] website? AI-PROMPT If you get stuck, use this prompt with your technical help bestie:
+
+UPDATE YOURTITLE TAG Your <title> tag is an HTML element that appears at the top of the browser tab and (ideally) search results/previews. Ⓒ SLR Lounge www.slrloungeworkshops.com STEP ONE G U I D E 1.Keep it short and sweet 2.Primary keyword phrase a.Include short description (optional) E X A M P L E S Seattle’s Best Natural Light Wedding Photographer Epic Puppy Portraits Serving Boston Salt Lake City Family Portraits
+
+UPDATE METADESCRIPTION 155 characters to describe what your page is about (shows below title in search results) Ⓒ SLR Lounge www.slrloungeworkshops.com STEP TWO G U I D E NO DIRECT SEO BENEFIT Write to get people to CLICK Think Clarified Message If they click, your CTR rate goes up! THINK Clarified Message 
+
+UPDATE YOURHEADERS (H1/H2) H1 = Primary Header (one on each page) H2 = Secondary Header (defines sections) Ⓒ SLR Lounge www.slrloungeworkshops.com STEP THREE H1 G U I D E On landing page, H1 = Primary Keyword
+
+QUICK NOTE It’s OK to make your Clarified Message your <h1> and your Primary Keyword phrase your <h2> As always, focus on your client experience. Ⓒ SLR Lounge www.slrloungeworkshops.com 
+
+UPDATE YOURHEADERS (H1/H2) H1 = Primary Header (one on each page) H2 = Secondary Header (defines sections) Ⓒ SLR Lounge www.slrloungeworkshops.com STEP FOUR H2 G U I D E H2's are written for your audience Include keywords ONLY if they fit Use H2's to guide the viewer’s experience
+
+FIRST PARAGRAPH(CORE MESSAGE) Below the hero (ideally above the fold). Simple SEO-ready message that can expand your Clarified Message or be about you. Ⓒ SLR Lounge www.slrloungeworkshops.com STEP FIVE G U I D E Build on your Clarified Message Write to your target avatar Do NOT keyword stuff! 
+
+PEPPERTHROUGHOUT Again in a natural way, pepper your Primary Keyword throughout your landing page ONLY where it fits. Ⓒ SLR Lounge www.slrloungeworkshops.com STEP SIX
+
+KEYWORDED IMAGES W/ ALT TAGS Make sure all images have descriptive keyworded file names w/ SEO-driven alt tags Ⓒ SLR Lounge www.slrloungeworkshops.com STEP SEVEN G U I D E Filename: seo-driven words that describe the image with - separating each word Alt tag can include a full description of the image (w/ seo related keywords)
+
+Ⓒ SLR Lounge www.slrloungeworkshops.com PAUSE HERE Do NOT continue until you’ve completed this assignment: LANDING PAGE OPTIMIZATIONB&SW: 05 - SEO
+
+IMAGESEARCH &OPTIMIZATION 7STEP Ⓒ SLR Lounge www.slrloungeworkshops.com
+
+LOADING SPEED Beyond the basics (ensuring your site has no poor/broken URLs) one of our main concerns as photographers will be loading speed! Ⓒ SLR Lounge www.slrloungeworkshops.com
+
+IMAGE SEARCH One of the best ways to be found is via image search (especially in an AI search world). Clients want examples! Ⓒ SLR Lounge www.slrloungeworkshops.com
+
+IMAGEOPTIMIZATIONGUIDE 7STEP Ⓒ SLR Lounge www.slrloungeworkshops.com
+
+COMPRESS! Do not upload full-sized/bloated images to your website, it’s the best way to hurt SEO. Ⓒ SLR Lounge www.slrloungeworkshops.com STEP ONE Correctly size/export your images Start with a basic a LR export preset based on your website/blog page width, export at 80-85% quality Second compression (optional) Compress Now JPEGmini ImageOptim Tiny PNG Kraken.io
+
+FILENAMES Brief SEO description of the image separated by dashes. See below: Ⓒ SLR Lounge www.slrloungeworkshops.com STEP TWO Keep lowercase. Each filename is ideally unique and describes something specific about the image. p a s a d e n a - c i t y - h a l l - q u i n c e a n e r a - d r e s s . j p g l o s - a n g e l e s - t a g l y a n - w e d d i n g - p h o t o g r a p h y - r i n g s . j p g n e w - y o r k - c i t y - f a m i l y - p h o t o g r a p h y - c e n t r a l - p a r k . j p g u t a h - b r a n d - p o r t r a i t - p h o t o g r a p h y - i n - o f f i c e . j p g n e w b o r n - p o r t r a i t - s e s s i o n - k a i s e r - h o s p i t a l - s e a t t l e . j p g 
+
+ALT TEXT Write a longer, clear, descriptive sentence of the image. Ⓒ SLR Lounge www.slrloungeworkshops.com STEP THREE Bride and groom exchange vows at a Los Angeles rooftop wedding Playful engagement session with couple piggybacking in Griffith Park, Los Angeles. Family of four enjoying a candid moment during a golden hour photoshoot in Orange County park. Expecting mother in a flowing gown cradling her belly during a desert maternity photoshoot. Woman in silk robe sitting by a window with natural light during boudoir session. Entrepreneur posing confidently in modern office for personal branding photoshoot.
+
+SURROUNDINGCOPY Images are ideally placed around relevant text. Search engines use surrounding content to understand the image better. Ⓒ SLR Lounge www.slrloungeworkshops.com STEP FOUR
+
+LAZY LOAD If possible, implement lazy loading on your website (images below fold only load when scrolled). Ⓒ SLR Lounge www.slrloungeworkshops.com STEP FIVE (OPTIONAL) I would like to implement lazy loading on my [PLATFORM] website. Can you give me instructions on exactly how I can do this? Use this prompt to see how (if) it’s possible with your platform.
+
+HOW TOFURTHEROPTIMIZE 7STEP Ⓒ SLR Lounge www.slrloungeworkshops.com
+
+INTERNAL LINKING Internal linking is just one area of your website linking to another (which passes a bit of link juice). Ⓒ SLR Lounge www.slrloungeworkshops.com
+
+WHY? Help your audience (and search engines) navigate from one area of your site to another by: Ⓒ SLR Lounge www.slrloungeworkshops.com Making tier 2/3 pages easy to find Linking to other relevant pages Improving the reader’s experience
+
+LANDING PAGE INTERNALLINKING 7STEP Ⓒ SLR Lounge www.slrloungeworkshops.com
+
+FROM YOUR LANDING PAGE... Ⓒ SLR Lounge www.slrloungeworkshops.com Adding links within your landing page copy (when helpful/relevant) Adding directly to your menu Including additional links within your footer (optional) Make sure you’re directly linking to important secondary and tertiary pages by:
+
+Ⓒ SLR Lounge www.slrloungeworkshops.com PAUSE HERE Do NOT continue until you’ve completed this assignment: ADDED INTERNAL LINKS TO YOURLANDING PAGE > B&SW: 05 - SEO
+
+HOW TOFURTHEROPTIMIZE 7STEP Ⓒ SLR Lounge www.slrloungeworkshops.com
+
+80/20 Rule. Don’t get lost in the weeds of SEO! Focus on the basics. This section is in case you’d like to go further. REMINDER... Ⓒ SLR Lounge www.slrloungeworkshops.com
+
+GTMETRIX Ⓒ SLR Lounge www.slrloungeworkshops.com h t t p s : / / g t m e t r i x . c o m / 
+
+PINGDOM Ⓒ SLR Lounge www.slrloungeworkshops.com h t t p s : / / w w w . s o l a r w i n d s . c o m / p i n g d o m 
+
+OUTSIDE OF THIS... Optimization is mostly the process of ensuring every page follows the basics rules we’ve covered in this module. Ⓒ SLR Lounge www.slrloungeworkshops.com Sitemap is loaded and up to date Your website’s pages can be indexed No broken links No dummy text within your template/site Proper titles, meta descriptions Images have SEO filenames and alt text Each page is focused on ONE keyword phrase
+
+SITEGURU Ⓒ SLR Lounge www.slrloungeworkshops.com h t t p s : / / w w w . s i t e g u r u . c o / SEO to-do list = low hanging fruit! 
+
+BE AWAREOF MAJOR SITECHANGES 7STEP Ⓒ SLR Lounge www.slrloungeworkshops.com
+
+THEME/DESIGNCHANGES Major design/theme changes can improve, or damage SEO depending on the features/content of the theme. LATERAL CHANGES = Same site structure with a different look/design won’t affect SEO. Ⓒ SLR Lounge www.slrloungeworkshops.com
+
+OVERHAULS Changing domains, website or platform migrations, or other major website overhauls. Find an SEO expert to consult on the process. Ⓒ SLR Lounge www.slrloungeworkshops.com
