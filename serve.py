@@ -29,7 +29,7 @@ ENVIRONMENT = os.getenv('ENVIRONMENT', 'development').lower()
 IS_PRODUCTION = ENVIRONMENT == 'production'
 
 # Configuration
-CHROMA_HOST = os.getenv('CHROMA_HOST', 'localhost')
+CHROMA_HOST = os.getenv('CHROMA_HOST', 'chromadb-w5jr')  # Default to Render service name
 CHROMA_PORT = int(os.getenv('CHROMA_PORT', '8000'))
 CHROMA_URL = os.getenv('CHROMA_URL', None)  # For cloud-hosted ChromaDB
 COLLECTION_NAME = os.getenv('COLLECTION_NAME', '10k2k_transcripts')
