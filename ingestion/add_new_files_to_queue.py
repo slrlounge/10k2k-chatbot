@@ -42,10 +42,19 @@ def get_ingested_files_from_chromadb():
                 file_source = metadata.get('file_source', '')
                 original_file = metadata.get('original_file', '')
                 
+                # Add both full paths and filenames
                 if file_source:
                     ingested_files.add(file_source)
+                    # Also add just the filename for matching
+                    if '/' in file_source:
+                        ingested_files.add(Path(file_source).name)
+                    else:
+                        ingested_files.add(file_source)
+                
                 if original_file:
                     ingested_files.add(original_file)
+                    # Also add just the filename
+                    ingested_files.add(Path(original_file).name)
         
         print(f"  Found {len(ingested_files)} unique files already in ChromaDB")
     except Exception as e:
@@ -73,17 +82,25 @@ def load_checkpoint():
 
 def is_file_ingested(file_path: Path, ingested_files: set, checkpoint: dict) -> bool:
     """Check if file is already ingested (in ChromaDB or checkpoint)."""
-    # Check ChromaDB
+    filename = file_path.name
     relative_path = str(file_path.relative_to(TRANSCRIPTS_DIR))
+    absolute_path = str(file_path)
+    
+    # Check ChromaDB by multiple methods
     if relative_path in ingested_files:
         return True
-    
-    # Check checkpoint
-    if str(file_path) in checkpoint.get("processed_files", {}):
+    if absolute_path in ingested_files:
+        return True
+    if filename in ingested_files:
         return True
     
-    # Also check by filename
-    filename = file_path.name
+    # Check checkpoint by multiple methods
+    if absolute_path in checkpoint.get("processed_files", {}):
+        return True
+    if relative_path in checkpoint.get("processed_files", {}):
+        return True
+    
+    # Check by filename in checkpoint
     for processed_file in checkpoint.get("processed_files", {}):
         if Path(processed_file).name == filename:
             return True
