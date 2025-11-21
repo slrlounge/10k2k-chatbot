@@ -22,9 +22,9 @@ TRANSCRIPTS_DIR = Path(os.getenv('TRANSCRIPTS_DIR', '/app/10K2K v2'))
 INGEST_SCRIPT = Path('/app/ingestion/ingest_single_transcript_ultra_minimal.py')
 PYTHON_CMD = os.getenv('PYTHON_CMD', 'python3')
 
-# Splitting configuration - very conservative to avoid memory issues
-MAX_INITIAL_SIZE_MB = 1.0  # Try files up to 1MB as-is (very conservative)
-MIN_SEGMENT_SIZE_KB = 50.0  # Minimum 50KB per segment
+# Splitting configuration - extremely conservative to avoid memory issues
+MAX_INITIAL_SIZE_MB = 0.25  # Try files up to 250KB as-is (extremely conservative)
+MIN_SEGMENT_SIZE_KB = 25.0  # Minimum 25KB per segment
 MAX_RECURSION_DEPTH = 5
 RETRY_DELAY_SECONDS = 2.0
 MAX_RETRIES = 3
