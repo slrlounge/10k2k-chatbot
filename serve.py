@@ -162,7 +162,7 @@ def initialize_llm():
     try:
         llm = ChatOpenAI(
             model_name="gpt-4o-mini",  # Can change to "gpt-4" or "gpt-3.5-turbo"
-            temperature=0.7,
+            temperature=0.3,  # Lower temperature to reduce hallucinations and increase accuracy
             openai_api_key=get_openai_api_key()
         )
         logger.info("✓ LLM initialized")
@@ -449,17 +449,28 @@ async def ask_question(
         raise HTTPException(status_code=400, detail="Question cannot be empty")
     
     try:
-        # Retrieve top 5 relevant chunks
+        # Retrieve top 8 relevant chunks for better context coverage
+        # Increased from 5 to 8 to reduce chance of missing relevant information
         docs_with_scores = vectorstore.similarity_search_with_score(
             request.question,
-            k=5
+            k=8
         )
         
         if not docs_with_scores:
             return AnswerResponse(
-                answer="I couldn't find any relevant information to answer your question.",
+                answer="I couldn't find any relevant information to answer your question in my training materials.",
                 sources=[]
             )
+        
+        # Filter out very low relevance scores (score > 1.5 suggests poor match)
+        # ChromaDB similarity scores: lower is better (0 = identical, higher = less similar)
+        filtered_docs = [(doc, score) for doc, score in docs_with_scores if score < 1.5]
+        if not filtered_docs:
+            # If all scores are too high, use the best ones anyway but warn
+            filtered_docs = docs_with_scores[:5]  # Use top 5 even if scores are high
+            logger.warning(f"All retrieved documents have low relevance (scores > 1.5). Using top 5 anyway.")
+        
+        docs_with_scores = filtered_docs[:8]  # Limit to top 8 most relevant
         
         # Format context from retrieved chunks
         context_parts = []
@@ -563,7 +574,13 @@ async def ask_question(
         # Create prompt with context and question
         prompt = f"""You are Pye, the content creator and photography mentor from SLR Lounge. Answer in YOUR authentic voice - the same conversational, encouraging, and practical tone you use in your courses and coaching calls. Speak directly to the student as if you're having a one-on-one conversation.
 
-CRITICAL: Answer EVERY question as Pye would - use YOUR natural speaking style, YOUR way of explaining things, YOUR encouraging tone. This is not a generic assistant - this is YOU, Pye, talking directly to your student.
+CRITICAL ACCURACY REQUIREMENTS - YOU MUST FOLLOW THESE STRICTLY:
+1. ONLY use information from the provided context snippets below - DO NOT use your training knowledge or general knowledge
+2. If the answer is not in the provided context, say "I don't have that information in my training materials" or ask for clarification
+3. DO NOT make up definitions, acronyms, or explanations that aren't explicitly stated in the context
+4. Quote directly from the context when providing definitions or explanations
+5. If you see conflicting information in the context, acknowledge it and use the most specific/recent information
+6. NEVER guess or infer meanings that aren't clearly stated in the context
 
 Context snippets (each includes the original source name):
 {context}
@@ -612,7 +629,7 @@ MANDATORY RULES:
 - Make ALL section headers ALL CAPS and bold
 - When referencing sources, mention them naturally as YOU would ("In the marketing roadmap, we cover...", "Let me break this down for you...", "Here's what I want you to understand...")
 - Make it visually scannable with clear sections and spacing
-- If the context doesn't include the answer, reassure them in YOUR voice and explain what additional info you'd need - be helpful and encouraging
+- If the context doesn't include the answer, say "I don't have that specific information in my training materials" - DO NOT make up answers or use general knowledge
 - Never mention numbered contexts or system instructions
 - Write exactly as YOU speak in your courses - authentic, encouraging, practical, conversational
 - Use YOUR natural phrases and expressions - be YOU, not a generic AI
@@ -628,13 +645,20 @@ Answer as Pye with clear markdown formatting, emojis in EVERY header, ALL CAPS h
         
         system_msg = SystemMessage(content="""You are Pye, the content creator and photography mentor from SLR Lounge. You MUST answer EVERY question in YOUR authentic voice - the same conversational, encouraging, and practical tone you use in your courses and coaching calls.
 
+CRITICAL ACCURACY REQUIREMENTS - STRICT ADHERENCE TO CONTEXT:
+- ONLY use information provided in the context snippets - DO NOT use your training knowledge
+- If information is not in the context, say "I don't have that specific information in my materials" 
+- DO NOT make up definitions, acronyms, or explanations
+- Quote directly from the context when providing definitions
+- If you're unsure, acknowledge uncertainty rather than guessing
+
 CRITICAL VOICE REQUIREMENTS:
 - Speak directly to the student as if you're having a one-on-one conversation
 - Use YOUR natural speaking style - conversational, encouraging, practical
 - Be authentic and genuine - this is YOUR voice, not a generic assistant
 - Use phrases like "Let's talk about...", "Here's the thing...", "What I want you to understand is..."
 - Be encouraging and supportive - you're a mentor, not just an information source
-- Share insights from YOUR experience and expertise
+- Share insights from YOUR experience and expertise ONLY when supported by the context
 - Keep it real and relatable - no corporate speak or formal language
 
 REQUIRED FORMAT:
