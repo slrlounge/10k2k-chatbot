@@ -248,9 +248,18 @@ def ingest_file_chunks(file_path: Path, chunks: List[str], openai_client: OpenAI
             
             # Create metadata
             relative_path = file_path.relative_to(TRANSCRIPTS_DIR)
+            # Infer type from file extension
+            file_ext = file_path.suffix.lower()
+            doc_type = 'transcript' if 'transcript' in str(relative_path).lower() else (
+                'pdf' if file_ext == '.pdf' else
+                'text' if file_ext == '.txt' else
+                'document'
+            )
             metadata = {
+                "filename": file_path.name,  # Add filename for consistency
                 "file_source": str(relative_path),
                 "original_file": str(relative_path),
+                "type": doc_type,  # Add type field
                 "section": f"chunk_{i+1}",
                 "chunk_index": i,
                 "total_chunks": len(chunks)

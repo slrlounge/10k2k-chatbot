@@ -467,9 +467,83 @@ async def ask_question(
  
         for i, (doc, score) in enumerate(docs_with_scores, 1):
             content = doc.page_content
-            metadata = doc.metadata
+            metadata = doc.metadata if hasattr(doc, 'metadata') and doc.metadata else {}
+            
+            # Debug logging (only in development) - log first document's metadata
+            if not IS_PRODUCTION and i == 1:
+                logger.debug(f"Sample document metadata keys: {list(metadata.keys()) if metadata else 'None'}")
+                logger.debug(f"Sample document metadata: {metadata}")
  
-            filename = metadata.get('filename', 'Unknown')
+            # Extract filename from multiple possible metadata fields
+            # Handle both None and empty string cases
+            filename = None
+            for key in ['filename', 'file_source', 'original_file', 'source']:
+                value = metadata.get(key) if metadata else None
+                if value and isinstance(value, str) and value.strip():
+                    filename = value.strip()
+                    break
+            
+            # If still no filename, try to extract from any string metadata value that looks like a path
+            if not filename:
+                if metadata:
+                    for key, value in metadata.items():
+                        if isinstance(value, str) and value.strip() and ('/' in value or '\\' in value or '.' in value):
+                            # Looks like a path or filename
+                            filename = value.strip()
+                            break
+            
+            # Last resort: try to extract from document ID if it follows a pattern like "filename_chunkindex"
+            if not filename or filename == 'Unknown':
+                if hasattr(doc, 'id'):
+                    doc_id = str(doc.id)
+                    # If ID contains underscore, might be "filename_chunkindex" pattern
+                    if '_' in doc_id:
+                        # Try to extract filename part (before last underscore and number)
+                        parts = doc_id.rsplit('_', 1)
+                        if len(parts) == 2 and parts[1].isdigit():
+                            potential_filename = parts[0]
+                            # If it looks like a filename (has extension or reasonable length)
+                            if '.' in potential_filename or len(potential_filename) > 3:
+                                filename = potential_filename
+            
+            # Clean up filename - extract just the filename if it's a full path
+            if filename and filename != 'Unknown':
+                # Handle relative paths (e.g., "01_STEP ONE/file.txt" -> "file.txt")
+                if '/' in filename:
+                    parts = filename.split('/')
+                    filename = parts[-1]  # Get last part
+                elif '\\' in filename:
+                    parts = filename.split('\\')
+                    filename = parts[-1]  # Get last part
+            else:
+                filename = 'Unknown'
+            
+            # Extract type from metadata
+            doc_type = None
+            if metadata:
+                type_value = metadata.get('type')
+                if type_value and isinstance(type_value, str) and type_value.strip():
+                    doc_type = type_value.strip().lower()
+            
+            # If no type found, infer from filename or source
+            if not doc_type:
+                source_str = ''
+                if metadata:
+                    source_str = str(metadata.get('source', '')).lower()
+                filename_lower = filename.lower() if filename else ''
+                
+                if 'transcript' in filename_lower or 'transcript' in source_str:
+                    doc_type = 'transcript'
+                elif filename_lower.endswith('.pdf') or 'pdf' in source_str:
+                    doc_type = 'pdf'
+                elif filename_lower.endswith('.txt') or filename_lower.endswith('.md'):
+                    doc_type = 'text'
+                else:
+                    doc_type = 'document'
+            
+            # Ensure doc_type is not empty
+            if not doc_type:
+                doc_type = 'document'
 
             # Add to context for the LLM
             context_parts.append(
@@ -479,7 +553,7 @@ async def ask_question(
             # Prepare source citation
             sources.append(SourceCitation(
                 filename=filename,
-                type=metadata.get('type', 'unknown'),
+                type=doc_type,
                 content=content[:200] + "..." if len(content) > 200 else content,  # Preview
                 score=float(score)
             ))
