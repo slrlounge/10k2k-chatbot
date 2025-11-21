@@ -45,9 +45,20 @@ render.yaml
 .gitignore
 
 # Source files
-# NOTE: Temporarily allow 10K2K v2/ so Dockerfile can copy .txt files
-# We'll exclude videos via Dockerfile RUN command
-# 10K2K v2/
+# Exclude video files from 10K2K v2/ to speed up builds (81GB → 3.6MB)
+# Only .txt files are needed for ingestion
+10K2K v2/**/*.mp4
+10K2K v2/**/*.avi
+10K2K v2/**/*.mov
+10K2K v2/**/*.mkv
+10K2K v2/**/*.webm
+10K2K v2/**/*.mp3
+10K2K v2/**/*.wav
+10K2K v2/**/*.m4a
+10K2K v2/**/*.pdf
+10K2K v2/**/*.gdoc
+# Allow .txt files (needed for ingestion)
+!10K2K v2/**/*.txt
 
 # Build files
 build-frontend.sh

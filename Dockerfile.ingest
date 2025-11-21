@@ -15,7 +15,7 @@ RUN pip install --no-cache-dir -r requirements.ingest.txt
 # Copy ingestion code
 COPY ingestion/ ./ingestion/
 
-# Copy transcript files (split files are in 10K2K v2/)
+# Copy transcript files (videos excluded via .dockerignore - saves 81GB!)
 COPY "10K2K v2/" "/app/10K2K v2/"
 
 # Set environment variables (can be overridden in docker-compose)
