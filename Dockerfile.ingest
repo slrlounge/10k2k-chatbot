@@ -16,8 +16,9 @@ RUN pip install --no-cache-dir -r requirements.ingest.txt
 COPY ingestion/ ./ingestion/
 
 # Copy ONLY .txt files from 10K2K v2/ (PDFs excluded via .dockerignore)
-# Docker COPY will preserve directory structure automatically
-COPY "10K2K v2/" "/app/10K2K v2/"
+# Copy to temp location without spaces, then move to final location
+COPY ["10K2K v2", "/tmp/transcripts"]
+RUN mv /tmp/transcripts "/app/10K2K v2"
 
 # Set environment variables (can be overridden in docker-compose)
 ENV TRANSCRIPTS_DIR="/app/10K2K v2"
