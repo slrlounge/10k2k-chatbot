@@ -19,9 +19,9 @@ COPY ingestion/ ./ingestion/
 COPY "10K2K v2/" "/app/10K2K v2/"
 
 # Set environment variables (can be overridden in docker-compose)
-ENV TRANSCRIPTS_DIR=/app/transcripts
+ENV TRANSCRIPTS_DIR=/app/10K2K v2
 ENV CHROMA_DIR=/app/chroma
-ENV CHROMA_HOST=chroma
+ENV CHROMA_HOST=chromadb-w5jr
 ENV CHROMA_PORT=8000
 ENV CHECKPOINT_FILE=/app/checkpoints/ingest_transcripts.json
 ENV COLLECTION_NAME=10k2k_transcripts
@@ -42,6 +42,7 @@ ENV CHUNK_OVERLAP=100
 # Ultra-minimal uses even smaller chunks (500 tokens) - set in script
 ENV MAX_FILE_SIZE_MB=10.0
 
-# Default command runs the ingestion orchestrator
-CMD ["python3", "ingestion/ingest_all_transcripts.py"]
+# Default command: Keep container running but don't auto-start ingestion
+# Ingestion should be triggered manually via Render Shell to avoid OOM
+CMD ["sleep", "infinity"]
 
