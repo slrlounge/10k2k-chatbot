@@ -28,8 +28,8 @@ except ImportError:
 
 load_dotenv()
 
-TRANSCRIPTS_DIR = Path(os.getenv('TRANSCRIPTS_DIR', '/app/transcripts'))
-CHROMA_HOST = os.getenv('CHROMA_HOST', 'localhost')
+TRANSCRIPTS_DIR = Path(os.getenv('TRANSCRIPTS_DIR', '/app/10K2Kv2'))
+CHROMA_HOST = os.getenv('CHROMA_HOST', 'chromadb-w5jr')
 CHROMA_PORT = int(os.getenv('CHROMA_PORT', '8000'))
 COLLECTION_NAME = os.getenv('COLLECTION_NAME', '10k2k_transcripts')
 CHUNK_SIZE = int(os.getenv('CHUNK_SIZE', '500'))  # Ultra-small chunks
