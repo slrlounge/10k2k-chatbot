@@ -235,27 +235,77 @@ def process_file_recursive(file_path: Path, recursion_level: int = 0, temp_dir: 
         return False
 
 
-def find_large_files() -> List[Path]:
-    """Find files larger than MAX_INITIAL_SIZE_MB that need splitting."""
-    print(f"Scanning for files larger than {MAX_INITIAL_SIZE_MB}MB...")
+def get_failed_files() -> set:
+    """Get list of files that failed to ingest from checkpoint."""
+    try:
+        # Try to import checkpoint utilities
+        import sys
+        sys.path.insert(0, str(Path(__file__).parent.parent))
+        from ingestion.utils_checkpoints import get_processed
+        
+        # Get all processed files
+        processed = get_processed()
+        
+        # Find all transcript files
+        all_files = set()
+        if TRANSCRIPTS_DIR.exists():
+            for txt_file in TRANSCRIPTS_DIR.rglob('*.txt'):
+                if txt_file.is_file():
+                    all_files.add(str(txt_file))
+        
+        # Failed files = all files - processed files
+        failed_files = all_files - processed
+        return failed_files
+    except Exception as e:
+        print(f"⚠️  Could not load checkpoint: {e}")
+        print("  Will process all files >0.25MB")
+        return set()
+
+
+def find_failed_large_files() -> List[Path]:
+    """Find files that FAILED to ingest AND are larger than MAX_INITIAL_SIZE_MB."""
+    print(f"Finding files that failed to ingest and are larger than {MAX_INITIAL_SIZE_MB}MB...")
+    print("=" * 70)
     
-    large_files = []
+    # Get failed files from checkpoint
+    failed_file_paths = get_failed_files()
+    print(f"Found {len(failed_file_paths)} files that failed to ingest")
+    
+    # Filter by size
+    large_failed_files = []
     if not TRANSCRIPTS_DIR.exists():
         print(f"✗ Transcripts directory does not exist: {TRANSCRIPTS_DIR}")
-        return large_files
+        return large_failed_files
     
-    for txt_file in TRANSCRIPTS_DIR.rglob('*.txt'):
-        if txt_file.is_file():
+    print(f"\nChecking file sizes...")
+    for file_path_str in failed_file_paths:
+        file_path = Path(file_path_str)
+        if file_path.exists() and file_path.is_file():
             try:
-                file_size_mb = txt_file.stat().st_size / (1024 * 1024)
+                file_size_mb = file_path.stat().st_size / (1024 * 1024)
                 if file_size_mb > MAX_INITIAL_SIZE_MB:
-                    large_files.append(txt_file)
-                    print(f"  Found large file: {txt_file.name} ({file_size_mb:.2f}MB)")
+                    large_failed_files.append(file_path)
+                    print(f"  ✓ Failed + Large: {file_path.name} ({file_size_mb:.2f}MB)")
             except Exception as e:
-                print(f"  ⚠️  Error checking {txt_file.name}: {e}")
+                print(f"  ⚠️  Error checking {file_path.name}: {e}")
     
-    print(f"\nFound {len(large_files)} files larger than {MAX_INITIAL_SIZE_MB}MB")
-    return large_files
+    # Also check all files if checkpoint not available
+    if not failed_file_paths:
+        print("\n⚠️  No checkpoint data found. Checking all files >0.25MB...")
+        for txt_file in TRANSCRIPTS_DIR.rglob('*.txt'):
+            if txt_file.is_file():
+                try:
+                    file_size_mb = txt_file.stat().st_size / (1024 * 1024)
+                    if file_size_mb > MAX_INITIAL_SIZE_MB:
+                        large_failed_files.append(txt_file)
+                        print(f"  Found large file: {txt_file.name} ({file_size_mb:.2f}MB)")
+                except Exception as e:
+                    print(f"  ⚠️  Error checking {txt_file.name}: {e}")
+    
+    print(f"\n{'=' * 70}")
+    print(f"Found {len(large_failed_files)} failed files larger than {MAX_INITIAL_SIZE_MB}MB")
+    print(f"{'=' * 70}")
+    return large_failed_files
 
 
 def main():
@@ -268,18 +318,19 @@ def main():
     print(f"Max file size (as-is): {MAX_INITIAL_SIZE_MB}MB")
     print("=" * 70)
     
-    # Find large files that need splitting
-    large_files = find_large_files()
+    # Find failed files that are large and need splitting
+    large_failed_files = find_failed_large_files()
     
-    if not large_files:
-        print("\n✅ No large files found. All files are within size limits!")
+    if not large_failed_files:
+        print("\n✅ No failed large files found!")
+        print("  Either all files are ingested, or all failed files are small enough.")
         return 0
     
-    print(f"\nProcessing {len(large_files)} large files...")
+    print(f"\nProcessing {len(large_failed_files)} failed large files...")
     print("=" * 70)
     
-    # Process each large file recursively
-    for i, file_path in enumerate(large_files, 1):
+    # Process each failed large file recursively
+    for i, file_path in enumerate(large_failed_files, 1):
         print(f"\n[{i}/{len(large_files)}] Processing: {file_path.name}")
         print("-" * 70)
         
