@@ -20,7 +20,7 @@ COPY ingestion/ ./ingestion/
 COPY "10K2K v2/" "/app/10K2K v2/"
 
 # Set environment variables (can be overridden in docker-compose)
-ENV TRANSCRIPTS_DIR=/app/10K2K v2
+ENV TRANSCRIPTS_DIR="/app/10K2K v2"
 ENV CHROMA_DIR=/app/chroma
 ENV CHROMA_HOST=chromadb-w5jr
 ENV CHROMA_PORT=8000
