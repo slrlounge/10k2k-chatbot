@@ -449,11 +449,29 @@ async def ask_question(
         raise HTTPException(status_code=400, detail="Question cannot be empty")
     
     try:
-        # Retrieve top 8 relevant chunks for better context coverage
-        # Increased from 5 to 8 to reduce chance of missing relevant information
+        # Expand query for better acronym matching
+        # If query contains acronyms, also search for expanded terms
+        expanded_query = request.question
+        
+        # Common acronym expansions for this domain
+        acronym_expansions = {
+            'wave': 'wall art vision exercise',
+            'w.a.v.e': 'wall art vision exercise',
+            'w.a.v.e.': 'wall art vision exercise',
+        }
+        
+        query_lower = request.question.lower()
+        for acronym, expansion in acronym_expansions.items():
+            if acronym in query_lower and expansion not in query_lower:
+                expanded_query = f"{request.question} {expansion}"
+                logger.debug(f"Expanded query for acronym: {expanded_query}")
+                break
+        
+        # Retrieve top 10 relevant chunks for better context coverage
+        # Increased from 8 to 10 to reduce chance of missing relevant information
         docs_with_scores = vectorstore.similarity_search_with_score(
-            request.question,
-            k=8
+            expanded_query,
+            k=10
         )
         
         if not docs_with_scores:
@@ -462,15 +480,20 @@ async def ask_question(
                 sources=[]
             )
         
-        # Filter out very low relevance scores (score > 1.5 suggests poor match)
+        # Log retrieval scores for debugging
+        if not IS_PRODUCTION:
+            logger.debug(f"Retrieved {len(docs_with_scores)} documents with scores: {[f'{s:.3f}' for _, s in docs_with_scores[:5]]}")
+        
+        # Filter out very low relevance scores (score > 2.0 suggests poor match)
+        # Increased threshold from 1.5 to 2.0 to be less restrictive
         # ChromaDB similarity scores: lower is better (0 = identical, higher = less similar)
-        filtered_docs = [(doc, score) for doc, score in docs_with_scores if score < 1.5]
+        filtered_docs = [(doc, score) for doc, score in docs_with_scores if score < 2.0]
         if not filtered_docs:
             # If all scores are too high, use the best ones anyway but warn
-            filtered_docs = docs_with_scores[:5]  # Use top 5 even if scores are high
-            logger.warning(f"All retrieved documents have low relevance (scores > 1.5). Using top 5 anyway.")
+            filtered_docs = docs_with_scores[:8]  # Use top 8 even if scores are high
+            logger.warning(f"All retrieved documents have low relevance (scores > 2.0). Using top 8 anyway. Scores: {[f'{s:.3f}' for _, s in docs_with_scores[:3]]}")
         
-        docs_with_scores = filtered_docs[:8]  # Limit to top 8 most relevant
+        docs_with_scores = filtered_docs[:10]  # Limit to top 10 most relevant
         
         # Format context from retrieved chunks
         context_parts = []
