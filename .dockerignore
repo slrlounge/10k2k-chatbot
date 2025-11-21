@@ -25,7 +25,8 @@ logs/
 checkpoints/
 
 # Dependencies (keep requirements.txt - FastAPI needs it)
-requirements.ingest.txt
+# NOTE: requirements.ingest.txt is NEEDED for ingest-chromadb service - explicitly NOT excluded
+# Do NOT exclude requirements.ingest.txt - it's required!
 .venv/
 venv/
 __pycache__/
