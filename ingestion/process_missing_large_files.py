@@ -64,9 +64,9 @@ def get_chromadb_filenames() -> set:
 
 
 def find_missing_large_files() -> List[Path]:
-    """Find files that are MISSING from ChromaDB and are >0.25MB."""
+    """Find files that are MISSING from ChromaDB (all sizes, prioritize large ones)."""
     print("=" * 70)
-    print("FINDING MISSING LARGE FILES IN CHROMADB")
+    print("FINDING MISSING FILES IN CHROMADB")
     print("=" * 70)
     print()
     
@@ -91,26 +91,34 @@ def find_missing_large_files() -> List[Path]:
     print(f"   Found {len(all_files)} total transcript files")
     print()
     
-    # Find missing files that are large
-    print("3. Finding missing large files...")
+    # Find ALL missing files (not just large ones)
+    print("3. Finding missing files...")
+    missing_files = []
     missing_large_files = []
     
     for file_path, file_size_mb in all_files:
         filename = file_path.name
         
-        # Check if file is missing from ChromaDB AND is large
-        if filename not in chromadb_filenames and file_size_mb > MAX_INITIAL_SIZE_MB:
-            missing_large_files.append((file_path, file_size_mb))
-            print(f"   ✓ Missing + Large: {file_path.name} ({file_size_mb:.2f}MB)")
+        # Check if file is missing from ChromaDB
+        if filename not in chromadb_filenames:
+            missing_files.append((file_path, file_size_mb))
+            if file_size_mb > MAX_INITIAL_SIZE_MB:
+                missing_large_files.append((file_path, file_size_mb))
+                print(f"   ✓ Missing + Large: {file_path.name} ({file_size_mb:.2f}MB)")
+            else:
+                print(f"   ✓ Missing (small): {file_path.name} ({file_size_mb:.2f}MB)")
     
     print()
     print("=" * 70)
-    print(f"Found {len(missing_large_files)} missing large files (>0.25MB)")
+    print(f"Found {len(missing_files)} missing files total")
+    print(f"  - {len(missing_large_files)} large files (>0.25MB)")
+    print(f"  - {len(missing_files) - len(missing_large_files)} small files (≤0.25MB)")
     print("=" * 70)
     print()
     
-    # Return just the paths
-    return [f[0] for f in missing_large_files]
+    # Return all missing files, sorted by size (largest first) for processing priority
+    all_missing = sorted(missing_files, key=lambda x: x[1], reverse=True)
+    return [f[0] for f in all_missing]
 
 
 def split_at_semantic_boundaries(content: str, target_size_bytes: int) -> List[str]:
@@ -297,27 +305,29 @@ def process_file_recursive(file_path: Path, recursion_level: int = 0, temp_dir: 
 def main():
     """Main orchestration function."""
     print("=" * 70)
-    print("PROCESS MISSING LARGE FILES FROM CHROMADB")
+    print("PROCESS ALL MISSING FILES FROM CHROMADB")
     print("=" * 70)
     print(f"ChromaDB: {CHROMA_HOST}:{CHROMA_PORT}")
     print(f"Collection: {COLLECTION_NAME}")
     print(f"Max file size (as-is): {MAX_INITIAL_SIZE_MB}MB")
+    print(f"Files larger than this will be split recursively")
     print()
     
-    # Find missing large files
-    missing_large_files = find_missing_large_files()
+    # Find missing files (all sizes)
+    missing_files = find_missing_large_files()
     
-    if not missing_large_files:
-        print("✅ No missing large files found!")
-        print("   All files in ChromaDB or all missing files are small enough.")
+    if not missing_files:
+        print("✅ No missing files found!")
+        print("   All files are already in ChromaDB.")
         return 0
     
-    print(f"Processing {len(missing_large_files)} missing large files...")
+    print(f"Processing {len(missing_files)} missing files...")
     print("=" * 70)
     
-    # Process each missing large file
-    for i, file_path in enumerate(missing_large_files, 1):
-        print(f"\n[{i}/{len(missing_large_files)}] Processing: {file_path.name}")
+    # Process each missing file
+    for i, file_path in enumerate(missing_files, 1):
+        file_size_mb = file_path.stat().st_size / (1024 * 1024)
+        print(f"\n[{i}/{len(missing_files)}] Processing: {file_path.name} ({file_size_mb:.2f}MB)")
         print("-" * 70)
         process_file_recursive(file_path)
     
