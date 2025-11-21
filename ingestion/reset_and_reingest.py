@@ -49,6 +49,7 @@ def main():
     print("\nStep 3: Creating fresh queue...")
     queue = {
         "pending": [str(f) for f in sorted(txt_files)],
+        "processing": [],
         "completed": [],
         "failed": []
     }

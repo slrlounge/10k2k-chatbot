@@ -66,10 +66,18 @@ def get_ingested_files_from_chromadb():
 
 def load_queue():
     """Load existing queue or create new one."""
+    default_queue = {"pending": [], "processing": [], "completed": [], "failed": []}
     if QUEUE_FILE.exists():
-        with open(QUEUE_FILE, 'r') as f:
-            return json.load(f)
-    return {"pending": [], "completed": [], "failed": []}
+        try:
+            queue = json.load(open(QUEUE_FILE, 'r'))
+            # Ensure all required keys exist
+            for key in default_queue.keys():
+                if key not in queue:
+                    queue[key] = []
+            return queue
+        except Exception:
+            return default_queue
+    return default_queue
 
 
 def load_checkpoint():
