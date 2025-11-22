@@ -584,12 +584,24 @@ async def ask_question(
                 f"Source: {filename}\nExcerpt:\n{content}\n---"
             )
  
-            # Prepare source citation
+            # Prepare source citation - ensure all fields are valid
+            # Handle NaN or infinity scores
+            score_value = float(score)
+            if not (score_value >= 0 and score_value < 1000):  # Sanity check
+                score_value = 1.0  # Default score if invalid
+            
+            # Ensure filename and type are not empty
+            safe_filename = filename if filename and filename != 'Unknown' else 'document'
+            safe_type = doc_type if doc_type else 'document'
+            
+            # Ensure content is valid string
+            safe_content = str(content[:200] + "..." if len(content) > 200 else content) if content else "No content available"
+            
             sources.append(SourceCitation(
-                filename=filename,
-                type=doc_type,
-                content=content[:200] + "..." if len(content) > 200 else content,  # Preview
-                score=float(score)
+                filename=safe_filename,
+                type=safe_type,
+                content=safe_content,
+                score=score_value
             ))
  
         context = "\n\n".join(context_parts)
@@ -781,13 +793,26 @@ You MUST use this exact structure with emojis in headers AND answer in YOUR auth
                 processed_lines.append(line)
             answer = '\n'.join(processed_lines)
         
+        # Ensure answer is a valid string
+        safe_answer = str(answer) if answer else "I couldn't generate a response. Please try again."
+        
         return AnswerResponse(
-            answer=answer,
+            answer=safe_answer,
             sources=sources
         )
         
+    except HTTPException:
+        # Re-raise HTTP exceptions as-is
+        raise
     except Exception as e:
-        raise HTTPException(status_code=500, detail=f"Error processing question: {str(e)}")
+        # Log full error for debugging
+        logger.error(f"Error processing question: {e}", exc_info=True)
+        # Return a safe error response
+        error_msg = str(e)
+        # If it's a validation error, provide more helpful message
+        if "pattern" in error_msg.lower() or "validation" in error_msg.lower():
+            error_msg = "There was an error processing your question. Please try rephrasing it."
+        raise HTTPException(status_code=500, detail=error_msg)
 
 
 if __name__ == "__main__":
