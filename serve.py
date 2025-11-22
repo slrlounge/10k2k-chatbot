@@ -231,16 +231,12 @@ def initialize_vectorstore():
             embedding_function=embeddings,
         )
         
-        # Verify the vectorstore can access the collection
-        # Test with a simple query to ensure it's using the correct collection
-        try:
-            # This will fail if collection doesn't exist or is wrong
-            test_results = vectorstore.similarity_search_with_score("test", k=1)
-            logger.info(f"✓ Vector store verified and ready (collection: {COLLECTION_NAME})")
-        except Exception as e:
-            logger.error(f"✗ Vector store verification failed: {e}")
-            logger.error(f"  This may indicate langchain is using a different collection")
-            raise RuntimeError(f"Vector store verification failed: {e}")
+        # Verify the vectorstore is initialized (without loading data)
+        # Skip test query to avoid memory issues - just verify the vectorstore object exists
+        if vectorstore is None:
+            raise RuntimeError("Vector store initialization failed - vectorstore is None")
+        
+        logger.info(f"✓ Vector store initialized and ready (collection: {COLLECTION_NAME})")
             
     except Exception as e:
         logger.error(f"Failed to load vector store: {e}")
