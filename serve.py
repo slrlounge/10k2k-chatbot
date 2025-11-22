@@ -19,7 +19,9 @@ from pydantic import BaseModel
 from langchain_openai import OpenAIEmbeddings, ChatOpenAI
 from langchain_chroma import Chroma
 from langchain_core.documents import Document
-import chromadb
+from chromadb import HttpClient
+from chromadb.errors import ChromaError
+import time
 
 # Load environment variables
 load_dotenv()
@@ -28,11 +30,11 @@ load_dotenv()
 ENVIRONMENT = os.getenv('ENVIRONMENT', 'development').lower()
 IS_PRODUCTION = ENVIRONMENT == 'production'
 
-# Configuration
+# Configuration - MUST match ingestion scripts
 CHROMA_HOST = os.getenv('CHROMA_HOST', 'chromadb-w5jr')  # Default to Render service name
 CHROMA_PORT = int(os.getenv('CHROMA_PORT', '8000'))
-CHROMA_URL = os.getenv('CHROMA_URL', None)  # For cloud-hosted ChromaDB
 COLLECTION_NAME = os.getenv('COLLECTION_NAME', '10k2k_transcripts')
+OPENAI_API_KEY = os.getenv('OPENAI_API_KEY', '')
 
 # Authentication configuration
 AUTH_SECRET_KEY = os.getenv('AUTH_SECRET_KEY', '')
@@ -117,41 +119,105 @@ def get_openai_api_key() -> str:
     return api_key
 
 
+def get_chroma_client_with_retry(max_retries: int = 5, base_delay: float = 1.0) -> HttpClient:
+    """
+    Create ChromaDB HttpClient with retry logic.
+    STRICTLY uses remote HTTP client - NEVER local storage.
+    """
+    last_error = None
+    for attempt in range(max_retries):
+        try:
+            client = HttpClient(host=CHROMA_HOST, port=CHROMA_PORT, ssl=False)
+            # Test connection by listing collections
+            client.list_collections()
+            logger.info(f"✓ Connected to remote ChromaDB at {CHROMA_HOST}:{CHROMA_PORT}")
+            return client
+        except Exception as e:
+            last_error = e
+            if attempt < max_retries - 1:
+                delay = base_delay * (2 ** attempt)  # Exponential backoff
+                logger.warning(f"⚠️  Connection attempt {attempt + 1}/{max_retries} failed: {e}")
+                logger.info(f"   Retrying in {delay:.1f} seconds...")
+                time.sleep(delay)
+            else:
+                logger.error(f"✗ Failed to connect after {max_retries} attempts")
+                raise RuntimeError(f"Failed to connect to ChromaDB at {CHROMA_HOST}:{CHROMA_PORT} after {max_retries} attempts: {last_error}")
+    
+    raise RuntimeError(f"Failed to connect to ChromaDB: {last_error}")
+
+
+def get_collection_with_retry(client: HttpClient, max_retries: int = 5, base_delay: float = 1.0):
+    """
+    Get or create collection with retry logic and correct metadata.
+    Ensures collection uses cosine similarity space.
+    """
+    last_error = None
+    for attempt in range(max_retries):
+        try:
+            try:
+                # Try to get existing collection
+                collection = client.get_collection(COLLECTION_NAME)
+                logger.info(f"✓ Retrieved existing collection '{COLLECTION_NAME}'")
+                return collection
+            except Exception:
+                # Collection doesn't exist, create it with correct metadata
+                collection = client.create_collection(
+                    name=COLLECTION_NAME,
+                    metadata={"hnsw:space": "cosine"}
+                )
+                logger.info(f"✓ Created collection '{COLLECTION_NAME}' with cosine similarity")
+                return collection
+        except Exception as e:
+            last_error = e
+            if attempt < max_retries - 1:
+                delay = base_delay * (2 ** attempt)
+                logger.warning(f"⚠️  Collection operation attempt {attempt + 1}/{max_retries} failed: {e}")
+                logger.info(f"   Retrying in {delay:.1f} seconds...")
+                time.sleep(delay)
+            else:
+                raise RuntimeError(f"Failed to get/create collection '{COLLECTION_NAME}' after {max_retries} attempts: {last_error}")
+    
+    raise RuntimeError(f"Failed to get/create collection: {last_error}")
+
+
 def initialize_vectorstore():
-    """Initialize ChromaDB vector store - supports local Docker or cloud-hosted."""
+    """
+    Initialize ChromaDB vector store.
+    STRICTLY uses remote ChromaDB HttpClient - NEVER local storage.
+    """
     global vectorstore
     
     try:
         # Initialize embeddings
         embeddings = OpenAIEmbeddings(openai_api_key=get_openai_api_key())
         
-        # Connect to ChromaDB - support cloud URL or local host/port
-        if CHROMA_URL:
-            # Cloud-hosted ChromaDB (e.g., Render, Railway)
-            # Parse URL: http://host:port or https://host:port
-            url = CHROMA_URL.replace('http://', '').replace('https://', '')
-            if ':' in url:
-                host, port = url.split(':')
-                port = int(port)
-            else:
-                host = url
-                port = 8000
-            logger.info(f"Connecting to cloud ChromaDB at {host}:{port}")
-            client = chromadb.HttpClient(host=host, port=port)
-        else:
-            # Local Docker ChromaDB or internal service name
-            logger.info(f"Connecting to ChromaDB at {CHROMA_HOST}:{CHROMA_PORT}")
-            client = chromadb.HttpClient(host=CHROMA_HOST, port=CHROMA_PORT)
+        # Connect to remote ChromaDB with retry logic
+        logger.info(f"Connecting to remote ChromaDB at {CHROMA_HOST}:{CHROMA_PORT}")
+        client = get_chroma_client_with_retry()
+        
+        # Ensure collection exists with correct metadata BEFORE passing to langchain
+        collection = get_collection_with_retry(client)
         
         # Create vectorstore connected to ChromaDB
+        # langchain_chroma.Chroma will use the existing collection
         vectorstore = Chroma(
             client=client,
             collection_name=COLLECTION_NAME,
             embedding_function=embeddings,
         )
-        logger.info(f"✓ Vector store connected to ChromaDB (collection: {COLLECTION_NAME})")
+        
+        # Verify collection count WITHOUT loading all data
+        try:
+            count = collection.count()
+            logger.info(f"✓ Vector store connected to ChromaDB (collection: {COLLECTION_NAME}, documents: {count})")
+        except Exception as e:
+            logger.warning(f"⚠️  Could not get collection count: {e}")
+            logger.info(f"✓ Vector store connected to ChromaDB (collection: {COLLECTION_NAME})")
+            
     except Exception as e:
         logger.error(f"Failed to load vector store: {e}")
+        import traceback
+        logger.error(f"Traceback: {traceback.format_exc()}")
         raise RuntimeError(f"Failed to load vector store: {e}")
 
 
