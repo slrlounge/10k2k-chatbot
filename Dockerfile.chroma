@@ -6,9 +6,15 @@ FROM chromadb/chroma:latest
 EXPOSE 8000
 
 # Set environment variables for ChromaDB
+# IS_PERSISTENT enables persistence (required!)
+# PERSIST_DIRECTORY sets where data is stored (must be on persistent disk)
 ENV IS_PERSISTENT=TRUE
+ENV PERSIST_DIRECTORY=/chroma/chroma
 ENV ANONYMIZED_TELEMETRY=FALSE
 
 # Don't copy any application code - ChromaDB image is self-contained
 # The base image has its own entrypoint that starts ChromaDB server
+#
+# IMPORTANT: In Render, you MUST attach a persistent disk and mount it to /chroma/chroma
+# Otherwise, all data will be lost on every deploy/restart!
 
