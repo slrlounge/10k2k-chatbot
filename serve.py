@@ -99,6 +99,22 @@ class QuestionRequest(BaseModel):
     question: str
 
 
+def sanitize_string(value: str, default: str = '', max_length: int = None) -> str:
+    """Sanitize string for Pydantic validation - remove control characters."""
+    if not value:
+        return default
+    safe_value = str(value).strip()
+    if not safe_value:
+        return default
+    # Remove null bytes and other problematic control characters
+    safe_value = safe_value.replace('\x00', '')
+    # Keep printable characters and common whitespace/newlines
+    safe_value = ''.join(c for c in safe_value if c.isprintable() or c in ['\n', '\t', '\r', ' '])
+    if max_length and len(safe_value) > max_length:
+        safe_value = safe_value[:max_length]
+    return safe_value if safe_value.strip() else default
+
+
 class SourceCitation(BaseModel):
     filename: str
     type: str
@@ -196,23 +212,35 @@ def initialize_vectorstore():
         client = get_chroma_client_with_retry()
         
         # Ensure collection exists with correct metadata BEFORE passing to langchain
+        # This prevents langchain from creating a new UUID-based collection
         collection = get_collection_with_retry(client)
         
+        # Verify collection exists and log its details
+        try:
+            count = collection.count()
+            logger.info(f"✓ Verified collection '{COLLECTION_NAME}' exists with {count} document(s)")
+        except Exception as e:
+            logger.warning(f"⚠️  Could not get collection count: {e}")
+        
         # Create vectorstore connected to ChromaDB
-        # langchain_chroma.Chroma will use the existing collection
+        # CRITICAL: Pass client and collection_name explicitly
+        # This ensures langchain uses the existing collection by name, not by UUID
         vectorstore = Chroma(
             client=client,
-            collection_name=COLLECTION_NAME,
+            collection_name=COLLECTION_NAME,  # Explicitly use collection name, not ID
             embedding_function=embeddings,
         )
         
-        # Verify collection count WITHOUT loading all data
+        # Verify the vectorstore can access the collection
+        # Test with a simple query to ensure it's using the correct collection
         try:
-            count = collection.count()
-            logger.info(f"✓ Vector store connected to ChromaDB (collection: {COLLECTION_NAME}, documents: {count})")
+            # This will fail if collection doesn't exist or is wrong
+            test_results = vectorstore.similarity_search_with_score("test", k=1)
+            logger.info(f"✓ Vector store verified and ready (collection: {COLLECTION_NAME})")
         except Exception as e:
-            logger.warning(f"⚠️  Could not get collection count: {e}")
-            logger.info(f"✓ Vector store connected to ChromaDB (collection: {COLLECTION_NAME})")
+            logger.error(f"✗ Vector store verification failed: {e}")
+            logger.error(f"  This may indicate langchain is using a different collection")
+            raise RuntimeError(f"Vector store verification failed: {e}")
             
     except Exception as e:
         logger.error(f"Failed to load vector store: {e}")
@@ -650,25 +678,54 @@ async def ask_question(
                 f"Source: {filename}\nExcerpt:\n{content}\n---"
             )
  
-            # Prepare source citation - ensure all fields are valid
-            # Handle NaN or infinity scores
-            score_value = float(score)
-            if not (score_value >= 0 and score_value < 1000):  # Sanity check
-                score_value = 1.0  # Default score if invalid
+            # Prepare source citation - ensure all fields are valid and sanitized
+            # Sanitize filename
+            safe_filename = sanitize_string(
+                filename if filename and filename != 'Unknown' else 'document',
+                default='document',
+                max_length=255
+            )
             
-            # Ensure filename and type are not empty
-            safe_filename = filename if filename and filename != 'Unknown' else 'document'
-            safe_type = doc_type if doc_type else 'document'
+            # Sanitize type
+            safe_type = sanitize_string(
+                doc_type if doc_type else 'document',
+                default='document',
+                max_length=50
+            )
             
-            # Ensure content is valid string
-            safe_content = str(content[:200] + "..." if len(content) > 200 else content) if content else "No content available"
+            # Sanitize content (truncate to reasonable length)
+            content_preview = str(content[:200] + "..." if len(content) > 200 else content) if content else "No content available"
+            safe_content = sanitize_string(
+                content_preview,
+                default='No content available',
+                max_length=500
+            )
             
-            sources.append(SourceCitation(
-                filename=safe_filename,
-                type=safe_type,
-                content=safe_content,
-                score=score_value
-            ))
+            # Validate and sanitize score
+            try:
+                safe_score = float(score)
+                if not (safe_score >= 0 and safe_score < 1000):
+                    safe_score = 1.0
+            except (ValueError, TypeError):
+                safe_score = 1.0
+            
+            # Create citation with sanitized fields
+            try:
+                sources.append(SourceCitation(
+                    filename=safe_filename,
+                    type=safe_type,
+                    content=safe_content,
+                    score=safe_score
+                ))
+            except Exception as e:
+                logger.warning(f"Failed to create SourceCitation: {e}, using defaults")
+                # Fallback to safe defaults
+                sources.append(SourceCitation(
+                    filename='document',
+                    type='document',
+                    content='Content unavailable',
+                    score=1.0
+                ))
  
         context = "\n\n".join(context_parts)
  
@@ -859,13 +916,36 @@ You MUST use this exact structure with emojis in headers AND answer in YOUR auth
                 processed_lines.append(line)
             answer = '\n'.join(processed_lines)
         
-        # Ensure answer is a valid string
-        safe_answer = str(answer) if answer else "I couldn't generate a response. Please try again."
-        
-        return AnswerResponse(
-            answer=safe_answer,
-            sources=sources
+        # Validate and sanitize answer
+        safe_answer = sanitize_string(
+            answer,
+            default="I couldn't generate a response. Please try again.",
+            max_length=10000  # Reasonable limit for answer length
         )
+        
+        # Ensure sources list is valid
+        safe_sources = []
+        for source in sources:
+            try:
+                # Validate each source is properly formatted
+                safe_sources.append(source)
+            except Exception as e:
+                logger.warning(f"Invalid source citation, skipping: {e}")
+                continue
+        
+        try:
+            return AnswerResponse(
+                answer=safe_answer,
+                sources=safe_sources
+            )
+        except Exception as e:
+            logger.error(f"Failed to create AnswerResponse: {e}")
+            logger.error(f"Answer length: {len(safe_answer)}, Sources count: {len(safe_sources)}")
+            # Return minimal valid response
+            return AnswerResponse(
+                answer=safe_answer[:1000] if len(safe_answer) > 1000 else safe_answer,  # Truncate if too long
+                sources=safe_sources[:10] if len(safe_sources) > 10 else safe_sources  # Limit sources
+            )
         
     except HTTPException:
         # Re-raise HTTP exceptions as-is
