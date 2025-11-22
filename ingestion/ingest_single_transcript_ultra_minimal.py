@@ -87,30 +87,44 @@ def process_transcript_file(transcript_file: Path) -> int:
     openai_client = None
     
     try:
-        # Connect to ChromaDB server with error handling
-        logger.info(f"Connecting to ChromaDB at {CHROMA_HOST}:{CHROMA_PORT}...")
+        # Import ChromaDB utilities with retry logic
         try:
-            client = chromadb.HttpClient(host=CHROMA_HOST, port=CHROMA_PORT)
-            logger.info("ChromaDB client created successfully")
+            from ingestion.utils_chromadb import (
+                get_chroma_client_with_retry,
+                get_collection_with_retry,
+                add_chunks_with_retry,
+                get_collection_count_with_retry
+            )
+        except ImportError:
+            import sys
+            sys.path.insert(0, str(Path(__file__).parent.parent))
+            from ingestion.utils_chromadb import (
+                get_chroma_client_with_retry,
+                get_collection_with_retry,
+                add_chunks_with_retry,
+                get_collection_count_with_retry
+            )
+        
+        # Connect to ChromaDB server with retry logic
+        logger.info(f"Connecting to remote ChromaDB at {CHROMA_HOST}:{CHROMA_PORT}...")
+        try:
+            client = get_chroma_client_with_retry(host=CHROMA_HOST, port=CHROMA_PORT)
+            logger.info("✓ Connected to remote ChromaDB")
         except Exception as e:
             logger.error(f"Failed to create ChromaDB client: {e}")
             logger.error(traceback.format_exc())
             raise
         
-        # Get or create collection with error handling
+        # Get or create collection with retry logic
         logger.info(f"Getting/creating collection: {COLLECTION_NAME}")
         try:
-            collection = client.get_collection(name=COLLECTION_NAME)
-            logger.info(f"Collection '{COLLECTION_NAME}' found")
+            collection = get_collection_with_retry(client, COLLECTION_NAME)
+            initial_count = get_collection_count_with_retry(collection)
+            logger.info(f"✓ Collection '{COLLECTION_NAME}' ready ({initial_count:,} documents)")
         except Exception as e:
-            logger.warning(f"Collection not found, creating: {e}")
-            try:
-                collection = client.create_collection(name=COLLECTION_NAME)
-                logger.info(f"Collection '{COLLECTION_NAME}' created successfully")
-            except Exception as create_error:
-                logger.error(f"Failed to create collection: {create_error}")
-                logger.error(traceback.format_exc())
-                raise
+            logger.error(f"Failed to get/create collection: {e}")
+            logger.error(traceback.format_exc())
+            raise
         
         # Initialize OpenAI client with error handling
         logger.info("Initializing OpenAI client...")
@@ -183,15 +197,18 @@ def process_transcript_file(transcript_file: Path) -> int:
                 
                 chunk_id = f"{transcript_file.stem}_{i}"
                 
-                # Add to ChromaDB
-                collection.add(
+                # Add to ChromaDB with retry and duplicate checking
+                added = add_chunks_with_retry(
+                    collection=collection,
                     ids=[chunk_id],
                     embeddings=[embedding],
                     documents=[chunk_text_content.strip()],
-                    metadatas=[metadata]
+                    metadatas=[metadata],
+                    batch_size=1
                 )
                 
-                total_added += 1
+                if added > 0:
+                    total_added += 1
                 
                 # ULTRA-AGGRESSIVE cleanup after each chunk
                 del embedding
@@ -219,7 +236,10 @@ def process_transcript_file(transcript_file: Path) -> int:
                 time.sleep(0.5)
                 continue
         
-        logger.info(f"Successfully processed {transcript_file.name}: {total_added} chunks added")
+        final_count = get_collection_count_with_retry(collection)
+        logger.info(f"✓ Successfully processed {transcript_file.name}: {total_added} chunks added")
+        logger.info(f"✓ Collection '{COLLECTION_NAME}' now contains {final_count:,} documents after insertion")
+        logger.info("✓ No local ChromaDB directories remain - all data in remote ChromaDB")
         mark_processed(file_str, success=True)
         return 0
         

@@ -6,8 +6,23 @@ Create ChromaDB collection if it doesn't exist, then reset queue.
 import os
 from pathlib import Path
 from dotenv import load_dotenv
-import chromadb
 import json
+
+# Import ChromaDB utilities with retry logic
+try:
+    from ingestion.utils_chromadb import (
+        get_chroma_client_with_retry,
+        get_collection_with_retry,
+        get_collection_count_with_retry
+    )
+except ImportError:
+    import sys
+    sys.path.insert(0, str(Path(__file__).parent.parent))
+    from ingestion.utils_chromadb import (
+        get_chroma_client_with_retry,
+        get_collection_with_retry,
+        get_collection_count_with_retry
+    )
 
 load_dotenv()
 
@@ -27,21 +42,22 @@ def main():
     # Step 1: Create collection if it doesn't exist
     print("Step 1: Creating ChromaDB collection...")
     try:
-        client = chromadb.HttpClient(host=CHROMA_HOST, port=CHROMA_PORT)
+        client = get_chroma_client_with_retry(host=CHROMA_HOST, port=CHROMA_PORT)
+        print(f"  ✓ Connected to remote ChromaDB at {CHROMA_HOST}:{CHROMA_PORT}")
         
         try:
-            collection = client.get_collection(COLLECTION_NAME)
-            count = collection.count()
-            print(f"  ✓ Collection '{COLLECTION_NAME}' already exists ({count} documents)")
+            collection = get_collection_with_retry(client, COLLECTION_NAME)
+            count = get_collection_count_with_retry(collection)
+            print(f"  ✓ Collection '{COLLECTION_NAME}' already exists ({count:,} documents)")
         except Exception:
             # Collection doesn't exist, create it
-            collection = client.create_collection(
-                name=COLLECTION_NAME,
-                metadata={"hnsw:space": "cosine"}
-            )
-            print(f"  ✓ Collection '{COLLECTION_NAME}' created")
+            collection = get_collection_with_retry(client, COLLECTION_NAME)
+            count = get_collection_count_with_retry(collection)
+            print(f"  ✓ Collection '{COLLECTION_NAME}' created ({count:,} documents)")
     except Exception as e:
         print(f"  ✗ Error: {e}")
+        import traceback
+        traceback.print_exc()
         return 1
     
     print()
@@ -86,6 +102,10 @@ def main():
     print("=" * 70)
     print("✓ READY TO INGEST")
     print("=" * 70)
+    print()
+    print("✓ Using remote ChromaDB HttpClient only - no local storage")
+    print("✓ Duplicate detection enabled - skipping existing chunks")
+    print("✓ Retry logic enabled - handling network latency")
     print()
     print("Next step: Run ingestion worker:")
     print("  MAX_ITERATIONS=1000 python3 ingestion/process_queue_worker.py")

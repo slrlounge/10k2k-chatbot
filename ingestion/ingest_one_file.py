@@ -16,11 +16,28 @@ from typing import Optional, Dict, List
 import subprocess as sp
 from dotenv import load_dotenv
 import tiktoken
-import chromadb
 from openai import OpenAI
 from langchain_text_splitters import RecursiveCharacterTextSplitter
-from langchain_chroma import Chroma
 from langchain_core.documents import Document
+
+# Import ChromaDB utilities with retry logic
+try:
+    from ingestion.utils_chromadb import (
+        get_chroma_client_with_retry,
+        get_collection_with_retry,
+        add_chunks_with_retry,
+        get_collection_count_with_retry
+    )
+except ImportError:
+    # Fallback for local development
+    import sys
+    sys.path.insert(0, str(Path(__file__).parent.parent))
+    from ingestion.utils_chromadb import (
+        get_chroma_client_with_retry,
+        get_collection_with_retry,
+        add_chunks_with_retry,
+        get_collection_count_with_retry
+    )
 
 load_dotenv()
 
@@ -55,21 +72,14 @@ def get_openai_client() -> OpenAI:
 
 
 def get_chroma_client():
-    """Get ChromaDB client."""
-    return chromadb.HttpClient(host=CHROMA_HOST, port=CHROMA_PORT)
+    """Get ChromaDB HttpClient with retry logic. Always uses remote ChromaDB."""
+    return get_chroma_client_with_retry(host=CHROMA_HOST, port=CHROMA_PORT)
 
 
 def get_collection():
-    """Get or create ChromaDB collection."""
+    """Get or create ChromaDB collection with retry logic."""
     client = get_chroma_client()
-    try:
-        collection = client.get_collection(COLLECTION_NAME)
-    except Exception:
-        collection = client.create_collection(
-            name=COLLECTION_NAME,
-            metadata={"hnsw:space": "cosine"}
-        )
-    return collection
+    return get_collection_with_retry(client, COLLECTION_NAME)
 
 
 def load_queue() -> Dict:
@@ -230,8 +240,11 @@ def split_text_semantic(text: str, max_tokens: int, overlap_tokens: int = CHUNK_
 
 
 def ingest_file_chunks(file_path: Path, chunks: List[str], openai_client: OpenAI, collection) -> bool:
-    """Ingest file chunks into ChromaDB."""
+    """Ingest file chunks into ChromaDB with duplicate checking and retry logic."""
     try:
+        # Get initial document count
+        initial_count = get_collection_count_with_retry(collection)
+        
         # Generate embeddings
         embeddings = []
         documents = []
@@ -272,29 +285,30 @@ def ingest_file_chunks(file_path: Path, chunks: List[str], openai_client: OpenAI
             ids.append(doc_id)
             metadatas.append(metadata)
         
-        # Batch add to ChromaDB (small batches to avoid memory issues)
-        batch_size = 10
-        for i in range(0, len(embeddings), batch_size):
-            batch_embeddings = embeddings[i:i+batch_size]
-            batch_documents = documents[i:i+batch_size]
-            batch_ids = ids[i:i+batch_size]
-            batch_metadatas = metadatas[i:i+batch_size]
-            
-            collection.add(
-                embeddings=batch_embeddings,
-                documents=batch_documents,
-                ids=batch_ids,
-                metadatas=batch_metadatas
-            )
-            
-            # Force garbage collection after each batch
-            del batch_embeddings, batch_documents, batch_ids, batch_metadatas
-            gc.collect()
+        # Add chunks with retry logic and duplicate checking
+        total_added = add_chunks_with_retry(
+            collection=collection,
+            ids=ids,
+            embeddings=embeddings,
+            documents=documents,
+            metadatas=metadatas,
+            batch_size=10
+        )
         
-        return True
+        # Get final document count
+        final_count = get_collection_count_with_retry(collection)
+        
+        print(f"✓ Collection '{COLLECTION_NAME}' now contains {final_count:,} documents after insertion")
+        print(f"  Added {total_added} new chunk(s) (skipped {len(chunks) - total_added} duplicate(s))")
+        
+        # Cleanup
+        del embeddings, documents, ids, metadatas
+        gc.collect()
+        
+        return total_added > 0
         
     except Exception as e:
-        print(f"Error ingesting chunks: {e}")
+        print(f"✗ Error ingesting chunks: {e}")
         traceback.print_exc()
         return False
 
@@ -421,6 +435,10 @@ def main():
     print(f"ChromaDB: {CHROMA_HOST}:{CHROMA_PORT}")
     print(f"Collection: {COLLECTION_NAME}")
     print(f"Queue file: {QUEUE_FILE}")
+    print()
+    print("✓ Using remote ChromaDB HttpClient only - no local storage")
+    print("✓ Duplicate detection enabled - skipping existing chunks")
+    print("✓ Retry logic enabled - handling network latency")
     print()
     
     # Load queue

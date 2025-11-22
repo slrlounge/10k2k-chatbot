@@ -7,7 +7,23 @@ import os
 from dotenv import load_dotenv
 from langchain_openai import OpenAIEmbeddings
 from langchain_chroma import Chroma
-import chromadb
+
+# Import ChromaDB utilities with retry logic
+try:
+    from ingestion.utils_chromadb import (
+        get_chroma_client_with_retry,
+        get_collection_with_retry,
+        get_collection_count_with_retry
+    )
+except ImportError:
+    import sys
+    from pathlib import Path
+    sys.path.insert(0, str(Path(__file__).parent.parent))
+    from ingestion.utils_chromadb import (
+        get_chroma_client_with_retry,
+        get_collection_with_retry,
+        get_collection_count_with_retry
+    )
 
 load_dotenv()
 
@@ -47,8 +63,8 @@ def main():
     # Step 2: Test ChromaDB connection
     print("Step 2: Testing ChromaDB connection...")
     try:
-        client = chromadb.HttpClient(host=chroma_host, port=chroma_port)
-        print(f"  ✓ Connected to {chroma_host}:{chroma_port}")
+        client = get_chroma_client_with_retry(host=chroma_host, port=chroma_port)
+        print(f"  ✓ Connected to remote ChromaDB at {chroma_host}:{chroma_port}")
     except Exception as e:
         print(f"  ✗ Connection failed: {e}")
         return 1
@@ -56,8 +72,8 @@ def main():
     # Step 3: Check collection exists
     print("\nStep 3: Checking collection...")
     try:
-        collection = client.get_collection(collection_name)
-        count = collection.count()
+        collection = get_collection_with_retry(client, collection_name)
+        count = get_collection_count_with_retry(collection)
         print(f"  ✓ Collection '{collection_name}' exists")
         print(f"  ✓ Document count: {count:,}")
         

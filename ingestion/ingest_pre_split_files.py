@@ -2,7 +2,7 @@
 """
 Ingest Pre-Split Files
 Ingests all pre-split segment files (e.g., sales_01.txt, sales_02.txt) into ChromaDB.
-Assumes files have already been split locally using split_files_locally.py
+All ingestion uses remote ChromaDB HttpClient only - no local storage.
 """
 
 import os
@@ -10,6 +10,9 @@ import sys
 import subprocess
 from pathlib import Path
 from typing import List
+from dotenv import load_dotenv
+
+load_dotenv()
 
 # Configuration
 CHROMA_HOST = os.getenv('CHROMA_HOST', 'chromadb-w5jr')
@@ -79,6 +82,8 @@ def main():
     print(f"ChromaDB: {CHROMA_HOST}:{CHROMA_PORT}")
     print(f"Collection: {COLLECTION_NAME}")
     print(f"Source directory: {TRANSCRIPTS_DIR}")
+    print()
+    print("✓ Using remote ChromaDB HttpClient only - no local storage")
     print()
     
     # Find all files
