@@ -1,0 +1,55 @@
+Okay, so step two is your dream client. So this is where going into version two of the program, there's been a little bit of flip-flop. We move kind of the market research more into step one and step two now is about defining our avatar. Some of the pain points, the things that we're gonna be covering here is, well, why do I need to define my audience and my client?
+
+client. How do I do this process? How do I create an avatar or persona? We're even going to get into things like what should I name my business? That's been kind of a question that has popped up throughout the past year which I never really talked about in the first round and I thought we know we need to get into that for those that don't yet have a name. We'll talk also about what is the clarified message
+
+and vision statement we're going to also create those here and we'll speak on how to do that and I thought this would be the perfect place actually to insert the AI training. I've been wanting to do like an AI booster module for quite a while and I thought it doesn't really make sense to be its own module because I want it to be something that you're using and learning in conjunction with like what you're doing in your brain.
+
+business and within the program. So I thought this is the perfect place to kind of get into it. With step one, you got to see some of the basic prompts that I was creating for y'all. They weren't basic prompts, but you got to see what we have. Now in step two, I actually want to level you up and kind of turn you into a prompt engineer on your own. So we're going to accomplish that in this step as well, which is going to be awesome.
+
+Awesome for any of you that have already completed step two, like maybe this past year, this version of it is gonna give you a completely new refresher, and it's also gonna train you in AI as we go. So there's a lot here to jump into. Once again, just a quick heads up. This is fast paced. I believe that education
+
+to be quick and needs to be easy to digest in order for it to be effective so we can actually implement it. So I expect you to need to kind of pause to take time to implement and to basically repeat that process. That's why you have the lesson library. That's why you can refer to these at any time. Okay. All right. Once again, also between sessions, remember that the mentorship
+
+group it's there for you to ask questions you can ask it of me you can ask it of we have several group experts i also have team members in there it's a great place to seek advice feedback from peers to link up for role plays all of that as well as to share wins or aha moments okay with that said let's dive into the first lesson okay
+
+So I want to start this with leveling up your AI toolkit. So like I mentioned, rather than having a complete separate module for training on AI, what I'd rather do is kind of give you the ideas of what we're going to accomplish in terms of leveling up you as a prompt engineer, as someone who can really effectively use AI in your business. We're going to do that here in this video.
+
+lesson and then throughout this entire step throughout this entire module we're gonna basically build on it at the end we're essentially gonna save out your first kind of rudimentary AI app if that's kind of what we're gonna call it okay which is kind of cool essentially what we're gonna be doing in this step is is making our first AI app okay
+
+a very basic one. So let's talk about kind of what are the basic ideas of prompt engineering or kind of how we use AI. And side note, you can use any AI you'd like. We're going to use ChatGPT for this, but if there's something else that you'd like to use, by all means. Level one is what I would call basic prompting.
+
+okay basic prompting is basically you're treating the AI kind of like a search engine you're just asking questions like what's the best way to learn this or how do I do this what's a good name for my business and a lot of people kind of look down on this way of kind of using AI like you're not taking full advantage I have no problem with this I use AI in this content
+
+text all the time it's just you're using it like a basic search engine you're expecting kind of search like results but maybe a little bit better we're not using it to its full extent it's totally okay I use it like this all the time for my phone when we go to level 2 what we start doing now is contextual prompting and what this means is that we learn that
+
+kind of specificity matters when it comes to getting good results out of the AI. Okay, so an example is that we might say something like, write me a funny Instagram caption, assuming that I am a blank photographer, you insert your niche, I'm targeting this type of client, and I'm posting about the importance of this topic. Okay, and so we give it some
+
+context and some background to what it is that we're looking for this is level two and and that's kind of we're gonna get you know better results from this level three would be role-based prompting and most of what you've seen in kind of the first module in step one is basically kind of a between it's around a level three
+
+prompt right everything if you went through version one of this program most of what we have in here basically level three prompts where we begin to treat the AI like a collaborative partner and we define a role so we might say like let's assume you are a brand strategist you have an expert background on this then you give it the context based on my photography business which serves
+
+this client in this space what's a and then you ask a question what's a compelling clarified message what should i do for pricing and then you might say like speak to the results you wanted to give you right give me five variations use different tones let's keep it between eight and twelve words whatever it might be so this is level three we're now going to
+
+role-based prompting and we're beginning to kind of speak to the AI like a partner. Really the next piece of going to level four is that we start using existing frameworks, we start building maybe templates of our own, and we start doing what is called prompt chaining. This is one of those things that I was kind of
+
+of hoping that everyone would naturally do when I taught version one of the program. So I'm kind of giving you a level three prompt throughout version one of this program. I gave you level three prompts and then I would expect you to continue the conversation. What I noticed is that a lot of us weren't doing that. We weren't doing prompt chaining. And so what I want to do in this module as we go into this new version.
+
+of 10k 2k is to actually give you a complete example of prompt chaining where we're gonna basically work from one thing to the next we not only define the role we might say and this is something you could actually do right you could actually say you're an expert on sales psychology using the wave framework in the sales handbook so you could actually upload the sales
+
+handbook that I've given each of you. You guys have that handbook right? So you could go and and let me pull it up on my side sales handbook or maybe I have to get to my Drive account for it to search okay sales handbook okay this is the sales handbook that's referenced I could have just pulled it up from the
+
+Brandon strategy guide, so it's referenced right here in the Brandon strategy guide right there steps 14 to 16 the link to your sales Handbook, right? You could actually download this as a PDF or a doc file Generally when you're uploading to AI it works best if you're doing it like a PDF or a simple document format So upload it directly the AI and then you can use this
+
+this as the actual contextual background and training and the wave is already referenced in here. It's already trained in here right so you could literally upload it to the AI and then say then ask it a question like for example using the wave framework in the sales handbook that I've uploaded. I want you to analyze my sales transcript to tell me where I went wrong.
+
+This is one of my favorite things to do. What you can do is I've told you all that you can record. I want you to record each of your sales meetings, right? There are several different AI apps that you can use to basically turn that video into a, uh, into a, uh, transcript. One of them, uh, that I use quite a bit is called Descript. Okay. You can go to Descript. You can upload.
+
+the video of you having that that conversation it'll turn it into a transcript then you throw in the chat GPT you give it this prompt upload the sales handbook and it'll literally tell you exactly what went wrong in this process so this is level four of kind of prompt chaining using existing templates existing frameworks I want to make sure that this
+
+sense to everybody? Does this make sense? If so, and when I ask that question, I'm asking it of kind of our people that are attending me filming this live, but if you are watching this from the lesson library and you have questions on this, please jump into the group and ask whatever questions you have. I want this to be fun and to be exciting because it should open up an entire new world for you.
+
+you okay the next step level 5 is where we start creating I would say projects is the first level of this the next level would be custom GPT's and then API integration would kind of be a final place where essentially what we do is we turn this trained API this trained AI into its own piece of
+
+software. We're not going to get that far. We're going to go to the project level and the custom GPT level. That's where I'd like you to end up here, but you can continue this on if you'd like to get even deeper into this process. So by the end of today, my goal for you, depending on how long you're taking for this step, this module, by the end of this module, my goal for you
+
+is that you land somewhere between level four and and level five. Okay, I hope that's kind of fun and exciting. We're gonna have a blast with this. What I want to do is I want to kick this off with the AI Prompt Chainer. This is going to be part one. Then we're going to do the actual training through each step of this. So each, sorry, I should say each lesson within this

@@ -1,0 +1,74 @@
+# Docker ignore file - used by both ChromaDB and FastAPI services
+# ChromaDB service uses Dockerfile.chroma (doesn't copy app code)
+# FastAPI service uses Dockerfile (needs serve.py and auth/)
+
+# Python application files
+# NOTE: serve.py is NEEDED for FastAPI service - explicitly NOT excluded
+# Only exclude main.py and other unused files
+main.py
+sync_drive.py
+transcribe_videos.py
+# Do NOT exclude serve.py - it's required!
+
+# Application directories
+# NOTE: auth/ is NEEDED for FastAPI authentication - explicitly NOT excluded
+# Do NOT exclude auth/ - it's required!
+# NOTE: web/ is NEEDED for serving chat.html in production - explicitly NOT excluded
+# Do NOT exclude web/ - it's required!
+# NOTE: ingestion/ is NEEDED for running ingestion via Render Shell - explicitly NOT excluded
+# Do NOT exclude ingestion/ - it's required!
+data/
+transcripts/
+chroma/
+storage/
+logs/
+checkpoints/
+
+# Dependencies (keep requirements.txt - FastAPI needs it)
+# NOTE: requirements.ingest.txt is NEEDED for ingest-chromadb service - explicitly NOT excluded
+# Do NOT exclude requirements.ingest.txt - it's required!
+.venv/
+venv/
+__pycache__/
+
+# Documentation
+*.md
+!README.md
+
+# Config files
+.env
+.env.*
+docker-compose*.yml
+netlify.toml
+vercel.json
+railway.json
+render.yaml
+.gitignore
+
+# Source files
+# Exclude video files from 10K2K v2/ to speed up builds (81GB → 3.6MB)
+# Only .txt files are needed for ingestion
+10K2K v2/**/*.mp4
+10K2K v2/**/*.avi
+10K2K v2/**/*.mov
+10K2K v2/**/*.mkv
+10K2K v2/**/*.webm
+10K2K v2/**/*.mp3
+10K2K v2/**/*.wav
+10K2K v2/**/*.m4a
+10K2K v2/**/*.pdf
+10K2K v2/**/*.gdoc
+# Allow .txt files (needed for ingestion)
+!10K2K v2/**/*.txt
+
+# Build files
+build-frontend.sh
+*.sh
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+

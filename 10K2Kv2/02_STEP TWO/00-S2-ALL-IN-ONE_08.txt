@@ -1,0 +1,63 @@
+you to to really get comfortable with prompt chaining and with the idea of saving out these conversations so you can continue them, which we're going to do in the next lesson. Be sure once you have a chosen name that it can satisfy all or most of the following criteria. I'm going to tell you the important one. So does it speak to your dream client? Yes. We need
+
+that to be a yes. Is your name easy for clients to remember and recall? Yes, we want them to be able to like, like I don't want it to be supercalifragilisticexpialidocious family portraits, right? Like some of them, they can't, I mean, we can all remember that because of the movie, but something that's too long that they can't remember, let's ditch that. Does the name convey what you do? This is optional.
+
+Right like a like a fictitious name is often not gonna convey what you do The untamed lens might give an idea like photography oaken emmer studios might give like an idea of creative services It doesn't have to so that's why I say like it could be optional You don't always have to have wedding photography or family photography or boudoir photography in the name of the business Especially when the clarified message
+
+is going to come right afterwards. So that one's an optional idea. I do want to make sure these are important. Is a .com or suitable domain available? So we want to make sure that it's available in a .com or maybe a .co, something that's easy to remember, right? We also want to make sure we can claim matching social media handles. We don't want to choose like say
+
+we go up here, we choose oak and ember, and then oak and ember is taken on social media. So we have to be oak underscore ember underscore studios in order for it to work, because then it becomes really difficult to remember how to get to that same place, right? We wanna have matching social media handles. Is the name already in use by another photographer? We definitely wanna check a no on this one.
+
+I'm not too worried about trademark issues because for trademark issues to happen, it has to be someone that has trademarked the name in your specific industry. So it has to be in a competing area and they have to have trademarked it. So as long as you don't see another photographer using it, then we're good, right? Generally.
+
+But if you do see another photographer using it, whether they've trademarked the name or not, I would still skip it because there's a good chance that when people are searching, they're gonna find the other business. There's just no need to even cross that bridge. There's no need to start the conversation. They might reach out to you and say, you gotta cease and desist, you gotta change your business name, you gotta do this, and you're like, but you didn't trademark it. Just don't, don't do it.
+
+If another photographer already has a name, don't do it. So we wanna make sure that we can check a no on that one. Personal connection, does the name mean something to you? This is again, if it's fictitious, right? Going to these names previously, you can always assign meaning to a name after you think of the name, okay? It can always come before too.
+
+But as you're looking at those fictitious names that the AI is gonna generate for you, I want you to work with it until you find something that can have meaning to what you're doing, something that ties to your values, your needs, right? So let's go back to this for just one second, and I'm gonna actually run this. Okay, so I already created a name for this, but I'm gonna go ahead and create a name for it. So I'm gonna go ahead and create a name for it. So I'm gonna go ahead and create a name for it. So I'm gonna go ahead and create a name for it.
+
+I'm just gonna go ahead and run this prompt real fast just to see what it gives you. So here's a curated list of evocative and poetic modern student names tailored for heart and soul of your brand. So, Hearth and Wild, Still and Stir, Ash and Echo, Tether and Tide. So I can always, if I love the ocean and let's say that some of my best memories with my family were created.
+
+created, you know, like we all are just beach goers, that can very much be the meaning that I associate to one of these names. So we want to create meaning behind it, it adds a little more authenticity behind the brand whenever that is possible, it's just a suggestion on that side to create some personal meaning behind it. Okay, that is it for this, let's go on to the final.
+
+lesson, uh, I'm going to show you how to convert this now into your brand strategist, save all this. So you have this ongoing GPT that you can basically use to have brand conversations and get lots of good stuff from, okay. It's time to wrap up this module by leveling up your AI toolkit now. So looking back.
+
+at what we've just done throughout this module is you've basically just coded your first basic AI app. Now when we say coded, the funny thing about this is a lot of people think that coding isn't coding because you're using language, right? No, you're still essentially coding. And I actually used to program way back.
+
+learn programming you are learning the language of programming because computers were limited to the extent of like how you speak to them but as we go forward in the future programming is not gonna be limited to a specific coding language it's literally gonna be through inputs like writing it's gonna be through inputs like speaking through anything so all we're doing though in this process is is is basically
+
+giving the computer, giving the AI, a set of instructions to follow. And we've done that. So you've essentially coded your first basic AI app. And to turn it into an app, to something that you can reuse, essentially, versus just a conversation, all we need to do is basically save it. So that's what we're gonna do now. So now we're gonna end the project. So I'm done with this project, and we're gonna go ahead and save it.
+
+to give it now a prompt to turn this into a set of instructions. So what we're going to do is go back to chat gpt and this is where I would say okay I'm done with our conversation here and what I might do is I might say let's go with north and nest for my business name. So let's just wrap
+
+up that last conversation. Cool. Beautiful choice. I hate, like, I don't know what it is, but AI is so people-pleasing. Like, it's always like trying to, I have to tell it literally not to, like, stop people-pleasing. Okay, so now we drop in this wrap-up instructions thing. So I had a.
+
+Spelling error. All right. And what it's gonna do now is it's gonna give me a tailored set of instructions for itself. So here's your personal instructions on how I, ChatGPT, will respond as your brand strategist. So Northern Nest Strategic Brand Instructions is an elopement destination photography studio based in London, England, Brasville.
+
+values, target client profile, strategic role. Here's the tactical areas of focus. Everything here is ready, right? Okay. So I'm gonna say, is this enough for a complete set of instructions as a project instruction?
+
+Guide or a set of Instructions for a custom GPT, would you want to beef this up for that use? Okay, so it's giving me a mid-level internal project guide or contextual reference okay, so but to
+
+Use a custom GPT or official product brief to benefit from slightly more. Okay, would you like to beef it up? Yes. Let's turn this into a complete set of instructions I can use as a custom GPT or as a instruction document.
+
+for this project okay so generally when I when it comes to like writing custom GPT's I do a lot of the legwork well I have the AI do a lot of the legwork and then I do a lot of customization and then I go back and forth so I'll say okay I got these results
+
+Here's the thing that I would like to adjust, and I'll sit there and input and just bounce things off of the AI over and over until I start getting the results that I want from it. So, but what I'm gonna do now is just basically take this whole thing. Okay, so now it gives me a much more comprehensive guide.
+
+and say, yes, I do want this as a downloadable PDF. Okay, it's gonna take us time to do that, but what I can also do is I can just grab.
+
+this and copy the entire thing right here. When I go back to my client avatar, I can add instructions right here and I'm just going to paste that right in and click save. Okay, now you literally just we not only did an entire
+
+our prompt chain, but we took the set of instructions afterwards, saved it back into the instructions for this project, and now my client avatar, I could rename this and say, North, well, let's not worry about the name. My Brand Strategist.
+
+Save it. And I could say, I could ask any questions on brand that I want any questions, like, like give me 10 topics for SEO driven articles that would appeal to my target audience.
+
+I no longer have to sit here and give it any, I don't have to give it anything else. I don't have to give it context. I don't have to give it anything. I don't have to tell it what I do. I literally can now just give it instructions. Give me 10 topics. How to elope intentionally, a guide for couples who want meaning over performance. 10 quiet,
+
+soulful elopements. And I go, oh, how to elope intentionally. Number one sounds great. Let's build that into a full article in my voice. Absolutely, here's a full draft of article number one. There's a quiet.
+
+and a rebellion in choosing to elope. Not the dramatic kind, not the run off to Vegas secret kind, but the kind where you say, we want this day to actually feel like us. Holy shit. Okay, if you found yourself leaning away, now obviously I would make this my words, but look at this. Like as a guide on how to elope, right? This is so beautiful. Like what if this was.
+
+Okay, can you, I'm getting so, I wanna build this business right now. I wanna build this business. All right, look at this. Now, perfect. Let's turn this into a lead magnet with five key points.
+
+This is how we can completely amplify our business and the way that we approach it, right? So it literally spells out the entire lead magnet right here and then what I could do is go to Canva, okay? And I could look for projects.

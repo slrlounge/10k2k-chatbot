@@ -1,0 +1,21 @@
+or templates and I could say I want a lead magnet. Okay and let's say it's for wedding. Okay I'm gonna pick one that might look good and might be on brand for my style so maybe it's gonna be this one. That looks like it might work.
+
+might fit, and now I literally would just drop in. So I would change the title of this, and I would just start copying and pasting and dropping in from the AI, from ChatGPT. Like, here's my headline for couples who crave a wedding day that feels like them. The five-step guide for couples who want meaning over performance. How to elope intentionally is the name.
+
+This would be a beautiful lead magnet for when someone lands on my website I'm like, here's a guide on how to elope meaningfully like with intention, right? If I if I have a topic by the way, that is more Aligned with like what they need I'll do that, of course But I want you to see that now what we've done is we've created a brand strategist for our business that is
+
+totally aligned with our business, that understands what we want and what we need, and we've saved it to a project. So at any point in time, I can come back to this project and I can simply have a new conversation and it's already trained. It already has everything that I do inside of this already is attached, including my previous conversations and the instructions that I've given to this.
+
+By the way, if you're asking like, what's the difference between this versus a GPT, right? I can create a custom GPT by going a little bit further. So it's not that much different. It's just a custom GPT. I'm going to give it a name, tell it what I do. I'm gonna train it, and then I'm gonna upload like a knowledge base to it. So let's see.
+
+That's not customized, where's my GPTs? Okay, there we go, create. So this is my create GPT, I'm like, what is this menu? So we name it, we give it a description, we give it a set of instructions, and then we upload knowledge bases to it. So you could literally use the same knowledge base that we created, right, as the background for this, and give it a set of instructions.
+
+So a custom GPT is simply multiple knowledge bases with a clear set of instructions that's been tested multiple times to get to a certain result. But it's the exact same process. We just would step into this and go a little bit deeper. We refine it a little bit more and just make it a little bit more tested is kind of a better way to think about it.
+
+Okay so that's the the custom GPT's that I've built in for you. That's exactly what those are. So that's all. All you're going to do now is go ahead and add the instructions to this project. It'll aid in all those future conversations and you know now how to create not only a project but you could take this and expand it into a custom GPT. Honestly I think for working inside of your own world, it's a lot easier than it is to create a custom GPT.
+
+business a project is is more than enough but if you want to start sharing things with other people or if you want to refine further then you do a custom GPT because you can upload multiple knowledge bases to those so this is how I want you to use AI as you move forward I don't want it to be just this I kind of you know
+
+Throwing in questions like a search engine or these one-off conversations I want it to be a prompt chain that you're continuing and when you get to a good place I want you to actually save the results into its own project file so you can continue that conversation You can continue that thing in your business by literally just asking it a question Okay That's
+
+That's it for this lesson and let's go ahead and wrap it up.

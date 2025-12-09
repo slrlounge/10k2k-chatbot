@@ -1,0 +1,83 @@
+Ⓒ SLR Lounge www.slrloungeworkshops.com IF U HAZQUEZTIONS... I’ve built the most common questions directly into the lessons, for anything else (on topic) throw it into the Zoom chat. F O R M A T → QUESTION > ...
+
+SLR LOUNGE 9 BUILDINGWEBSITEAUTHORITY STEP Ⓒ SLR Lounge www.slrloungeworkshops.com
+
+TOPICS &QUESTIONS Here are the topics/pain points we will address in this module How do SEO rankings work? What is website authority? How do I get my website to rank higher? How do I build more backlinks? Ⓒ SLR Lounge www.slrloungeworkshops.com
+
+HEADS UP! THIS ISFAST-PACED! I believe that education must quick and simple in order to be effective. Pause, implement, and repeat. Ⓒ SLR Lounge www.slrloungeworkshops.com
+
+Ⓒ SLR Lounge www.slrloungeworkshops.com BETWEENSESSIONS Remember that the M e n t o r s h i p G r o u p is there for you to: Seek advice/feedback from peers Ask questions of me (or the team) Share wins or “aha” moments
+
+REVIEWING...SEO MADESIMPLE! 9 STEP Ⓒ SLR Lounge www.slrloungeworkshops.com
+
+Search Engine Optimization boils down to two components: TWO SIMPLE KEYS Ⓒ SLR Lounge www.slrloungeworkshops.com Keyword strategy (category) Website authority (relevance)
+
+YOU NOW HAVE AKEYWORD STRATEGY It’s time to move onto the second piece of SEO optimization, building website authority (relevance)! Ⓒ SLR Lounge www.slrloungeworkshops.com
+
+WEBSITEAUTHORITY Determines the ranking or order of websites presented from search and depends on the following: Ⓒ SLR Lounge www.slrloungeworkshops.com Website and content quality Internal linking structure Domain age, site speed Inbound links (backlinks)
+
+WHY DOES THIS MATTER? This not only affects general search visibility, but also AI search visibility which prioritizes higher-authority sources over low-credibility sources. Ⓒ SLR Lounge www.slrloungeworkshops.com
+
+SO...WHAT IS A “BACKLINK?” 9 STEP Ⓒ SLR Lounge www.slrloungeworkshops.com
+
+WHAT IS ABACKLINK? Links from another website to yours, from a search engine’s perspective, backlinks are kind of like referrals. Ⓒ SLR Lounge www.slrloungeworkshops.com
+
+PASS ME SOME JUICE! From an SEO standpoint, every link passes a little value or “juice” from one page to the next. Ⓒ SLR Lounge www.slrloungeworkshops.com 
+
+LINK JUICE Every link passes a little “juice” from one page/website to another... Ⓒ SLR Lounge www.slrloungeworkshops.com O U T B O U N D = J u i c e t o o t h e r w e b s i t e s / p a g e s I N T E R N A L = J u i c e t o y o u r o w n p a g e s I N B O U N D = J u i c e t o y o u r w e b s i t e / p a g e s
+
+UNLESS... When there’s a “nofollow” attribute in the HTML link code, no SEO-value or “juice” is passed by the link. Ⓒ SLR Lounge www.slrloungeworkshops.com Select a link Right-click > Inspect Look for rel=”nofollow”
+
+MOST PLATFORMS &DIRECTORIES Unless you’re specifically paying for a backlink, most platforms/directories will link to you with “nofollow” links. Ⓒ SLR Lounge www.slrloungeworkshops.com
+
+WHAT’SBACKLINKQUALITY? 9 STEP Ⓒ SLR Lounge www.slrloungeworkshops.com
+
+NOT ALL BACKLINKSARE EQUAL... If backlinks are “referrals” then where your backlinks come from matter! Three backlink three factors: Ⓒ SLR Lounge www.slrloungeworkshops.com Q U A L I T Y = A r e t h e y r e p u t a b l e ? R E L E V A N C E = A r e t h e y o n t o p i c ? Q U A N T I T Y = S h o w s t o t a l r e a c h . 
+
+LINKS = YOUR WORDAND REPUTATION You want reputable inbound links, and your outbound links should be to relevant and reputable websites. Ⓒ SLR Lounge www.slrloungeworkshops.com 
+
+VALUE OF A LINK Here are some more factors that influence the value of a link (whether inbound or outbound): Ⓒ SLR Lounge www.slrloungeworkshops.com Reputation of link origin Relevance of link origin Location on the domain (tier 1, 2, 3) Position on page (higher = better) Number of outbound links Keywords within the anchor text Type of backlink (text > image) “nofollow” = no value
+
+QUALITY OVERQUANTITY You’re not trying to rank against every website in the world, just against other photographers in your space. Ⓒ SLR Lounge www.slrloungeworkshops.com
+
+ONE GOODBACKLINK/MONTH Stop stressing. Set a simple goal, to get one good and relevant backlink each month. Then work toward via good directories and natural features. Ⓒ SLR Lounge www.slrloungeworkshops.com
+
+EIGHT WAYSTO BUILDBACKLINKS 9 STEP Ⓒ SLR Lounge www.slrloungeworkshops.com
+
+ONE. VENUES Every time you shoot at a venue, get them some awesome images and ask for a link within the feature. Ⓒ SLR Lounge www.slrloungeworkshops.com III. VENDOR/VENUE IMAGESB&SW: 06 - EMAIL TEMPLATES
+
+TWO. VENDORS With each collaboration, get them images and encourage them to blog and link to you. Ⓒ SLR Lounge www.slrloungeworkshops.com III. VENDOR/VENUE IMAGESB&SW: 06 - EMAIL TEMPLATES
+
+THREE. GETPUBLISHED If you happen to be in the wedding/event space check out Two Bright Lights, otherwise use our AI prompt for guidance. NOTE: Wedding planners often already have publishing contacts! Ⓒ SLR Lounge www.slrloungeworkshops.com
+
+Ⓒ SLR Lounge www.slrloungeworkshops.com I am a [NICHE] photographer looking to have my images published by an online magazine or website in order to build my name, credibility, and SEO ranking with backlinks. Can you give me 10 different platforms or publications that would want images from my specific genre of photography?” With each recommendation, can you please include the relevant website, as well as any contact information you might be able to find that can point me to the editor or image submission process. AI-PROMPT Use this prompt in your favorite AI app or AI-powered search engine: Review the list, pick out a couple and start submitting now and then! 
+
+FOUR. AWARDS! Awards do carry value (namely for social proof/marketing). But some awards platforms also provide features and “dofollow” links. Ⓒ SLR Lounge www.slrloungeworkshops.com
+
+Ⓒ SLR Lounge www.slrloungeworkshops.com WEDDING MAPS Our own directory that’s focused on awards and features to help wedding photographers build SEO backlinks.
+
+Ⓒ SLR Lounge www.slrloungeworkshops.com FEARLESS An awards platform focused on finding the best of wedding journalism (and includes “dofollow” links)
+
+Ⓒ SLR Lounge www.slrloungeworkshops.com I am a [NICHE] photographer looking for a place to earn awards where I can also get “dofollow” SEO backlinks. Given my niche, are there any platforms or directories that would meet this criteria? AI-PROMPT Use this prompt in your favorite AI app or AI-powered search engine: Review the list, pick out one (or two) and start submitting now and then! 
+
+VALIDATION? Do NOT go after awards for validation. You’re wasting money on validation that must come internally. UNPOPULAR OPINION: Your clients, family, and bank account should be all the validation you need. Ⓒ SLR Lounge www.slrloungeworkshops.com
+
+FIVE. WRITE! Write for industry publications and educational websites that are within the photography space (Fstoppers, Petapixel, Etc). Ⓒ SLR Lounge www.slrloungeworkshops.com 
+
+Ⓒ SLR Lounge www.slrloungeworkshops.com I am a [NICHE] photographer looking to write educational articles within my photography niche. My goal is to build my name, credibility, and SEO ranking with backlinks. Can you give me 10 different platforms/websites that accept articles from outside writers and contributors? With each recommendation, can you please include the relevant website, as well as any contact information you might be able to find that can point me to the editor or article submission process. AI-PROMPT Use this prompt in your favorite AI app or AI-powered search engine: Review the list, do research to find the best option, publish now and then. 
+
+SIX. JOIN FREEDIRECTORIES These are mainly for local SEO, so pick a few and get yourself listed: DIRECTORIST: 10 Best Local Business Listings ORBIT LOCAL: Best Online Business Directories for Local Marketing & SEO Ⓒ SLR Lounge www.slrloungeworkshops.com
+
+SEVEN. JOIN PAIDDIRECTORIES Again, lean toward paid directories that have a secondary purpose (like Wedding Maps and Fearless) Ⓒ SLR Lounge www.slrloungeworkshops.com
+
+EIGHT. CREATESHAREABLE CONTENT Write articles/resources for your website that are shareable. Meaning others will find it useful to link to. Ⓒ SLR Lounge www.slrloungeworkshops.com
+
+REMEMBER! Most of your backlinks should be built in the natural process of running your business, and just ONE backlink from a reputable website is BIG! Ⓒ SLR Lounge www.slrloungeworkshops.com
+
+START REQUESTINGREVIEWS 9 STEP Ⓒ SLR Lounge www.slrloungeworkshops.com
+
+WHY REQUESTREVIEWS? Beyond social proof, reviews have local, direct, and indirect SEO benefits (including AI search) including: Ⓒ SLR Lounge www.slrloungeworkshops.com Signals popularity/credibility Improves click-through-rate Recent reviews show relevance Strong reviews boosts topical trust AI “reputation summaries”
+
+REQUEST REVIEWS After EVERY shoot, request that your clients submit a review. Ideally, make the request at their emotional high! Ⓒ SLR Lounge www.slrloungeworkshops.com III. CLIENT REVIEW REQUESTB&SW: 06 - EMAIL TEMPLATES Remember that you C A N N O T incentivize and this is best done via phone or text.
+
+IT’S OK TO REMIND! We’re all busy, we forget things! It’s OK to text someone with a gentle review reminder. I’d stop after one. Ⓒ SLR Lounge www.slrloungeworkshops.com

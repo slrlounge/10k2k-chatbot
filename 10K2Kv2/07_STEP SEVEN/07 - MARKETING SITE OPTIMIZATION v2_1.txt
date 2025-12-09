@@ -1,0 +1,123 @@
+Ⓒ SLR Lounge www.slrloungeworkshops.com IF U HAZQUEZTIONS... I’ve built the most common questions directly into the lessons, for anything else (on topic) throw it into the Zoom chat. F O R M A T → QUESTION > ...
+
+SLR LOUNGE 7 OPTIMIZINGYOURWEBSITE STEP Ⓒ SLR Lounge www.slrloungeworkshops.com
+
+TOPICS &QUESTIONS Here are the topics/pain points we will address in this module How do I SEO my website? Which analytics tools do I need? How do I get analytics installed? What do I do with Primary keywords? What do I do with Niche keywords? What are sitemaps? How do I submit my sitemaps? How do I optimize my landing page? How do I improve my optimization? Ⓒ SLR Lounge www.slrloungeworkshops.com
+
+HEADS UP! THIS ISFAST-PACED! I believe that education must quick and simple in order to be effective. Pause, implement, and repeat. Ⓒ SLR Lounge www.slrloungeworkshops.com
+
+Ⓒ SLR Lounge www.slrloungeworkshops.com BETWEENSESSIONS Remember that the M e n t o r s h i p G r o u p is there for you to: Seek advice/feedback from peers Ask questions of me (or the team) Share wins or “aha” moments
+
+REMINDER: DON’TGO DOWN THERABBIT HOLE! 7STEP Ⓒ SLR Lounge www.slrloungeworkshops.com
+
+AI Search is dramatically changing SEO optimization, it’s why I want you to focus on the basics (80/20 rule) AI (AEO) VS SEO Ⓒ SLR Lounge www.slrloungeworkshops.com
+
+Don’t get lost in the weeds of SEO! Focus on the basics. Be flexible and ready to adopt new marketing strategies. WHAT DOESTHIS MEAN? Ⓒ SLR Lounge www.slrloungeworkshops.com
+
+PRIMARY GOALS This module is about optimizing your website and knowing how SEO affects page design. Your focus: Ⓒ SLR Lounge www.slrloungeworkshops.com Get your basic analytics up! Submit your site map Ensure your site is error-free (major) Optimize your landing page Create optimized content (over time) Track results (over time)
+
+WORDPRESSUSERS: INSTALLSITEKIT 7STEP Ⓒ SLR Lounge www.slrloungeworkshops.com
+
+SITE KIT We need Google Analytics and Search Console. If you’re a Wordpress user, Site Kit comes with both. h t t p s : / / s i t e k i t . w i t h g o o g l e . c o m / Ⓒ SLR Lounge www.slrloungeworkshops.com
+
+WHAT’S IT DO? Pulls your analytics right into WordPress and sets up your Search Console and Analytics automatically Ⓒ SLR Lounge www.slrloungeworkshops.com 
+
+HOW TOINSTALL SITEKIT(WORDPRESS) 7STEP Ⓒ SLR Lounge www.slrloungeworkshops.com
+
+HOW TO INSTALL (WORDPRESS ONLY) Ⓒ SLR Lounge www.slrloungeworkshops.com Log into your WordPress Admin www.yourwebsite.com/wp-admin Go to Plugins (left side menu) Enter “Site Kit” (top right Plugin page) Follow instructions to install/verify
+
+VERIFY Log into Google Search Console and Google Analytics to make sure your website is added to your account. (If not, setup GSC and GA manually) Ⓒ SLR Lounge www.slrloungeworkshops.com 
+
+REMEMBER You have a built-in technical help bestie that’s available 24/7! h t t p s : / / c h a t g p t . c o m / Ⓒ SLR Lounge www.slrloungeworkshops.com
+
+Ⓒ SLR Lounge www.slrloungeworkshops.com PAUSE HERE Do NOT continue until you’ve completed this assignment: CHECK OFF > SITEKIT INSTALLB&SW: 05 - SEO
+
+GOOGLESEARCHCONSOLE 7STEP Ⓒ SLR Lounge www.slrloungeworkshops.com
+
+WHY Google Search Console is what you’re going to use to: Ⓒ SLR Lounge www.slrloungeworkshops.com Submit your sitemap (KEY) Identify SEO errors (Poor URLs) (monitor w/ email notifications) Monitor performance (also in Google Analytics)
+
+SUBMIT YOURSITEMAP HERE Depending on your platform, how you generate your sitemap URL will vary (we will discuss shortly) Ⓒ SLR Lounge www.slrloungeworkshops.com
+
+DO I NEED TORESUBMIT? Generally, no. Google reindexes periodically. But you SHOULD resubmit if you: Ⓒ SLR Lounge www.slrloungeworkshops.com Change the sitemap URL Make major structural changes Want to speed up indexing after adding lots of new content or fixing errors 
+
+HOW TO CHECKWHAT’S INDEXED Ⓒ SLR Lounge www.slrloungeworkshops.com Google Prompt = “site: www.linandjirsa.com” Search directly from Google via: On Google Search Console:
+
+MOST VALUABLE Ⓒ SLR Lounge www.slrloungeworkshops.com Now and then, check your performance by the QUERIES and PAGES tabs
+
+URL INSPECTION Ⓒ SLR Lounge www.slrloungeworkshops.com Inspect specific pages (if desired) and request re-indexing if your page has substantially changed. 
+
+DON’T FREAK OUT! Ⓒ SLR Lounge www.slrloungeworkshops.com Remember, our website is generating massive amounts of search views... And yet this is our Search Console report for Core Web Vitals 
+
+SEO = GAME OFREFINEMENT Ⓒ SLR Lounge www.slrloungeworkshops.com Poor URLs = Fix immediately URLs Needing Improvement These will not kill your rankings Usually due to image/load speed Good URLs Examples of ideal pages (I.E. make more of these!) It’s not about getting it PERFECT, it’s about making improvements over time. 
+
+VERIFY YOURDOMAIN ONGSC 7STEP Ⓒ SLR Lounge www.slrloungeworkshops.com
+
+INSTRUCTIONSFOR COMMONPLATFORMS Ⓒ SLR Lounge www.slrloungeworkshops.com Squarespace Show It Pixieset Wix Format Wordpress
+
+Ⓒ SLR Lounge www.slrloungeworkshops.com How do I setup Google Search Console on [YOUR WEBSITE PLATFORM] AI-PROMPT If you get stuck, use this prompt with your technical help bestie:
+
+Ⓒ SLR Lounge www.slrloungeworkshops.com PAUSE HERE Do NOT continue until you’ve completed this assignment: CHECK OFF > SEARCH CONSOLEVERIFICATION - B&SW: 05 - SEO
+
+BONUS: BINGWEBMASTERTOOLS 7STEP Ⓒ SLR Lounge www.slrloungeworkshops.com
+
+INSTRUCTIONSFOR COMMONPLATFORMS Ⓒ SLR Lounge www.slrloungeworkshops.com Squarespace Show It (general) Pixieset (general) Wix Format (general) Wordpress
+
+Ⓒ SLR Lounge www.slrloungeworkshops.com How do I setup Bing Webmaster Tools on [YOUR WEBSITE PLATFORM] AI-PROMPT If you get stuck, use this prompt with your technical help bestie:
+
+Ⓒ SLR Lounge www.slrloungeworkshops.com PAUSE HERE Do NOT continue until you’ve completed this assignment: CHECK OFF > BING WEBMASTERTOOLS B&SW: 05 - SEO
+
+GOOGLEANALYTICS 7STEP Ⓒ SLR Lounge www.slrloungeworkshops.com
+
+WHY Ⓒ SLR Lounge www.slrloungeworkshops.com Search Console is ONLY search views Analytics is ALL views (in-depth) Acquisition = How they arrive Great to see organic results Engagement = What they’re doing Pages and Screens = money Conversions (advanced)
+
+ACQUISITION Ⓒ SLR Lounge www.slrloungeworkshops.com Wonderful report to see exactly where incoming traffic is coming from...
+
+ENGAGEMENT Ⓒ SLR Lounge www.slrloungeworkshops.com What are they doing on our website and how long are they staying engaged?
+
+PAGES/SCREENS Ⓒ SLR Lounge www.slrloungeworkshops.com For a full listing of pages with information on views and engagement
+
+SET UPGOOGLEANALYTICS 7STEP Ⓒ SLR Lounge www.slrloungeworkshops.com
+
+INSTRUCTIONSFOR COMMONPLATFORMS Ⓒ SLR Lounge www.slrloungeworkshops.com Squarespace Show It Pixieset Wix Format Wordpress
+
+Ⓒ SLR Lounge www.slrloungeworkshops.com How do I setup Google Analytics on [YOUR WEBSITE PLATFORM] AI-PROMPT If you get stuck, use this prompt with your technical help bestie:
+
+Ⓒ SLR Lounge www.slrloungeworkshops.com PAUSE HERE Do NOT continue until you’ve completed this assignment: CHECK OFF > GOOGLEANALYTICS B&SW: 05 - SEO
+
+WHY DO WENEED WEBSITEANALYTICS? 7STEP Ⓒ SLR Lounge www.slrloungeworkshops.com
+
+REMEMBER... Most people will not be entering your website through the home page. They’ll be coming from search/referrals. Ⓒ SLR Lounge www.slrloungeworkshops.com
+
+YOUR GOAL Make sure wherever they land, you have a short intro and CTA (call-to-action). Top and bottom of page. Analytics will tell you the order of priority. Ⓒ SLR Lounge www.slrloungeworkshops.com
+
+Ⓒ SLR Lounge www.slrloungeworkshops.com
+
+Ⓒ SLR Lounge www.slrloungeworkshops.com
+
+SET UP YOUR GOOGLEBUSINESSPROFILE 7STEP Ⓒ SLR Lounge www.slrloungeworkshops.com
+
+WHY Controls your Google Maps listing Ⓒ SLR Lounge www.slrloungeworkshops.com Enter all basic information Add address (if you have a studio) Add/modify your pictures Respond to reviews Make your listing nice! 
+
+SET UPGOOGLEBUSINESSPROFILE 7STEP Ⓒ SLR Lounge www.slrloungeworkshops.com
+
+COMPLETE YOURPROFILE Ⓒ SLR Lounge www.slrloungeworkshops.com h t t p s : / / w w w . g o o g l e . c o m / b u s i n e s s / 
+
+Ⓒ SLR Lounge www.slrloungeworkshops.com PAUSE HERE Do NOT continue until you’ve completed this assignment: CHECK OFF > GOOGLE BUSINESSPROFILE - B&SW: 05 - SEO
+
+SUBMITYOURSITEMAPS 7STEP Ⓒ SLR Lounge www.slrloungeworkshops.com
+
+WHY Optimizes your website’s visibility and performance in Google (or other) search results. Ⓒ SLR Lounge www.slrloungeworkshops.com Faster indexing w/ better site coverage Content prioritization Helps with error detection Enhances search performance Updates w/ new modifications Integrates media content (videos)
+
+HOW VIA GOOGLE Find the site map URL on your specific hosting platform Ⓒ SLR Lounge www.slrloungeworkshops.com Go to Google Search Console Identify the site map URL on your platform Enter URL into Google Search Console CMS’s update sitemaps and google knows the URL (no need to resubmit)
+
+SUBMITYOUR SITEMAPS 7STEP Ⓒ SLR Lounge www.slrloungeworkshops.com
+
+HOW TO FIND/CREATE YOUR SITEMAP URL Ⓒ SLR Lounge www.slrloungeworkshops.com Squarespace (yourdomain.com/sitemap.xml) Show It (yourdomain.com/sitemap_index.xml) Pixieset (yourdomain.com/sitemap.xml) Wix Format Wordpress (yourdomain.com/wp-sitemap.xml) or via Yoast
+
+Ⓒ SLR Lounge www.slrloungeworkshops.com How do I create a sitemap url (and submit it to Google) on [YOUR WEBSITE PLATFORM] AI-PROMPT If you get stuck, use this prompt with your technical help bestie:
+
+Ⓒ SLR Lounge www.slrloungeworkshops.com PAUSE HERE Do NOT continue until you’ve completed this assignment: CHECK OFF > SUBMIT SITEMAPSB&SW: 05 - SEO BONUS: Submit to Bing and any other semi-popular search engine. 
+
+KEYWORDPLACEMENTIN WEBSITE 7STEP Ⓒ SLR Lounge www.slrloungeworkshops.com
+
+ONLY ONE! Each page should generally have ONE and only ONE keyword phrase that we’re aiming to rank for. Ⓒ SLR Lounge www.slrloungeworkshops.com

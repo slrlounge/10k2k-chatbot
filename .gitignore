@@ -4,14 +4,29 @@ __pycache__/
 *$py.class
 *.so
 .Python
+<<<<<<< HEAD
 venv/
 env/
 ENV/
 .venv
+=======
+.venv/
+venv/
+ENV/
+env/
+*.egg-info/
+dist/
+build/
+>>>>>>> 891a077298c692fa3f28c30570d5c69f4000c139
 
 # Environment variables
 .env
 .env.local
+<<<<<<< HEAD
+=======
+.env.production
+.env.*.local
+>>>>>>> 891a077298c692fa3f28c30570d5c69f4000c139
 
 # IDE
 .vscode/
@@ -22,6 +37,7 @@ ENV/
 
 # OS
 .DS_Store
+<<<<<<< HEAD
 Thumbs.db
 
 # Token storage (sensitive)
@@ -35,3 +51,49 @@ chat_history.json
 dist/
 build/
 *.egg-info/
+=======
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Logs
+*.log
+logs/
+*.log.*
+
+# Data and storage
+data/
+storage/
+chroma/
+checkpoints/
+*.db
+*.sqlite
+*.sqlite3
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+
+# Sensitive files
+credentials.json
+service_account.json
+settings.yaml
+
+# Large media files (if not needed in repo)
+*.mp4
+*.mp3
+*.mov
+*.avi
+
+# Node modules (if any)
+node_modules/
+
+# Build outputs
+dist/
+build/
+
+>>>>>>> 891a077298c692fa3f28c30570d5c69f4000c139

@@ -1,0 +1,55 @@
+But these are questions like how do I hire the right photographer? What about other vendors? How do I find the right venue? Where should we plan our shoot? How do I dress for our shoot? Do I need to lose 10 pounds first? Do I need to do this? Should I be fitted for a dress first? How do I plan my timeline? All of these relate to the problems and challenges that our clients might have right or what we want to do is understand.
+
+and the problems and challenges. So let's grab the next prompt, copy, and we continue our prompt chain. And if it says, if you want it to stop, by the way, say no, please don't give me additional questions. I'll give you.
+
+prompts and then it'll actually stop handing you stuff like that if you wanted to. Again, this is our collaborative partner. I always say please. I always say please because one day AI will be running my life and robots will be all around us and the world.
+
+as we know it will be over. And I figure if I'm kind to AI, they'll be nice to me. Maybe. Okay. So look, dream client challenges and pain points. Hiring the right photographer, key challenges, oversaturations, the market's flooded, they struggle to know who's truly good, who aligns their values, vibe mismatch fears, lack of transparency, paralysis by analysis.
+
+Okay, what they want is someone who makes the choice feel easy, clear pricing, strong emotional connection, genuine guidance. Oh man, the wave is going to be so key with these individuals. Booking logistics, vendor stress. So vendors need an impact on you. So they struggle to coordinate their sale brand, their permit, travel accommodations. These are all areas where we could be like,
+
+Here's my five favorite hotels, right? Here's the thing that I'd love to do. Here's some hints on your timeline. These could be downloadable guides that we can even give them. There's so much here. They crave a photographer who acts like a guide or planner. That's exactly what I said. Like here are my favorite places to go to. Who's been here before? We can help avoid mistakes. Beautiful. Internal mindset challenges.
+
+So, camera anxiety, body image, fear of regret, feeling unworthy of the moment, so this is so common. We're so awkward in photos, we don't know how to pose. That could literally be the title of an article, couldn't it? We're awkward in photos, here are 10 things that you can do to feel more at ease in front of the camera. Oh my goodness, we already have everything.
+
+we want. So this is going to give you everything you need to kind of understand what those problems and challenges are. What I want you to do is go back to the brand and strategy workbook, go ahead and document them here and know that we're going to come back to these. So the more we have here, the more content ideas we have that we can later use as we get to the marketing side.
+
+All right, someone said, I do the same thing and I thank IT for its help. Yes, might as well start getting on its good side now. All right, step five is now to create a short description of this Dreamclient avatar. This is again for reference purposes. So watch, what we're going to do is grab this final summary prompt. And what we're going to do is create a short description of this Dreamclient avatar.
+
+we're looking to do is rather than me having to do the description itself I'm just gonna again continue the conversation okay and now it's it's literally gonna give me this and I can take this exact phrase this exact thing I can even say okay please
+
+Please shorten this. It's like a nervous tick to include please in everything now. Perfect. That's it. And now I drop it right into my brand strategy workbook. Okay? Your brief avatar description. And that piece is done. This is again for us to quickly look at, at any point in time.
+
+Obviously, what I want you to have, and let me go back to that little thing right here. Your dream client is creative, emotionally driven woman in her early 30s, planning an intimate elopement or destination wedding. She values authenticity, meaningful experiences. So look, when I have my clarified message, I check it against this. Does it resonate with this person? When I'm putting together my portfolio, does it resonate with this person?
+
+it resonate with my clarified message and again this dream client do those images speak to them this is my kind of check and balance for really everything that I do and the first step of that is the clarified message right because that is the overall compass put into one simple phrase but this is your next backbone this is the backbone of the clarified message
+
+is this little statement of who it is that we're targeting. And if you like the longer version of it, you can by all means keep the longer version. But hopefully that gives you a good idea on this. Let me go ahead and check and see. Yes, I believe this is the final one. So you're gonna pause here. And once you've completed this, go ahead and just add each one of these pieces to your brand and strategy workbook. It should take you to right here.
+
+Notice that when we get to the content roadmap step 8, we're on this document again because we're going back to these pain points, these problems and challenges, understanding our avatar. That's where we're getting a huge portion of our content from. So this is where we're going to be utilizing it. Are we addressing one of their pain points? Are we providing something educational?
+
+we can do something inspirational. Is it a news or current event that relates to them? We put the potential hook here, and then we carry it over into essentially like our SEO, into our content strategy. That's the way that we're gonna kind of work, okay? So this is huge. Understanding who your avatar is, is so incredibly important.
+
+when it comes to literally every aspect of your business, especially when it comes to designing something that resonates overall in the experience, and when it comes to speaking to that client in terms of marketing. All right, we are done with this little section. Let's go on to the next lesson now. Okay, time to craft the clarified message.
+
+Now, this is the place where, as I'm kind of reorganizing the material, where I'm like, yeah, now we have what we need to get the clarified message. We have the market research. We have a good understanding of where we're going. We have our avatar and a good understanding of what communicates to them, what speaks to them. Now we can craft that clarified message.
+
+So, one simple sentence that tells your audience what you do, who you serve, why you're different. That's a clarified message. Examples of this on the wedding side. I kind of gave you one in that last lesson where it was like, well, let's tie it directly to the Lopmin photography. And we tied it directly to what was coming through in terms of our client's values and emotional needs.
+
+right? But here's other examples. So intimate, heartfelt wedding images for couples that appreciate modern minimalism. Bold and vibrant imagery for couples who live a life of bold and vibrant adventures. But what if I'm not a wedding photographer? Well, here's portrait examples. Family portraits for moms and dads that love their families in perfectly perfect moments. Intimate, heartfelt family portraits for families who value authenticity.
+
+Bold family photographs or families who love to color outside the lines. All of these work, right? Fine art portraits that capture your furry family member's character. Okay, boudoir. We can literally go through and spend hours here just talking about all the different ideas for clarified messages. So the beautiful part about this is rather than like just keep going over existing.
+
+examples, I'm just going to give you tools to create your own, okay? But what I want you to understand is that the clarified message is the simplest form of compass for basically your ongoing guidance, okay? It's going to guide your website design and branding. It's going to guide your website copy and messaging, your portfolio and image selection, your online and social media presence.
+
+presence, all of it is guided by this clarified message as a compass. And like I said, the backbone to that compass is that description of your audience avatar. Well, it's really your audience avatar, but it's the, the short description is the best, like way to look at it just in a, in a quick overview. Right. So let's go to actually.
+
+figuring out how to get this clarified message, okay? So once again, simple sentence, eight to 12 words, tells your audience those three pieces. It should represent who you are and what you value personally in your business. And I'm giving you an AI prompt. I also included the old prompt here. And anytime I say like, use this as a standalone prompt.
+
+This goes back to kind of the level three prompts that were in the previous version, where like, if you're not continuing a conversation, you'd use this prompt, because this prompt is gonna give it context, it's gonna give it information, you're gonna spell out more, what is my target audience, what are my services, what are my clients' most value? So you gotta give it the context, the information, you give it the role.
+
+thing this would be using this if you want to use a standalone but I'd really like for you guys to move away from that and start using more prompt chains and then ongoing conversations and I'm going to show you as we get to the end of this module we'll save it out so you'll have your first one and then you can create more on your own okay so we're going to use instead is this
+
+one the ideal we continue this dream client ai conversation with this prompt so let's grab this and this is what i mean is if we were to build all of this into a single prompt i find that the answers tend to get um well let me let me drop this in and while this is coming up i'll i'll give it to you so
+
+So whenever I use a single prompt that's like 10 pages long, I find that the amount of time and answer that I get from the AI is generally pretty similar each time, okay? So if I give it a 10 page long prompt, what it does is it gives me answers for everything, but then it tends to be not as interesting.

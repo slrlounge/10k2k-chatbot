@@ -1,0 +1,63 @@
+website as well as a search engine hey this other website is something worth looking at and same thing with an inbound link that comes to us right so think of a little bit of juice being passed with every link that that is created on your website or or just in general on the internet unless unless
+
+there is a nofollow attribute in the html link code so whenever you create a link if you're using a back-end software if you're using show it if you're using wordpress there will always be a little button or something that you can click to basically make it so that that link does not send link juice or it becomes a nofollow.
+
+link okay nofollow is like it would be the equivalent of someone asking me hey do you know a barbershop and I'm like well I know of a barbershop nearby I don't know if they're good or not that's what a nofollow link is is you're not passing any of that link juice you're not passing any of that authority
+
+You're simply saying something there exists. I don't know if it's good or not So the nofollow attribute you can always find by just looking at a link you right-click it and if you see this Relationship, it's rel equals nofollow Then that is a nofollow link meaning you're not going to get any SEO benefit from that
+
+link to your website. The key here to understand is that most platforms and directories are gonna give nofollow links. So like on Instagram, if you put your website link into your profile, that's not a link that counts towards your SEO for anything. On Facebook, if you get a link that that links
+
+out to your website. That link is not indexed, or it could be indexed, but it's going to be a nofollow relationship. Most directories, most platforms, unless you're specifically paying for them, or unless they specifically tell you this is a dofollow link, there are going to be nofollow links. So just kind of understand that.
+
+putting your links into these different profiles, into Yelp and all these different places, that's not doing anything for your general SEO authority or your ranking. It can help you in terms of your local SEO. Local SEO is like if you're on Yelp and you put in your information and you might, if someone types in photographer in.
+
+this area, you'd have a greater chance of showing up there, but it's not helping you in terms of like general authority. Okay, so the next topic is backlink Authority. Let's jump into another lesson for that one. What is backlink quality? So this is the next piece. Don't worry. This is this is a.
+
+a really simple area. Once you understand this general concept, I'm simply going to give you ideas on how to build backlinks. You're going to work on it from time to time. It's not going to be a big time waster. I'm not even going to tell you to spend a lot of time here, but I do want you to understand the concepts. So let's talk about backlink quality. I want you to understand that not all backlinks are equal, and the reason
+
+wise because sometimes people think that well to have a good SEO strategy I need to have lots of incoming backlinks and so they focus on the quantity of them rather than the quality of them two or three good backlinks is better than a hundred crappy ones okay so the idea here is if backlinks are referrals then where you're
+
+backlink or where this referral comes from it matters okay similar to like if if if that friend of mine that person that i asked for recommendation if i say i need a good developer i need a good developer that can do front-end development right if that person is a photographer
+
+the value of that referral is going to be quite a bit different than if that person is a developer themselves. If I ask if my friend were developer themselves, then the information I get, we would naturally go, that must be more relevant because they have experience or authority in that space. It's the exact same.
+
+with these online backlinks, the links that are coming into your site, right? These referrals rely on three factors. The quantity kind of shows total reach, right? So the number of backlinks that are coming into our website, these inbound links, that's like our total reach. It's worth something, but it's not a metric.
+
+we need to focus on. Then there's the quality. That is a metric we want to focus in on. That's the idea that like, okay, is that website that's linking to us, are they themselves reputable? Okay, are they themselves, like, is this coming from a website that is, let's do an example, is it coming from, uh,
+
+Let's say you get a backlink from a magazine that features your work, right? Is this Vogue or is this an online magazine that was started three months prior? If it's coming from Vogue, that's worth 1,000 times more than the backlink coming from an online magazine three months before.
+
+So quality is the idea of, is the site reputable, right? Relevance is, is it on topic? Meaning, Vogue Weddings, giving you a backlink to a wedding site, is worth more than Vogue Magazine linking to your wedding site. Okay? So if it's on topic, it becomes that much more valuable.
+
+as well. So we really want to focus on those last two aspects, the quality of it and the relevance of it. If you're a newborn photographer, it's not really worth your time to try to get featured by a wedding focus platform, but it is worth your time to try to get an award and a feature from a platform that focuses on newborn photography.
+
+across the board regardless of your genre okay. I also want you to think of it this way, links are basically your word and your reputation so you want reputable inbound links but you also want to make sure that your outbound links are relevant and reputable as well which means
+
+Like part of this strategy I'm gonna give you guys as we go into steps, I think it's like 10, 11, we talk about creating these win-win partnerships and we talk about linking over to those websites and we only wanna do this with quality collaborators, with quality vendors, with quality venues, with people that have good reputation because we're sending part of our reputation.
+
+to them by linking to them and you're doing that not just from an SEO standpoint but also just from a general client standpoint right if I'm going to refer somebody if I'm going to say they do good work and this client has a bad experience with them that negatively affects their impression of me too so understand that links are equivalent of your word and reputation
+
+right? So the value of a link, if you wanted factors that kind of dictate, like I kind of gave you in a nutshell quantity, quality, relevance. If you want the general factors, and there are more, but it's the reputation of where the link is coming from, the link origin, the relevance. So reputation is the quality of the site.
+
+Relevance is the topic of the site. Is it relevant to ours? It's also dependent on the location on their domain. So a homepage link is worth more than, say, a secondary page link versus, say, a blog page link. The closer we get to the
+
+the home page of the domain, the more the link is valued. Do you need to do anything with that? No, I just want you to understand the concept, right? The position on the page also matters. If you get a back link at the top of a page, that's worth more than a link at the bottom of a page, okay? The number of outbound links. So if it's a.
+
+listing of, here's 50 different things in this area, and they link to all those things, they're dividing up their link juice among all those different things, okay? So the number of outbound links on that page will also kind of have a little factor in here. Keywords within the anchor text, like if they actually use your keywords in the link.
+
+link text, so if they say this is a great pet photographer, then that actually helps you quite a bit more than just saying your name and linking to it or, you know, that matters a bit, right? The type of backlink as well. Text backlinks are worth more than image backlinks. Does that mean that?
+
+We got to have a hissy fit if someone uses an image to link to us. No, it's just understanding that that text backlinks mean more. And obviously if it's a no follow link, it means that there's no value. Now there are more factors here. I don't think it's important to understand them all. I just want you to get an idea of what a search engine is looking at. Okay.
+
+I want you to also focus on the idea of quality over quantity. You're not trying to rank against these major, like if we're trying to rank against pharmaceutical companies, fortune 500 companies, we need thousands of inbound links to try to get authority, right? Over another multi-billion dollar company. We're not doing that.
+
+trying to rank against maybe another photographer or other people in this space, who most don't have any backlinks and some might have a few, five to 10. So it doesn't take a lot of effort and a lot of work on this side to actually get results. And that's why I don't really want you to focus.
+
+to sort of worry about this too much. I want this to be a natural part of your process. So the idea is if we can get one good backlink a month, that's fantastic. That's our simple goal. And we're gonna work towards getting it in natural ways. Meaning I don't want you to, I really don't want you to ever spend time chasing links.
+
+What I want you to do is spend your time building relationships, naturally linking out to others, and then when it makes sense, when you share some images with another collaborator, ask for a link back, okay? There are certain awards and directories that offer do-follow links when you win awards, and we'll talk about those as well.
+
+There's natural things that you can do in this process, getting featured in a magazine, getting you know online magazine of course, all those things and we're going to talk about those next. I'm going to give you eight ways to build backlinks but before you get to it I just want you to remember and at no point in time do I want you to be spending deliberate time.
+
+here trying to build backlinks that's it let's wrap it oh one other question there was a question that popped up in between and before I end on this there was a question about do backlinks work if both sites link to each other a search engine can see that as an arrangement

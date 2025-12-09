@@ -1,0 +1,67 @@
+Ⓒ SLR Lounge www.slrloungeworkshops.com IF U HAZQUEZTIONS... I’ve built the most common questions directly into the lessons, for anything else (on topic) throw it into the Zoom chat. F O R M A T → QUESTION > ...
+
+SLR LOUNGE 2 YOUR DREAMCLIENT STEP Ⓒ SLR Lounge www.slrloungeworkshops.com
+
+Ⓒ SLR Lounge www.slrloungeworkshops.com Why do I need to identify my audience/client? How do I identify my audience or ideal client? How do I create a client avatar or persona? What should I name my business? What’s a Clarified Message/Vision Statement? Why do I need them? How do I write them? How can I use AI more effectively? TOPICS &QUESTIONS Here are the topics/pain points we will address in this module
+
+HEADS UP! THIS ISFAST-PACED! I believe that education must quick and simple in order to be effective. Pause, implement, and repeat. Ⓒ SLR Lounge www.slrloungeworkshops.com
+
+Ⓒ SLR Lounge www.slrloungeworkshops.com BETWEENSESSIONS Remember that the M e n t o r s h i p G r o u p is there for you to: Seek advice/feedback from peers Ask questions of me (or the team) Share wins or “aha” moments
+
+LEVEL-UPYOUR AITOOLKIT PT. 1 2 STEP Ⓒ SLR Lounge www.slrloungeworkshops.com
+
+BASICPROMPTING You’re asking the AI questions, like a search engine E X A M P L E ( S ) : “What’s the best way to learn photography?” “What’s a good name for my business?” Ⓒ SLR Lounge www.slrloungeworkshops.com 
+
+CONTEXTUALPROMPTING You learn that specificity matters in getting the results you want. E X A M P L E ( S ) : “Write me a funny Instagram caption assuming I’m a [niche] photographer targeting [client description] and posting about the importance of [topic].” Ⓒ SLR Lounge www.slrloungeworkshops.com
+
+ROLE-BASEDPROMPTING You begin to treat the AI like a collaborative partner. E X A M P L E ( S ) : “Let’s assume you’re a brand strategist. Based on my photography business which serves [clients] in the [niche] space, what’s a compelling Clarified Message? Now give me five variations using different tones. Let’s keep it between 8-12 words.” Ⓒ SLR Lounge www.slrloungeworkshops.com 
+
+FRAMEWORKS,TEMPLATES, PROMPTCHAINING You begin systemizing prompt construction and chain-of-thought- prompting (what we’ll do here). E X A M P L E ( S ) : “You’re an expert on sales psychology. Using the W.A.V.E. framework in the Sales Handbook that I’ve uploaded, I want you to analyze my sales transcript to tell me where I went wrong.” Ⓒ SLR Lounge www.slrloungeworkshops.com 
+
+PROJECTS, CUSTOMGPTS, AND APIINTEGRATION You create complete systematic instructions to start turning prompting into product development E X A M P L E ( S ) : Ⓒ SLR Lounge www.slrloungeworkshops.com
+
+MY GOAL FOR YOU I want you to land somewhere between Level 4 and Level 5 by the end of this module. Ⓒ SLR Lounge www.slrloungeworkshops.com 
+
+AIPROMPTTRAINER PT. 1 2 STEP Ⓒ SLR Lounge www.slrloungeworkshops.com
+
+TO START Let’s create a New Project in Chat GPT (or your favorite AI) so we can focus on prompt-chaining (Level 4). If you don’t have access to Chat GPT or this feature, just follow along. Ⓒ SLR Lounge www.slrloungeworkshops.com
+
+Ⓒ SLR Lounge www.slrloungeworkshops.com In a moment, we're going to work through a series of prompts. When I finish this entire process, I'd like for you to create me a set of instructions that I can add to this project to tailor the way you [NAME OF AI] respond in this project. Can you do that for me? I’ll let you know when I’m done with the entire prompt chain. After that, you can go ahead and create the instructions. You may need a Premium account for advanced features (projects, custom, etc) AI-PROMPT We’re going to start this Project with our goal in mind.
+
+Ⓒ SLR Lounge www.slrloungeworkshops.com PAUSE HERE Continue with the program as soon as your project is set up. If you’re unable to create project, simply use a regular chat and focus on the process.
+
+IDENTIFYYOUR DREAMCLIENT AVATAR 2 STEP Ⓒ SLR Lounge www.slrloungeworkshops.com
+
+IDENTIFY YOURTARGET AUDIENCE? Ⓒ SLR Lounge www.slrloungeworkshops.com “When you speak to everyone, you speak to no one.” SETH GODIN
+
+MADE SIMPLE: Are clients who want the image on the left the same as the clients who want the image on the right? Ⓒ SLR Lounge www.slrloungeworkshops.com
+
+AGAIN: Are clients who want the image on the left the same as the clients who want the image on the right? Ⓒ SLR Lounge www.slrloungeworkshops.com
+
+JUST THEORY? But Pye, this seems like theory, how do we make this real? How do I apply this to my business? Ⓒ SLR Lounge www.slrloungeworkshops.com 
+
+Knowing your dream client avatar is what makes it easy to... Ⓒ SLR Lounge www.slrloungeworkshops.com BY KNOWING... C r e a t e y o u r l o g o / b r a n d i n g D e s i g n y o u r w e b s i t e C r a f t t h e p e r f e c t p o r t f o l i o W r i t e w e b s i t e c o n t e n t / c o p y A d v e r t i s e a n d m a r k e t P o s t g o o d o r g a n i c c o n t e n t P r i c e y o u r s e r v i c e s , e t c . . .
+
+WORSE THAN BEINGBLINDFOLDED Attempting to build a business without knowing your audience is like trying to hit a moving target while moving AND being blind folded. Ⓒ SLR Lounge www.slrloungeworkshops.com
+
+Let’s Chat! H e y , I ’ m S t e p h a n i e Boudoir photography that empowers you to embrace your journey and unveil your sexy UNVEILED
+
+WHAT I’M ASKING... I’m not asking that you start designing anything just yet, I’m asking you to step into your dream client’s brain. Ⓒ SLR Lounge www.slrloungeworkshops.com 
+
+WARNING... Ⓒ SLR Lounge www.slrloungeworkshops.com You’re now starting to do the work! Let’s make sure you’ve selected a niche so you don’t have to do re-work.
+
+DREAMCLIENTTOOLKIT 2 STEP Ⓒ SLR Lounge www.slrloungeworkshops.com
+
+THE HINT IS YOU Your ideal client often reflects your own values and aspirations as they tend to be individuals with whom you can naturally resonate with. Ⓒ SLR Lounge www.slrloungeworkshops.com
+
+P e o p l e s h o w n i n y o u r p o r t f o l i o C l i e n t s y o u f e a t u r e o n s o c i a l m e d i a L o c a t i o n s / v e n u e s t h a t y o u s h o w c a s e C o n t e n t a n d c o p y o n y o u r w e b s i t e DEMOGRAPHICS We like to purchase from brands/people that we can connect with. Can your target audience relate to the: Ⓒ SLR Lounge www.slrloungeworkshops.com STEP ONE
+
+Ⓒ SLR Lounge www.slrloungeworkshops.com I’m a [NICHE] photographer based in [LOCATION], and I want to better understand my ideal client avatar. Please analyze my niche and location to create a detailed demographic profile of the typical client who seeks my services. Please include: Typical age range, Gender (if relevant), Ethnicity (if applicable in this niche/region), Relationship status, Place of residence (type of area, e.g., suburban, city, affluent neighborhood), Level of education, Common occupations, Income level or household income, Any other demographic insight you believe is relevant to this niche Please base your response on current market trends and consumer behaviors specific to my niche and region. From here, go ahead and complete the Avatar Demographic Information. AI-PROMPT Need help? Using your favorite AI, use this series of prompts (in one ongoing chat dialogue) for guidance.
+
+W h a t y o u b e l i e v e a n d v a l u e Y o u r p e r s o n a l i t y a n d i n t e r e s t s W h a t y o u r b u s i n e s s r e p r e s e n t s Y o u r i n t e r e s t s a n d p a s s i o n s i n l i f e Y o u r p r i n c i p l e s , o p i n i o n s , a n d p o l i t i c s Y o u r t u r n o f f s a n d d i s l i k e s PSYCHOGRAPHICS We like to purchase from brands/people that we can connect with. Can your target audience relate to: Ⓒ SLR Lounge www.slrloungeworkshops.com STEP TWO
+
+Ⓒ SLR Lounge www.slrloungeworkshops.com Now let’s move on to the second step. Focusing on the same target dream client from Step 1, help me understand their psychographic profile. Please analyze what typically motivates this kind of client to invest in photography services in my niche. Along with anything else you consider relevant, please include insights into their: Core values and beliefs, Personality traits and interests, Emotions and sentiments (what they care deeply about or feel strongly toward), Pet peeves, dislikes, or frustrations (especially as they relate to the photography experience or buying process) This information will help me better connect with my audience through branding, messaging, and service design. From here, go ahead and complete the Avatar Psychographic Information. AI-PROMPT Using your favorite AI, continue with this next psychographic prompt.
+
+S o m e o n e w h o i s e a s y g o i n g ? C o n n e c t i o n w i t h t h e i r p h o t o g r a p h e r ? S o m e o n e w h o c a n t a k e c h a r g e a n d h e l p ? S i m p l i c i t y a n d e n d - t o - e n d s e r v i c e ? T r a d i t i o n a l p o s e s a n d p o r t r a i t s ? A u t h e n t i c i t y a n d c a n d i d i m a g e r y ? WANTS/NEEDS What does your client truly value or appreciate when it comes to your service and product offering? Ⓒ SLR Lounge www.slrloungeworkshops.com STEP THREE
+
+Ⓒ SLR Lounge www.slrloungeworkshops.com Let’s continue developing the profile of my dream client. Now I want you to help me understand their wants/needs when it comes to hiring a photographer in my niche. Focus on both the tangible services and the emotional experiences they desire. In addition to anything else you believe is relevant, please address the following: Do they want a personal connection with their photographer? Do they prefer direction and posing, or a more journalistic, hands-off approach? Do they value traditional, posed portraits, or more authentic, candid moments? Are albums, wall art, or framed prints important to them? Do they want or expect print rights/digital ownership of their images? Feel free to expand beyond these questions to help me better meet their expectations and deliver a truly aligned experience. From here, go ahead and complete the Avatar Wants/Needs section. AI-PROMPT Using your favorite AI, continue with this next wants/needs prompt.

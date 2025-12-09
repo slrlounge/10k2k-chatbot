@@ -1,0 +1,55 @@
+kind of an example on, right? We kind of took the existing design and I dropped some of our images into a new design. This is how that might translate into creating an upscaled boudoir experience. This is how it might translate into creating headshot and branding photography. This is Viviana Cardenas. This is her site that is brand portraits and how kind of understanding.
+
+her audience looks like with that because we're speaking to almost doing case studies in this example right this is Momentum Moment Tom so Tom's website which is focused on timeless wedding films so the the reason why we can get to these places and get to these designs that speak to somebody is because we know
+
+know who it is that we're speaking to and so that's how that's how it's going to play out as we go through this process. Granted, I'm not asking you to start designing anything just yet. I know you're looking at these and going, okay, but what do I do next? What I'm asking right now is that we simply step into our client's mind, complete the research process. You're going to start getting ideas.
+
+well hopefully you already have started to get ideas from step one but as we continue those will become more and more refined okay these are all alumni that have been through the program they've been working on it for for quite some time some of them like a little bit over a year so they're they're pretty well defined in terms of where they're going so again just a quick heads up I'm not wanting you to start
+
+doing the work yet but what I do want right now is that you've actually selected your niche because if we don't yet know what we're doing in terms of niching then as we move forward essentially everything that we do is potential kind of fodder for having to have rework. It's potential areas that we're going to have to completely
+
+redo if we shift our niche or if we better define it if we if we later understand who it is that we're serving so I would say don't continue from this point moving forward until you understand what your niche is because we can't even get to identifying a dream client until we know what niche we're serving first okay all right so let's
+
+dive now into the Dream Client Toolkit. This is actually where we're gonna start documenting the process. And what I like to say in this process is you're putting together this, what this Dream Client, this avatar looks like, is the ideal client, it often reflects you. The best hint for it is you. The ideal client is usually someone that reflects your own vision.
+
+values, your own aspirations, they tend to be people that you can naturally resonate with and they tend to be people that you might naturally be friends with, which is why, like, if you're working with the right people, oftentimes they actually become friends. So one of the first hints I like to give is just to think of who do you resonate with? What are your values? What are your aspirations? That's the
+
+It's often a great starting place. But step number one is, we like to purchase from brands and people that we can connect with. So the question is, can your target audience relate to the people that are shown in your portfolio, the clients that you feature on social media, the locations, the venues that you showcase, the content and copy of your website? Most of this.
+
+ties back to demographic information, okay? I would say content and copy very much goes into the value side, the psychographic side, but let's start with the basics. So the basics is to be able to put together demographics. And let's look at our brand and strategy workbook for just a moment. So go ahead and pull that up on your guys' side. We're working in number.
+
+Number two, the client avatar. You'll notice this first section is just demographic information. So we can upload a sample picture right here. We give them a fictitious name. We put an age, gender, ethnicity, relationship status, some background information, religion, culture, if that's applicable, level education. All of this is basic.
+
+demographic information. Why this is relevant is because if your demographic is let's say let's say you're serving families and most of the families that hire you you're doing like generational family portraits right so most of the time you're being hired by someone that's in their 40s and you're working with like a grandparent and you also have a child in this
+
+scene, right? But let's say the person hiring you is in their 40s. It's a mom or dad. Then that kind of needs to be representative of what I'm showcasing in my portfolio, right? That demographic information ties directly to who I'm showing. If I show images of just children, then it doesn't speak to the person that's necessarily hiring me.
+
+Oh, I want a generational portraits and the same thing goes for like boudoir like oftentimes I'll see and well the same thing goes for every niche But I wanted to specifically speak to boudoir because oftentimes what I see is someone says they want to create a boudoir business so what they do is they go about doing model shoots and test shoots with 20 year olds and 20 year old models or
+
+people that they're paying or doing free shoots with and they've created this portfolio and the images might look fantastic but they don't resonate with the actual people that are hiring. The actual people that are hiring is maybe someone in their 30s, maybe someone in their 40s, maybe in their 50s, someone that doesn't look like they have the perfect figure, someone that doesn't their full-time job is not being a model.
+
+And so if you create a portfolio that is only this one thing and then you start marketing it and the people that are looking your site they can't see themselves in your work then there's an immediate disconnect. They're gonna go well I'd love to get images like this but I don't look like that so I can't I can't do this. I can't take boudoir photos. That is such a prevalent
+
+thing in in boudoir but it's across the board for every other niche and genre if you are trying to market to young you know 20 year olds that want adventurous photos for their for weddings and you're you're pulling people into model like you you do a testing like you want to do a test shoot whatever it is and you grab people that are in their 40s
+
+Because you know them that doesn't help you because it doesn't tie to the people that you're trying to speak to So demographic information is important mostly in the area of making sure that our Actual portfolio the people that we're showcasing on our website throughout our social media that it actually resonates With the type of people that we're looking to get to hire
+
+hire us. That's where it's really applicable. OK. Let me jump back to this for one second. So I'm giving you the first AI prompt. And what I've said here is using your favorite AI use this series of prompts. So we're going to do now is actually train our AI as we go. OK. And what I've also done is actually we're just going to use this series of prompts to train our AI as we go. OK. And what I've also done is actually we're just going to use this series of prompts to train our AI
+
+use the, let's just use the ongoing one. Okay, so let's grab this. All right, and we're gonna go back to our chat GPT. This is where we started that prompt, right? That we're creating for our client avatar. So what I'm gonna do is go ahead and drop this in, and then let's go ahead and pick a...
+
+a niche that we'd like to target. So let's do, I wanna give it something unique. So let's say I'm an elopement photographer based in, I don't know, let's go London.
+
+And I want to better understand my client avatar. Please analyze my niche. Okay, please include typical gender. Perfect. Let's say elopement slash destination photographer. And we're gonna press go. You're gonna insert whatever you have on your side, okay? Now what this is gonna do is this is gonna start giving me specifically demographic data.
+
+So here's the demographic profile. The typical age range is 28 to 38. Secondary might be a little bit younger, more adventurous couples that are on a budget. And then it gives you another secondary like 39 to 45 that are second marriages or older professionals that are loping for intimacy. Right? This gives me such a beautiful target. So even if I don't know myself then I can
+
+start looking at this and going okay well predominantly it's women that are going to be 80% of inquiries are from women. Okay I need the website to resonate with them. Ethnicity is predominantly white British but also includes Western European, Asian British, North American clients, relationship status, place of residence, level of education, all of that. It's going to give you the average household income which is between $700,000 and $800,000.
+
+150,000 pounds. Okay, perfect. So from this, you should get enough good information to start filling in all the demographic information. And especially, this is even more the case, if you have some experience in the area. I love it when you have existing experience that you can kind of tie this together.
+
+together with because you can use your own experience to kind of refine a little bit but even if you're like we have some alumni that come in there they're brand new they don't have enough clients to even even have an idea of who their ideal client is if that's you that's okay you're gonna use this research bit to kind of help you bridge that gap to help you understand who it is
+
+that we're looking for. So what I want you to do is go ahead and with that understanding, and if you want to ask additional questions, it's even asking next, do you wanna, like, hold on, I wanna give you the next prompt, but it's asking what we wanna do next. You could continue the conversation if you want more, but I find that this will usually give you enough right here, okay?
+
+So let's jump back over here to the slide. Once you have that, now we're gonna go to psychographics. So this is step two. Again, knowing that we like to purchase from brands and people that we connect with, we wanna know, can your target audience, can they relate to your personality and interests? The things that you believe and value, what your business represents.
