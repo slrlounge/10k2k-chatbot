@@ -1809,6 +1809,11 @@ async def chat(request: ChatRequest, token_data: dict = Depends(verify_token)):
         raise HTTPException(status_code=500, detail=f"Error generating response: {str(e)}")
 
 
+@app.get("/health")
+async def health_check():
+    """Health check endpoint for Render"""
+    return {"status": "healthy", "service": "chatbot-api"}
+
 @app.get("/api/health")
 async def health_check():
     """Health check endpoint"""
