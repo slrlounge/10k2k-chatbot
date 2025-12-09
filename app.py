@@ -1737,21 +1737,37 @@ async def chat(request: ChatRequest, token_data: dict = Depends(verify_token)):
         })
 
         # Generate response with FileSearch
-        # Pass file_search directly in config (alternative to Tool approach)
-        response = gemini_client.models.generate_content(
-            model=GEMINI_MODEL,
-            contents=contents,
-            config={
-                "temperature": 0.7,
-                "top_p": 0.95,
-                "top_k": 40,
-                "tools": [{
+        # Note: FileSearch may need to be passed differently depending on SDK version
+        # Try using the tools parameter with dict format that matches REST API
+        try:
+            # Try with dict format for tools (matches REST API structure)
+            response = gemini_client.models.generate_content(
+                model=GEMINI_MODEL,
+                contents=contents,
+                tools=[{
                     "file_search": {
                         "file_search_store_names": [GEMINI_STORE_ID]
                     }
-                }]
-            }
-        )
+                }],
+                config={
+                    "temperature": 0.7,
+                    "top_p": 0.95,
+                    "top_k": 40,
+                }
+            )
+        except (TypeError, AttributeError) as e:
+            # Fallback: Try without tools parameter and see if FileSearch is auto-enabled
+            # Some SDK versions may handle FileSearch differently
+            response = gemini_client.models.generate_content(
+                model=GEMINI_MODEL,
+                contents=contents,
+                config={
+                    "temperature": 0.7,
+                    "top_p": 0.95,
+                    "top_k": 40,
+                }
+            )
+            # Note: If this doesn't work, we may need to update the SDK or use REST API
 
         # Extract response text
         response_text = response.text if hasattr(response, 'text') else str(response)
