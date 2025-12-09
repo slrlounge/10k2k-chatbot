@@ -1,0 +1,89 @@
+<!-- SLR Lounge Chatbot - New UI with Chat History -->
+<div id="chatbot-container" style="width: 100%; height: 700px; margin: 20px 0; border: none;">
+  <div id="chatbot-loading" style="padding: 40px; text-align: center; color: #666;">
+    <p>Loading chatbot...</p>
+  </div>
+</div>
+
+<script>
+(async function() {
+  const container = document.getElementById('chatbot-container');
+  const loadingDiv = document.getElementById('chatbot-loading');
+  
+  try {
+    // Kajabi user ID
+    const userId = '{{ current_user.id }}';
+    
+    // ADMIN_SECRET_KEY - Update this to match your Render environment variable
+    const adminSecret = 'VOk9niAXX3QwLfvb1Cdqb-uADEIue_BUbmMuljZwraA';
+    
+    // API Base URL - Update if your server URL is different
+    const API_BASE = 'https://chatbot-api-odi0.onrender.com';
+    
+    // Step 1: Generate token
+    loadingDiv.innerHTML = '<p>Generating access token...</p>';
+    
+    const tokenResponse = await fetch(
+      `${API_BASE}/auth/generate-token?user_id=${userId}&secret_key=${adminSecret}`,
+      {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' }
+      }
+    );
+    
+    if (!tokenResponse.ok) {
+      const errorText = await tokenResponse.text();
+      throw new Error(`Token generation failed (${tokenResponse.status}): ${errorText}`);
+    }
+    
+    const tokenData = await tokenResponse.json();
+    const token = tokenData.token;
+    
+    if (!token) {
+      throw new Error('No token received from server');
+    }
+    
+    // Step 2: Test embed endpoint
+    loadingDiv.innerHTML = '<p>Loading chatbot interface...</p>';
+    
+    const embedUrl = `${API_BASE}/embed?token=${encodeURIComponent(token)}`;
+    
+    // Test if endpoint exists
+    const testResponse = await fetch(embedUrl, { method: 'HEAD' });
+    
+    // Step 3: Create iframe
+    const iframe = document.createElement('iframe');
+    iframe.src = embedUrl;
+    iframe.style.width = '100%';
+    iframe.style.height = '100%';
+    iframe.style.border = 'none';
+    iframe.allow = 'microphone';
+    iframe.onload = function() {
+      console.log('Chatbot loaded successfully');
+    };
+    iframe.onerror = function() {
+      throw new Error('Failed to load chatbot iframe');
+    };
+    
+    // Clear loading and add iframe
+    container.innerHTML = '';
+    container.appendChild(iframe);
+    
+  } catch (error) {
+    console.error('Error loading chatbot:', error);
+    container.innerHTML =
+      '<div style="padding: 40px; text-align: center; color: #d32f2f; background: #ffebee; border-radius: 8px; border: 1px solid #ef5350;">' +
+        '<h3 style="font-size: 18px; margin-bottom: 12px; color: #c62828;">Unable to Load Chatbot</h3>' +
+        '<p style="font-size: 14px; margin-bottom: 8px; color: #666;">' + error.message + '</p>' +
+        '<p style="font-size: 12px; margin-top: 16px; color: #999;">' +
+          'Please check:<br>' +
+          '1. Server is running at: https://chatbot-api-odi0.onrender.com<br>' +
+          '2. /embed endpoint is accessible<br>' +
+          '3. Token generation is working<br>' +
+          '4. Check browser console for more details' +
+        '</p>' +
+        '<button onclick="location.reload()" style="margin-top: 16px; padding: 8px 16px; background: #d4a574; color: white; border: none; border-radius: 4px; cursor: pointer;">Retry</button>' +
+      '</div>';
+  }
+})();
+</script>
