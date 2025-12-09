@@ -1722,13 +1722,6 @@ async def chat(request: ChatRequest, token_data: dict = Depends(verify_token)):
         raise HTTPException(status_code=500, detail="GEMINI_STORE_ID not configured")
 
     try:
-        # Configure FileSearch tool using dict format (FileSearch class may not be directly importable)
-        file_search_tool = types.Tool(
-            file_search={
-                "file_search_store_names": [GEMINI_STORE_ID]
-            }
-        )
-
         # Build conversation history
         contents = []
         for msg in request.conversation_history:
@@ -1744,14 +1737,19 @@ async def chat(request: ChatRequest, token_data: dict = Depends(verify_token)):
         })
 
         # Generate response with FileSearch
+        # Pass file_search directly in config (alternative to Tool approach)
         response = gemini_client.models.generate_content(
             model=GEMINI_MODEL,
             contents=contents,
-            tools=[file_search_tool],
             config={
                 "temperature": 0.7,
                 "top_p": 0.95,
                 "top_k": 40,
+                "tools": [{
+                    "file_search": {
+                        "file_search_store_names": [GEMINI_STORE_ID]
+                    }
+                }]
             }
         )
 
