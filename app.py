@@ -13,7 +13,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import HTMLResponse
 from pydantic import BaseModel
 from google.genai import Client
-from google.genai.types import Tool, FileSearch
+from google.genai import types
 from dotenv import load_dotenv
 
 # Load environment variables
@@ -1722,11 +1722,11 @@ async def chat(request: ChatRequest, token_data: dict = Depends(verify_token)):
         raise HTTPException(status_code=500, detail="GEMINI_STORE_ID not configured")
 
     try:
-        # Configure FileSearch tool
-        file_search_tool = Tool(
-            file_search=FileSearch(
-                file_search_store=GEMINI_STORE_ID
-            )
+        # Configure FileSearch tool using dict format (FileSearch class may not be directly importable)
+        file_search_tool = types.Tool(
+            file_search={
+                "file_search_store_names": [GEMINI_STORE_ID]
+            }
         )
 
         # Build conversation history
