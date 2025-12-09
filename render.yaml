@@ -17,7 +17,7 @@ services:
     healthCheckPath: /api/v1/heartbeat
     autoDeploy: false
 
-  # FastAPI Backend Service
+  # FastAPI Backend Service (Gemini FileSearch)
   - type: web
     name: chatbot-api
     env: docker
@@ -25,31 +25,18 @@ services:
     dockerContext: .
     plan: starter  # $7/month
     envVars:
-      - key: ENVIRONMENT
-        value: production
-      - key: CHROMA_HOST
-        fromService:
-          name: chromadb
-          type: web
-          property: host
-      - key: CHROMA_PORT
-        value: 8000
-      - key: COLLECTION_NAME
-        value: 10k2k_transcripts
-      - key: OPENAI_API_KEY
+      - key: GEMINI_API_KEY
         sync: false  # Set manually in Render dashboard
-      - key: AUTH_SECRET_KEY
+      - key: GEMINI_STORE_ID
         sync: false  # Set manually in Render dashboard
+      - key: GEMINI_MODEL
+        value: gemini-2.0-flash-exp
+      - key: SECRET_KEY
+        sync: false  # Set manually in Render dashboard (used if ADMIN_SECRET_KEY not set)
       - key: ADMIN_SECRET_KEY
         sync: false  # Set manually in Render dashboard
-      - key: KJ_LOGIN_URL
-        value: https://www.slrloungeworkshops.com/login
-      - key: ENABLE_AUTH
-        value: "true"
       - key: ALLOWED_ORIGINS
-        value: https://your-frontend.netlify.app,https://www.slrloungeworkshops.com
-      - key: LOG_LEVEL
-        value: INFO
-    healthCheckPath: /health
+        value: https://www.slrloungeworkshops.com,https://slrloungeworkshops.com
+    healthCheckPath: /api/health
     autoDeploy: false
 

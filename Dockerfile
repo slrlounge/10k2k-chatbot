@@ -43,5 +43,6 @@ HEALTHCHECK --interval=30s --timeout=10s --start-period=40s --retries=3 \
 # Run with gunicorn for production (reduced workers for memory efficiency)
 # Render requires listening on $PORT environment variable
 # Using 2 workers instead of 4 to stay within 512MB memory limit
-CMD sh -c "gunicorn serve:app -w 2 -k uvicorn.workers.UvicornWorker -b 0.0.0.0:${PORT:-8000} --timeout 120"
+# Updated to use app.py (Gemini FileSearch) instead of serve.py (ChromaDB)
+CMD sh -c "gunicorn app:app -w 2 -k uvicorn.workers.UvicornWorker -b 0.0.0.0:${PORT:-8000} --timeout 120"
 
